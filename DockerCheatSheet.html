@@ -1,0 +1,5090 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Docker Cheatsheet</title>
+<link rel="icon" href="https://www.docker.com/wp-content/uploads/2022/01/cropped-Docker-R-Logo-08-2018-Monochomatic-RGB_Moby-x1-32x32.png" sizes="32x32" />
+<style>
+body {
+	background-color: #333333;
+	color: white;
+	font-family: Consolas,"courier new";
+	font-size: 15px;
+	margin: 50px;
+}
+
+.outercollapsible, .innercollapsible {
+	background-color: #333333;
+	color: white;
+	font-family: Consolas,"courier new";
+	font-size: 15px;
+	outline: none;
+	text-align: left;
+	width: 100%;
+}
+
+.outercollapsible {
+	border: none;
+	padding: 5px;
+}
+
+.innercollapsible {
+	background-color: #222222;
+	border: 2px solid #222;
+	padding: 0px;
+}
+
+.active, .outercollapsible:hover, .innercollapsible:hover {
+	background-color: #555;
+}
+
+.outercollapsible:after, .innercollapsible:after {
+	color: white;
+	content: '\002B';
+	float: left;
+	font-weight: bold;
+	margin-left: 5px;
+}
+
+.outercollapsible:after {
+	margin-left: 5px;
+}
+
+.innercollapsible:after {
+	margin-left: 25px;
+}
+
+.active:after {
+	content: "\2212";
+}
+
+.content {
+	background-color: #222;
+	color: white;
+}
+
+.outerPanel, .innerPanel {
+	display: none;
+}
+
+.outerPanel.show, .innerPanel.show {
+	display: block;
+}
+
+code {
+	background-color: #222;
+	color: white;
+	font-family: Consolas,"courier new";
+	font-size: 15px;
+}
+
+pre {
+	background-color: #222;
+	color: #999;
+	font-family: Consolas,"courier new";
+	font-size: 15px;
+	margin: 0;
+	overflow-y: hidden;
+	overflow-x: hidden;
+	padding: 20px;
+	tab-size: 4;
+	white-space: pre;
+	width: 95%;
+}
+
+a:link {
+	color: #606060;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+a:visited {
+	color: #606060;
+}
+
+a:hover {
+	color: turquoise;
+}
+
+a.viewcontrol {
+	color: #A0A0A0;
+}
+</style>
+</head>
+<body>
+<h1>Docker Cheatsheet</h1>
+<h3>
+<a title="collapse all" class="viewcontrol" href="javascript:collapseAll();">-</a>
+<a title="invert all"   class="viewcontrol" href="javascript:invertAll();"  >x</a>
+<a title="expand all"   class="viewcontrol" href="javascript:expandAll();"  >+</a>
+</h3>
+<button class="outercollapsible">&nbsp;<a src="https://docs.docker.com/reference/">Docker version 20.10.13, build a224086</a></button>
+<div class="outerPanel">
+	<div class="content">
+		<pre>
+			<img width="600" src="DockerCheatSheet/DockerVisualization01.png"><br>
+			<img width="600" src="DockerCheatSheet/DockerVisualization02.png"><br>
+			<img width="600" src="DockerCheatSheet/DockerVisualization03.png"><br>
+			<img width="600" src="DockerCheatSheet/DockerVisualization04.png"><br>
+			<img width="600" src="DockerCheatSheet/DockerVisualization05.png"><br>
+			<img width="600" src="DockerCheatSheet/DockerVisualization06.png"><br>
+			<img width="600" src="DockerCheatSheet/DockerVisualization07.png"><br>
+			<img width="600" src="DockerCheatSheet/DockerVisualization08.png"><br>
+			<img width="600" src="DockerCheatSheet/DockerVisualization09.png"><br>
+			<img width="600" src="DockerCheatSheet/DockerVisualization10.png"><br>
+			<img width="600" src="DockerCheatSheet/DockerVisualization11.png"><br>
+			<img width="600" src="DockerCheatSheet/DockerVisualization12.png"><br>
+			<img width="600" src="DockerCheatSheet/DockerVisualization13.png">
+		</pre>
+	</div>
+</div>
+
+
+	<button class="outercollapsible">&nbsp;docker</button>
+	<div class="outerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker [OPTIONS] COMMAND</code>
+
+A self-sufficient runtime for containers
+
+Options:
+      <code>--config string</code>      Location of client config files (default "C:\\Users\\mixol\\.docker")
+  <code>-c, --context string</code>     Name of the context to use to connect to the daemon (overrides DOCKER_HOST env var and default context set with "docker context use")
+  <code>-D, --debug</code>              Enable debug mode
+  <code>-H, --host list</code>          Daemon socket(s) to connect to
+  <code>-l, --log-level string</code>   Set the logging level ("debug"|"info"|"warn"|"error"|"fatal") (default "info")
+      <code>--tls</code>                Use TLS; implied by --tlsverify
+      <code>--tlscacert string</code>   Trust certs signed only by this CA (default "C:\\Users\\mixol\\.docker\\ca.pem")
+      <code>--tlscert string</code>     Path to TLS certificate file (default "C:\\Users\\mixol\\.docker\\cert.pem")
+      <code>--tlskey string</code>      Path to TLS key file (default "C:\\Users\\mixol\\.docker\\key.pem")
+      <code>--tlsverify</code>          Use TLS and verify the remote
+  <code>-v, --version</code>            Print version information and quit
+
+Management Commands:
+  builder     Manage builds
+  buildx*     Docker Buildx (Docker Inc., v0.8.1)
+  compose*    Docker Compose (Docker Inc., v2.3.3)
+  config      Manage Docker configs
+  container   Manage containers
+  context     Manage contexts
+  image       Manage images
+  manifest    Manage Docker image manifests and manifest lists
+  network     Manage networks
+  node        Manage Swarm nodes
+  plugin      Manage plugins
+  scan*       Docker Scan (Docker Inc., v0.17.0)
+  secret      Manage Docker secrets
+  service     Manage services
+  stack       Manage Docker stacks
+  swarm       Manage Swarm
+  system      Manage Docker
+  trust       Manage trust on Docker images
+  volume      Manage volumes
+
+Commands:
+  attach      Attach local standard input, output, and error streams to a running container
+  build       Build an image from a Dockerfile
+  commit      Create a new image from a container's changes
+  cp          Copy files/folders between a container and the local filesystem
+  create      Create a new container
+  diff        Inspect changes to files or directories on a container's filesystem
+  events      Get real time events from the server
+  exec        Run a command in a running container
+  export      Export a container's filesystem as a tar archive
+  history     Show the history of an image
+  images      List images
+  import      Import the contents from a tarball to create a filesystem image
+  info        Display system-wide information
+  inspect     Return low-level information on Docker objects
+  kill        Kill one or more running containers
+  load        Load an image from a tar archive or STDIN
+  login       Log in to a Docker registry
+  logout      Log out from a Docker registry
+  logs        Fetch the logs of a container
+  pause       Pause all processes within one or more containers
+  port        List port mappings or a specific mapping for the container
+  ps          List containers
+  pull        Pull an image or a repository from a registry
+  push        Push an image or a repository to a registry
+  rename      Rename a container
+  restart     Restart one or more containers
+  rm          Remove one or more containers
+  rmi         Remove one or more images
+  run         Run a command in a new container
+  save        Save one or more images to a tar archive (streamed to STDOUT by default)
+  search      Search the Docker Hub for images
+  start       Start one or more stopped containers
+  stats       Display a live stream of container(s) resource usage statistics
+  stop        Stop one or more running containers
+  tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
+  top         Display the running processes of a container
+  unpause     Unpause all processes within one or more containers
+  update      Update configuration of one or more containers
+  version     Show the Docker version information
+  wait        Block until one or more containers stop, then print their exit codes
+
+Run 'docker COMMAND --help' for more information on a command.
+
+To get more help with docker, check out our guides at https://docs.docker.com/go/guides/
+		</pre>
+	</div>
+
+	<button class="innercollapsible">&nbsp;docker attach</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker attach [OPTIONS] CONTAINER</code>
+
+Attach local standard input, output, and error streams to a running container
+
+Options:
+      <code>--detach-keys string</code>   Override the key sequence for detaching a container
+      <code>--no-stdin</code>             Do not attach STDIN
+      <code>--sig-proxy</code>            Proxy all received signals to the process (default true)
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker build</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker build [OPTIONS] PATH | URL | -</code>
+
+Build an image from a Dockerfile
+
+Options:
+      <code>--add-host list</code>           Add a custom host-to-IP mapping (host:ip)
+      <code>--build-arg list</code>          Set build-time variables
+      <code>--cache-from strings</code>      Images to consider as cache sources
+      <code>--cgroup-parent string</code>    Optional parent cgroup for the container
+      <code>--compress</code>                Compress the build context using gzip
+      <code>--cpu-period int</code>          Limit the CPU CFS (Completely Fair Scheduler) period
+      <code>--cpu-quota int</code>           Limit the CPU CFS (Completely Fair Scheduler) quota
+  <code>-c, --cpu-shares int</code>          CPU shares (relative weight)
+      <code>--cpuset-cpus string</code>      CPUs in which to allow execution (0-3, 0,1)
+      <code>--cpuset-mems string</code>      MEMs in which to allow execution (0-3, 0,1)
+      <code>--disable-content-trust</code>   Skip image verification (default true)
+  <code>-f, --file string</code>             Name of the Dockerfile (Default is 'PATH/Dockerfile')
+      <code>--force-rm</code>                Always remove intermediate containers
+      <code>--iidfile string</code>          Write the image ID to the file
+      <code>--isolation string</code>        Container isolation technology
+      <code>--label list</code>              Set metadata for an image
+  <code>-m, --memory bytes</code>            Memory limit
+      <code>--memory-swap bytes</code>       Swap limit equal to memory plus swap: '-1' to enable unlimited swap
+      <code>--network string</code>          Set the networking mode for the RUN instructions during build (default "default")
+      <code>--no-cache</code>                Do not use cache when building the image
+      <code>--pull</code>                    Always attempt to pull a newer version of the image
+  <code>-q, --quiet</code>                   Suppress the build output and print image ID on success
+      <code>--rm</code>                      Remove intermediate containers after a successful build (default true)
+      <code>--security-opt strings</code>    Security options
+      <code>--shm-size bytes</code>          Size of /dev/shm
+      <code>--squash</code>                  Squash newly built layers into a single new layer
+  <code>-t, --tag list</code>                Name and optionally a tag in the 'name:tag' format
+      <code>--target string</code>           Set the target build stage to build.
+      <code>--ulimit ulimit</code>           Ulimit options (default [])
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker commit</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]</code>
+
+Create a new image from a container's changes
+
+Options:
+  <code>-a, --author string</code>    Author (e.g., "John Hannibal Smith <hannibal@a-team.com>")
+  <code>-c, --change list</code>      Apply Dockerfile instruction to the created image
+  <code>-m, --message string</code>   Commit message
+  <code>-p, --pause</code>            Pause container during commit (default true)
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker cp</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker cp [OPTIONS] CONTAINER:SRC_PATH DEST_PATH|-</code>
+	<code>docker cp [OPTIONS] SRC_PATH|- CONTAINER:DEST_PATH</code>
+
+Copy files/folders between a container and the local filesystem
+
+Use '-' as the source to read a tar archive from stdin
+and extract it to a directory destination in a container.
+Use '-' as the destination to stream a tar archive of a
+container source to stdout.
+
+Options:
+  <code>-a, --archive</code>       Archive mode (copy all uid/gid information)
+  <code>-L, --follow-link</code>   Always follow symbol link in SRC_PATH
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker create</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker create [OPTIONS] IMAGE [COMMAND] [ARG...]</code>
+
+Create a new container
+
+Options:
+      <code>--add-host list</code>                  Add a custom host-to-IP mapping (host:ip)
+  <code>-a, --attach list</code>                    Attach to STDIN, STDOUT or STDERR
+      <code>--blkio-weight uint16</code>            Block IO (relative weight), between 10 and 1000, or 0 to disable (default 0)
+      <code>--blkio-weight-device list</code>       Block IO weight (relative device weight) (default [])
+      <code>--cap-add list</code>                   Add Linux capabilities
+      <code>--cap-drop list</code>                  Drop Linux capabilities
+      <code>--cgroup-parent string</code>           Optional parent cgroup for the container
+      <code>--cgroupns string</code>                Cgroup namespace to use (host|private) 'host':    Run the container in the Docker host's cgroup namespace 'private': Run the container in its own private cgroup namespace '':        Use the cgroup namespace as configured by the default-cgroupns-mode option on the daemon (default)
+      <code>--cidfile string</code>                 Write the container ID to the file
+      <code>--cpu-period int</code>                 Limit CPU CFS (Completely Fair Scheduler) period
+      <code>--cpu-quota int</code>                  Limit CPU CFS (Completely Fair Scheduler) quota
+      <code>--cpu-rt-period int</code>              Limit CPU real-time period in microseconds
+      <code>--cpu-rt-runtime int</code>             Limit CPU real-time runtime in microseconds
+  <code>-c, --cpu-shares int</code>                 CPU shares (relative weight)
+      <code>--cpus decimal</code>                   Number of CPUs
+      <code>--cpuset-cpus string</code>             CPUs in which to allow execution (0-3, 0,1)
+      <code>--cpuset-mems string</code>             MEMs in which to allow execution (0-3, 0,1)
+      <code>--device list</code>                    Add a host device to the container
+      <code>--device-cgroup-rule list</code>        Add a rule to the cgroup allowed devices list
+      <code>--device-read-bps list</code>           Limit read rate (bytes per second) from a device (default [])
+      <code>--device-read-iops list</code>          Limit read rate (IO per second) from a device (default [])
+      <code>--device-write-bps list</code>          Limit write rate (bytes per second) to a device (default [])
+      <code>--device-write-iops list</code>         Limit write rate (IO per second) to a device (default [])
+      <code>--disable-content-trust</code>          Skip image verification (default true)
+      <code>--dns list</code>                       Set custom DNS servers
+      <code>--dns-option list</code>                Set DNS options
+      <code>--dns-search list</code>                Set custom DNS search domains
+      <code>--domainname string</code>              Container NIS domain name
+      <code>--entrypoint string</code>              Overwrite the default ENTRYPOINT of the image
+  <code>-e, --env list</code>                       Set environment variables
+      <code>--env-file list</code>                  Read in a file of environment variables
+      <code>--expose list</code>                    Expose a port or a range of ports
+      <code>--gpus</code> gpu-request               GPU devices to add to the container ('all' to pass all GPUs)
+      <code>--group-add list</code>                 Add additional groups to join
+      <code>--health-cmd string</code>              Command to run to check health
+      <code>--health-interval duration</code>       Time between running the check (ms|s|m|h) (default 0s)
+      <code>--health-retries int</code>             Consecutive failures needed to report unhealthy
+      <code>--health-start-period duration</code>   Start period for the container to initialize before starting health-retries countdown (ms|s|m|h) (default 0s)
+      <code>--health-timeout duration</code>        Maximum time to allow one check to run (ms|s|m|h) (default 0s)
+      <code>--help</code>                           Print usage
+  <code>-h, --hostname string</code>                Container host name
+      <code>--init</code>                           Run an init inside the container that forwards signals and reaps processes
+  <code>-i, --interactive</code>                    Keep STDIN open even if not attached
+      <code>--ip string</code>                      IPv4 address (e.g., 172.30.100.104)
+      <code>--ip6 string</code>                     IPv6 address (e.g., 2001:db8::33)
+      <code>--ipc string</code>                     IPC mode to use
+      <code>--isolation string</code>               Container isolation technology
+      <code>--kernel-memory bytes</code>            Kernel memory limit
+  <code>-l, --label list</code>                     Set meta data on a container
+      <code>--label-file list</code>                Read in a line delimited file of labels
+      <code>--link list</code>                      Add link to another container
+      <code>--link-local-ip list</code>             Container IPv4/IPv6 link-local addresses
+      <code>--log-driver string</code>              Logging driver for the container
+      <code>--log-opt list</code>                   Log driver options
+      <code>--mac-address string</code>             Container MAC address (e.g., 92:d0:c6:0a:29:33)
+  <code>-m, --memory bytes</code>                   Memory limit
+      <code>--memory-reservation bytes</code>       Memory soft limit
+      <code>--memory-swap bytes</code>              Swap limit equal to memory plus swap: '-1' to enable unlimited swap
+      <code>--memory-swappiness int</code>          Tune container memory swappiness (0 to 100) (default -1)
+      <code>--mount mount</code>                    Attach a filesystem mount to the container
+      <code>--name string</code>                    Assign a name to the container
+      <code>--network network</code>                Connect a container to a network
+      <code>--network-alias list</code>             Add network-scoped alias for the container
+      <code>--no-healthcheck</code>                 Disable any container-specified HEALTHCHECK
+      <code>--oom-kill-disable</code>               Disable OOM Killer
+      <code>--oom-score-adj int</code>              Tune host's OOM preferences (-1000 to 1000)
+      <code>--pid string</code>                     PID namespace to use
+      <code>--pids-limit int</code>                 Tune container pids limit (set -1 for unlimited)
+      <code>--platform string</code>                Set platform if server is multi-platform capable
+      <code>--privileged</code>                     Give extended privileges to this container
+  <code>-p, --publish list</code>                   Publish a container's port(s) to the host
+  <code>-P, --publish-all</code>                    Publish all exposed ports to random ports
+      <code>--pull string</code>                    Pull image before creating ("always"|"missing"|"never") (default "missing")
+      <code>--read-only</code>                      Mount the container's root filesystem as read only
+      <code>--restart string</code>                 Restart policy to apply when a container exits (default "no")
+      <code>--rm</code>                             Automatically remove the container when it exits
+      <code>--runtime string</code>                 Runtime to use for this container
+      <code>--security-opt list</code>              Security Options
+      <code>--shm-size bytes</code>                 Size of /dev/shm
+      <code>--stop-signal string</code>             Signal to stop a container (default "15")
+      <code>--stop-timeout int</code>               Timeout (in seconds) to stop a container
+      <code>--storage-opt list</code>               Storage driver options for the container
+      <code>--sysctl map</code>                     Sysctl options (default map[])
+      <code>--tmpfs list</code>                     Mount a tmpfs directory
+  <code>-t, --tty</code>                            Allocate a pseudo-TTY
+      <code>--ulimit ulimit</code>                  Ulimit options (default [])
+  <code>-u, --user string</code>                    Username or UID (format: <name|uid>[:<group|gid>])
+      <code>--userns string</code>                  User namespace to use
+      <code>--uts string</code>                     UTS namespace to use
+  <code>-v, --volume list</code>                    Bind mount a volume
+      <code>--volume-driver string</code>           Optional volume driver for the container
+      <code>--volumes-from list</code>              Mount volumes from the specified container(s)
+  <code>-w, --workdir string</code>                 Working directory inside the container
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker diff</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker diff CONTAINER</code>
+
+Inspect changes to files or directories on a container's filesystem
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker events</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker events [OPTIONS]</code>
+
+Get real time events from the server
+
+Options:
+  <code>-f, --filter filter</code>   Filter output based on conditions provided
+      <code>--format string</code>   Format the output using the given Go template
+      <code>--since string</code>    Show all events created since timestamp
+      <code>--until string</code>    Stream events until this timestamp
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker exec</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker exec [OPTIONS] CONTAINER COMMAND [ARG...]</code>
+
+Run a command in a running container
+
+Options:
+  <code>-d, --detach</code>               Detached mode: run command in the background
+      <code>--detach-keys string</code>   Override the key sequence for detaching a container
+  <code>-e, --env list</code>             Set environment variables
+      <code>--env-file list</code>        Read in a file of environment variables
+  <code>-i, --interactive</code>          Keep STDIN open even if not attached
+      <code>--privileged</code>           Give extended privileges to the command
+  <code>-t, --tty</code>                  Allocate a pseudo-TTY
+  <code>-u, --user string</code>          Username or UID (format: <name|uid>[:<group|gid>])
+  <code>-w, --workdir string</code>       Working directory inside the container
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker export</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker export [OPTIONS] CONTAINER</code>
+
+Export a container's filesystem as a tar archive
+
+Options:
+  <code>-o, --output string</code>   Write to a file, instead of STDOUT
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker history</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker history [OPTIONS] IMAGE</code>
+
+Show the history of an image
+
+Options:
+      <code>--format string</code>   Pretty-print images using a Go template
+  <code>-H, --human</code>           Print sizes and dates in human readable format (default true)
+      <code>--no-trunc</code>        Don't truncate output
+  <code>-q, --quiet</code>           Only show image IDs
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker images</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker images [OPTIONS] [REPOSITORY[:TAG]]</code>
+
+List images
+
+Options:
+  <code>-a, --all</code>             Show all images (default hides intermediate images)
+      <code>--digests</code>         Show digests
+  <code>-f, --filter filter</code>   Filter output based on conditions provided
+      <code>--format string</code>   Pretty-print images using a Go template
+      <code>--no-trunc</code>        Don't truncate output
+  <code>-q, --quiet</code>           Only show image IDs
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker import</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker import [OPTIONS] file|URL|- [REPOSITORY[:TAG]]</code>
+
+Import the contents from a tarball to create a filesystem image
+
+Options:
+  <code>-c, --change list</code>       Apply Dockerfile instruction to the created image
+  <code>-m, --message string</code>    Set commit message for imported image
+      <code>--platform string</code>   Set platform if server is multi-platform capable
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker info</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker info [OPTIONS]</code>
+
+Display system-wide information
+
+Options:
+  <code>-f, --format string</code>   Format the output using the given Go template
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker inspect</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker inspect [OPTIONS] NAME|ID [NAME|ID...]</code>
+
+Return low-level information on Docker objects
+
+Options:
+  <code>-f, --format string</code>   Format the output using the given Go template
+  <code>-s, --size</code>            Display total file sizes if the type is container
+      <code>--type string</code>     Return JSON for specified type
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker kill</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker kill [OPTIONS] CONTAINER [CONTAINER...]</code>
+
+Kill one or more running containers
+
+Options:
+  <code>-s, --signal string</code>   Signal to send to the container (default "KILL")
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker load</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker load [OPTIONS]</code>
+
+Load an image from a tar archive or STDIN
+
+Options:
+  <code>-i, --input string</code>   Read from tar archive file, instead of STDIN
+  <code>-q, --quiet</code>          Suppress the load output
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker login</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Log in to a Docker registry or cloud backend.
+If no registry server is specified, the default is defined by the daemon.
+
+Usage:
+  <code>docker login [OPTIONS] [SERVER] [flags]</code>
+  <code>docker login [command]</code>
+
+Available Commands:
+  azure       Log in to azure
+
+Flags:
+  <code>-h, --help</code>              Help for login
+  <code>-p, --password string</code>   password
+      <code>--password-stdin</code>    Take the password from stdin
+  <code>-u, --username string</code>   username
+
+Use "docker login [command] --help" for more information about a command.
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker logout</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Log out from a Docker registry or cloud backend.
+If no server is specified, the default is defined by the daemon.
+
+Usage:
+  <code>docker logout [SERVER] [flags]</code>
+  <code>docker logout [command]</code>
+
+Available Commands:
+  azure       Logout from Azure
+
+Flags:
+  <code>-h, --help</code>   Help for logout
+
+Use "docker logout [command] --help" for more information about a command.
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker logs</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker logs [OPTIONS] CONTAINER</code>
+
+Fetch the logs of a container
+
+Options:
+      <code>--details</code>        Show extra details provided to logs
+  <code>-f, --follow</code>         Follow log output
+      <code>--since string</code>   Show logs since timestamp (e.g. 2013-01-02T13:23:37Z) or relative (e.g. 42m for 42 minutes)
+  <code>-n, --tail string</code>    Number of lines to show from the end of the logs (default "all")
+  <code>-t, --timestamps</code>     Show timestamps
+      <code>--until string</code>   Show logs before a timestamp (e.g. 2013-01-02T13:23:37Z) or relative (e.g. 42m for 42 minutes)
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker pause</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker pause CONTAINER [CONTAINER...]</code>
+
+Pause all processes within one or more containers
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker port</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker port CONTAINER [PRIVATE_PORT[/PROTO]]</code>
+
+List port mappings or a specific mapping for the container
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker ps</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker ps [OPTIONS]</code>
+
+List containers
+
+Options:
+  <code>-a, --all</code>             Show all containers (default shows just running)
+  <code>-f, --filter filter</code>   Filter output based on conditions provided
+      <code>--format string</code>   Pretty-print containers using a Go template
+  <code>-n, --last int</code>        Show n last created containers (includes all states) (default -1)
+  <code>-l, --latest</code>          Show the latest created container (includes all states)
+      <code>--no-trunc</code>        Don't truncate output
+  <code>-q, --quiet</code>           Only display container IDs
+  <code>-s, --size</code>            Display total file sizes
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker pull</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker pull [OPTIONS] NAME[:TAG|@DIGEST]</code>
+
+Pull an image or a repository from a registry
+
+Options:
+  <code>-a, --all-tags</code>                Download all tagged images in the repository
+      <code>--disable-content-trust</code>   Skip image verification (default true)
+      <code>--platform string</code>         Set platform if server is multi-platform capable
+  <code>-q, --quiet</code>                   Suppress verbose output
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker push</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker push [OPTIONS] NAME[:TAG]</code>
+
+Push an image or a repository to a registry
+
+Options:
+  <code>-a, --all-tags</code>                Push all tagged images in the repository
+      <code>--disable-content-trust</code>   Skip image signing (default true)
+  <code>-q, --quiet</code>                   Suppress verbose output
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker rename</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker rename CONTAINER NEW_NAME</code>
+
+Rename a container
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker restart</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker restart [OPTIONS] CONTAINER [CONTAINER...]</code>
+
+Restart one or more containers
+
+Options:
+  <code>-t, --time int</code>   Seconds to wait for stop before killing the container (default 10)
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker rm</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker rm [OPTIONS] CONTAINER [CONTAINER...]</code>
+
+Remove one or more containers
+
+Options:
+  <code>-f, --force</code>     Force the removal of a running container (uses SIGKILL)
+  <code>-l, --link</code>      Remove the specified link
+  <code>-v, --volumes</code>   Remove anonymous volumes associated with the container
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker rmi</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker rmi [OPTIONS] IMAGE [IMAGE...]</code>
+
+Remove one or more images
+
+Options:
+  <code>-f, --force</code>      Force removal of the image
+      <code>--no-prune</code>   Do not delete untagged parents
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker run</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker run [OPTIONS] IMAGE [COMMAND] [ARG...]</code>
+
+Run a command in a new container
+
+Options:
+      <code>--add-host list</code>                  Add a custom host-to-IP mapping (host:ip)
+  <code>-a, --attach list</code>                    Attach to STDIN, STDOUT or STDERR
+      <code>--blkio-weight uint16</code>            Block IO (relative weight), between 10 and 1000, or 0 to disable (default 0)
+      <code>--blkio-weight-device list</code>       Block IO weight (relative device weight) (default [])
+      <code>--cap-add list</code>                   Add Linux capabilities
+      <code>--cap-drop list</code>                  Drop Linux capabilities
+      <code>--cgroup-parent string</code>           Optional parent cgroup for the container
+      <code>--cgroupns string</code>                Cgroup namespace to use (host|private) 'host':    Run the container in the Docker host's cgroup namespace 'private': Run the container in its own private cgroup namespace '':        Use the cgroup namespace as configured by the default-cgroupns-mode option on the daemon (default)
+      <code>--cidfile string</code>                 Write the container ID to the file
+      <code>--cpu-period int</code>                 Limit CPU CFS (Completely Fair Scheduler) period
+      <code>--cpu-quota int</code>                  Limit CPU CFS (Completely Fair Scheduler) quota
+      <code>--cpu-rt-period int</code>              Limit CPU real-time period in microseconds
+      <code>--cpu-rt-runtime int</code>             Limit CPU real-time runtime in microseconds
+  <code>-c, --cpu-shares int</code>                 CPU shares (relative weight)
+      <code>--cpus decimal</code>                   Number of CPUs
+      <code>--cpuset-cpus string</code>             CPUs in which to allow execution (0-3, 0,1)
+      <code>--cpuset-mems string</code>             MEMs in which to allow execution (0-3, 0,1)
+  <code>-d, --detach</code>                         Run container in background and print container ID
+      <code>--detach-keys string</code>             Override the key sequence for detaching a container
+      <code>--device list</code>                    Add a host device to the container
+      <code>--device-cgroup-rule list</code>        Add a rule to the cgroup allowed devices list
+      <code>--device-read-bps list</code>           Limit read rate (bytes per second) from a device (default [])
+      <code>--device-read-iops list</code>          Limit read rate (IO per second) from a device (default [])
+      <code>--device-write-bps list</code>          Limit write rate (bytes per second) to a device (default [])
+      <code>--device-write-iops list</code>         Limit write rate (IO per second) to a device (default [])
+      <code>--disable-content-trust</code>          Skip image verification (default true)
+      <code>--dns list</code>                       Set custom DNS servers
+      <code>--dns-option list</code>                Set DNS options
+      <code>--dns-search list</code>                Set custom DNS search domains
+      <code>--domainname string</code>              Container NIS domain name
+      <code>--entrypoint string</code>              Overwrite the default ENTRYPOINT of the image
+  <code>-e, --env list</code>                       Set environment variables
+      <code>--env-file list</code>                  Read in a file of environment variables
+      <code>--expose list</code>                    Expose a port or a range of ports
+      <code>--gpus</code> gpu-request               GPU devices to add to the container ('all' to pass all GPUs)
+      <code>--group-add list</code>                 Add additional groups to join
+      <code>--health-cmd string</code>              Command to run to check health
+      <code>--health-interval duration</code>       Time between running the check (ms|s|m|h) (default 0s)
+      <code>--health-retries int</code>             Consecutive failures needed to report unhealthy
+      <code>--health-start-period duration</code>   Start period for the container to initialize before starting health-retries countdown (ms|s|m|h) (default 0s)
+      <code>--health-timeout duration</code>        Maximum time to allow one check to run (ms|s|m|h) (default 0s)
+      <code>--help</code>                           Print usage
+  <code>-h, --hostname string</code>                Container host name
+      <code>--init</code>                           Run an init inside the container that forwards signals and reaps processes
+  <code>-i, --interactive</code>                    Keep STDIN open even if not attached
+      <code>--ip string</code>                      IPv4 address (e.g., 172.30.100.104)
+      <code>--ip6 string</code>                     IPv6 address (e.g., 2001:db8::33)
+      <code>--ipc string</code>                     IPC mode to use
+      <code>--isolation string</code>               Container isolation technology
+      <code>--kernel-memory bytes</code>            Kernel memory limit
+  <code>-l, --label list</code>                     Set meta data on a container
+      <code>--label-file list</code>                Read in a line delimited file of labels
+      <code>--link list</code>                      Add link to another container
+      <code>--link-local-ip list</code>             Container IPv4/IPv6 link-local addresses
+      <code>--log-driver string</code>              Logging driver for the container
+      <code>--log-opt list</code>                   Log driver options
+      <code>--mac-address string</code>             Container MAC address (e.g., 92:d0:c6:0a:29:33)
+  <code>-m, --memory bytes</code>                   Memory limit
+      <code>--memory-reservation bytes</code>       Memory soft limit
+      <code>--memory-swap bytes</code>              Swap limit equal to memory plus swap: '-1' to enable unlimited swap
+      <code>--memory-swappiness int</code>          Tune container memory swappiness (0 to 100) (default -1)
+      <code>--mount mount</code>                    Attach a filesystem mount to the container
+      <code>--name string</code>                    Assign a name to the container
+      <code>--network network</code>                Connect a container to a network
+      <code>--network-alias list</code>             Add network-scoped alias for the container
+      <code>--no-healthcheck</code>                 Disable any container-specified HEALTHCHECK
+      <code>--oom-kill-disable</code>               Disable OOM Killer
+      <code>--oom-score-adj int</code>              Tune host's OOM preferences (-1000 to 1000)
+      <code>--pid string</code>                     PID namespace to use
+      <code>--pids-limit int</code>                 Tune container pids limit (set -1 for unlimited)
+      <code>--platform string</code>                Set platform if server is multi-platform capable
+      <code>--privileged</code>                     Give extended privileges to this container
+  <code>-p, --publish list</code>                   Publish a container's port(s) to the host
+  <code>-P, --publish-all</code>                    Publish all exposed ports to random ports
+      <code>--pull string</code>                    Pull image before running ("always"|"missing"|"never") (default "missing")
+      <code>--read-only</code>                      Mount the container's root filesystem as read only
+      <code>--restart string</code>                 Restart policy to apply when a container exits (default "no")
+      <code>--rm</code>                             Automatically remove the container when it exits
+      <code>--runtime string</code>                 Runtime to use for this container
+      <code>--security-opt list</code>              Security Options
+      <code>--shm-size bytes</code>                 Size of /dev/shm
+      <code>--sig-proxy</code>                      Proxy received signals to the process (default true)
+      <code>--stop-signal string</code>             Signal to stop a container (default "15")
+      <code>--stop-timeout int</code>               Timeout (in seconds) to stop a container
+      <code>--storage-opt list</code>               Storage driver options for the container
+      <code>--sysctl map</code>                     Sysctl options (default map[])
+      <code>--tmpfs list</code>                     Mount a tmpfs directory
+  <code>-t, --tty</code>                            Allocate a pseudo-TTY
+      <code>--ulimit ulimit</code>                  Ulimit options (default [])
+  <code>-u, --user string</code>                    Username or UID (format: <name|uid>[:<group|gid>])
+      <code>--userns string</code>                  User namespace to use
+      <code>--uts string</code>                     UTS namespace to use
+  <code>-v, --volume list</code>                    Bind mount a volume
+      <code>--volume-driver string</code>           Optional volume driver for the container
+      <code>--volumes-from list</code>              Mount volumes from the specified container(s)
+  <code>-w, --workdir string</code>                 Working directory inside the container
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker save</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker save [OPTIONS] IMAGE [IMAGE...]</code>
+
+Save one or more images to a tar archive (streamed to STDOUT by default)
+
+Options:
+  <code>-o, --output string</code>   Write to a file, instead of STDOUT
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker search</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker search [OPTIONS] TERM</code>
+
+Search the Docker Hub for images
+
+Options:
+  <code>-f, --filter filter</code>   Filter output based on conditions provided
+      <code>--format string</code>   Pretty-print search using a Go template
+      <code>--limit int</code>       Max number of search results (default 25)
+      <code>--no-trunc</code>        Don't truncate output
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker start</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker start [OPTIONS] CONTAINER [CONTAINER...]</code>
+
+Start one or more stopped containers
+
+Options:
+  <code>-a, --attach</code>               Attach STDOUT/STDERR and forward signals
+      <code>--detach-keys string</code>   Override the key sequence for detaching a container
+  <code>-i, --interactive</code>          Attach container's STDIN
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker stats</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker stats [OPTIONS] [CONTAINER...]</code>
+
+Display a live stream of container(s) resource usage statistics
+
+Options:
+  <code>-a, --all</code>             Show all containers (default shows just running)
+      <code>--format string</code>   Pretty-print images using a Go template
+      <code>--no-stream</code>       Disable streaming stats and only pull the first result
+      <code>--no-trunc</code>        Do not truncate output
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker stop</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker stop [OPTIONS] CONTAINER [CONTAINER...]</code>
+
+Stop one or more running containers
+
+Options:
+  <code>-t, --time int</code>   Seconds to wait for stop before killing it (default 10)
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker tag</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG]</code>
+
+Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker top</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker top CONTAINER [ps OPTIONS]</code>
+
+Display the running processes of a container
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker unpause</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker unpause CONTAINER [CONTAINER...]</code>
+
+Unpause all processes within one or more containers
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker update</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker update [OPTIONS] CONTAINER [CONTAINER...]</code>
+
+Update configuration of one or more containers
+
+Options:
+      <code>--blkio-weight uint16</code>        Block IO (relative weight), between 10 and 1000, or 0 to disable (default 0)
+      <code>--cpu-period int</code>             Limit CPU CFS (Completely Fair Scheduler) period
+      <code>--cpu-quota int</code>              Limit CPU CFS (Completely Fair Scheduler) quota
+      <code>--cpu-rt-period int</code>          Limit the CPU real-time period in microseconds
+      <code>--cpu-rt-runtime int</code>         Limit the CPU real-time runtime in microseconds
+  <code>-c, --cpu-shares int</code>             CPU shares (relative weight)
+      <code>--cpus decimal</code>               Number of CPUs
+      <code>--cpuset-cpus string</code>         CPUs in which to allow execution (0-3, 0,1)
+      <code>--cpuset-mems string</code>         MEMs in which to allow execution (0-3, 0,1)
+      <code>--kernel-memory bytes</code>        Kernel memory limit
+  <code>-m, --memory bytes</code>               Memory limit
+      <code>--memory-reservation bytes</code>   Memory soft limit
+      <code>--memory-swap bytes</code>          Swap limit equal to memory plus swap: '-1' to enable unlimited swap
+      <code>--pids-limit int</code>             Tune container pids limit (set -1 for unlimited)
+      <code>--restart string</code>             Restart policy to apply when a container exits
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker version</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Show the Docker version information
+
+Usage:
+  <code>docker version [flags]</code>
+
+Flags:
+  <code>-f, --format string</code>       Format the output. Values: [pretty | json]. (Default: pretty)
+  <code>-h, --help</code>                Help for version
+      <code>--kubeconfig string</code>   Kubernetes config file
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker wait</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker wait CONTAINER [CONTAINER...]</code>
+
+Block until one or more containers stop, then print their exit codes
+		</pre>
+	</div>
+
+	</div>
+
+	</div>
+
+
+	<button class="outercollapsible">&nbsp;docker builder</button>
+	<div class="outerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker builder COMMAND</code>
+
+Manage builds
+
+Commands:
+  build       Build an image from a Dockerfile
+  prune       Remove build cache
+
+Run 'docker builder COMMAND --help' for more information on a command.
+		</pre>
+	</div>
+
+	<button class="innercollapsible">&nbsp;docker builder build</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker builder build [OPTIONS] PATH | URL | -</code>
+
+Build an image from a Dockerfile
+
+Options:
+      <code>--add-host list</code>           Add a custom host-to-IP mapping (host:ip)
+      <code>--build-arg list</code>          Set build-time variables
+      <code>--cache-from strings</code>      Images to consider as cache sources
+      <code>--cgroup-parent string</code>    Optional parent cgroup for the container
+      <code>--compress</code>                Compress the build context using gzip
+      <code>--cpu-period int</code>          Limit the CPU CFS (Completely Fair Scheduler) period
+      <code>--cpu-quota int</code>           Limit the CPU CFS (Completely Fair Scheduler) quota
+  <code>-c, --cpu-shares int</code>          CPU shares (relative weight)
+      <code>--cpuset-cpus string</code>      CPUs in which to allow execution (0-3, 0,1)
+      <code>--cpuset-mems string</code>      MEMs in which to allow execution (0-3, 0,1)
+      <code>--disable-content-trust</code>   Skip image verification (default true)
+  <code>-f, --file string</code>             Name of the Dockerfile (Default is 'PATH/Dockerfile')
+      <code>--force-rm</code>                Always remove intermediate containers
+      <code>--iidfile string</code>          Write the image ID to the file
+      <code>--isolation string</code>        Container isolation technology
+      <code>--label list</code>              Set metadata for an image
+  <code>-m, --memory bytes</code>            Memory limit
+      <code>--memory-swap bytes</code>       Swap limit equal to memory plus swap: '-1' to enable unlimited swap
+      <code>--network string</code>          Set the networking mode for the RUN instructions during build (default "default")
+      <code>--no-cache</code>                Do not use cache when building the image
+      <code>--pull</code>                    Always attempt to pull a newer version of the image
+  <code>-q, --quiet</code>                   Suppress the build output and print image ID on success
+      <code>--rm</code>                      Remove intermediate containers after a successful build (default true)
+      <code>--security-opt strings</code>    Security options
+      <code>--shm-size bytes</code>          Size of /dev/shm
+      <code>--squash</code>                  Squash newly built layers into a single new layer
+  <code>-t, --tag list</code>                Name and optionally a tag in the 'name:tag' format
+      <code>--target string</code>           Set the target build stage to build.
+      <code>--ulimit ulimit</code>           Ulimit options (default [])
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker builder prune</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker builder prune</code>
+
+Remove build cache
+
+Options:
+  <code>-a, --all</code>                  Remove all unused build cache, not just dangling ones
+      <code>--filter filter</code>        Provide filter values (e.g. 'until=24h')
+  <code>-f, --force</code>                Do not prompt for confirmation
+      <code>--keep-storage bytes</code>   Amount of disk space to keep for cache
+		</pre>
+	</div>
+
+	</div>
+
+	</div>
+
+
+	<button class="outercollapsible">&nbsp;docker buildx</button>
+	<div class="outerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker buildx [OPTIONS] COMMAND</code>
+
+Extended build capabilities with BuildKit
+
+Options:
+      <code>--builder string</code>   Override the configured builder instance
+
+Management Commands:
+  imagetools  Commands to work on images in registry
+
+Commands:
+  bake        Build from a file
+  build       Start a build
+  create      Create a new builder instance
+  du          Disk usage
+  inspect     Inspect current builder instance
+  ls          List builder instances
+  prune       Remove build cache
+  rm          Remove a builder instance
+  stop        Stop builder instance
+  use         Set the current builder instance
+  version     Show buildx version information
+
+Run 'docker buildx COMMAND --help' for more information on a command.
+		</pre>
+	</div>
+
+	<button class="innercollapsible">&nbsp;docker buildx bake</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker buildx bake [OPTIONS] [TARGET...]</code>
+
+Build from a file
+
+Aliases:
+  bake, f
+
+Options:
+      <code>--builder string</code>         Override the configured builder instance
+  <code>-f, --file stringArray</code>       Build definition file
+      <code>--load</code>                   Shorthand for "--set=*.output=type=docker"
+      <code>--metadata-file string</code>   Write build result metadata to the file
+      <code>--no-cache</code>               Do not use cache when building the image
+      <code>--print</code>                  Print the options without building
+      <code>--progress string</code>        Set type of progress output ("auto", "plain", "tty"). Use plain to show container output (default "auto")
+      <code>--pull</code>                   Always attempt to pull all referenced images
+      <code>--push</code>                   Shorthand for "--set=*.output=type=registry"
+      <code>--set stringArray</code>        Override target value (e.g., "targetpattern.key=value")
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker buildx build</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker buildx build [OPTIONS] PATH | URL | -</code>
+
+Start a build
+
+Aliases:
+  build, b
+
+Options:
+      <code>--add-host strings</code>              Add a custom host-to-IP mapping (format: "host:ip")
+      <code>--allow strings</code>                 Allow extra privileged entitlement (e.g., "network.host", "security.insecure")
+      <code>--build-arg stringArray</code>         Set build-time variables
+      <code>--build-context stringArray</code>     Additional build contexts (e.g., name=path)
+      <code>--builder string</code>                Override the configured builder instance
+      <code>--cache-from stringArray</code>        External cache sources (e.g., "user/app:cache", "type=local,src=path/to/dir")
+      <code>--cache-to stringArray</code>          Cache export destinations (e.g., "user/app:cache", "type=local,dest=path/to/dir")
+      <code>--cgroup-parent string</code>          Optional parent cgroup for the container
+  <code>-f, --file string</code>                   Name of the Dockerfile (default: "PATH/Dockerfile")
+      <code>--iidfile string</code>                Write the image ID to the file
+      <code>--label stringArray</code>             Set metadata for an image
+      <code>--load</code>                          Shorthand for "--output=type=docker"
+      <code>--metadata-file string</code>          Write build result metadata to the file
+      <code>--network string</code>                Set the networking mode for the "RUN" instructions during build (default "default")
+      <code>--no-cache</code>                      Do not use cache when building the image
+      <code>--no-cache-filter stringArray</code>   Do not cache specified stages
+  <code>-o, --output stringArray</code>            Output destination (format: "type=local,dest=path")
+      <code>--platform stringArray</code>          Set target platform for build
+      <code>--progress string</code>               Set type of progress output ("auto", "plain", "tty"). Use plain to show container output (default "auto")
+      <code>--pull</code>                          Always attempt to pull all referenced images
+      <code>--push</code>                          Shorthand for "--output=type=registry"
+  <code>-q, --quiet</code>                         Suppress the build output and print image ID on success
+      <code>--secret stringArray</code>            Secret to expose to the build (format: "id=mysecret[,src=/local/secret]")
+      <code>--shm-size bytes</code>                Size of "/dev/shm"
+      <code>--ssh stringArray</code>               SSH agent socket or keys to expose to the build (format: "default|<id>[=<socket>|<key>[,<key>]]")
+  <code>-t, --tag stringArray</code>               Name and optionally a tag (format: "name:tag")
+      <code>--target string</code>                 Set the target build stage to build
+      <code>--ulimit ulimit</code>                 Ulimit options (default [])
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker buildx create</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker buildx create [OPTIONS] [CONTEXT|ENDPOINT]</code>
+
+Create a new builder instance
+
+Options:
+      <code>--append</code>                   Append a node to builder instead of changing it
+      <code>--bootstrap</code>                Boot builder after creation
+      <code>--buildkitd-flags string</code>   Flags for buildkitd daemon
+      <code>--config string</code>            BuildKit config file
+      <code>--driver string</code>            Driver to use (available: "docker", "docker-container", "kubernetes")
+      <code>--driver-opt stringArray</code>   Options for the driver
+      <code>--leave</code>                    Remove a node from builder instead of changing it
+      <code>--name string</code>              Builder instance name
+      <code>--node string</code>              Create/modify node with given name
+      <code>--platform stringArray</code>     Fixed platforms for current node
+      <code>--use</code>                      Set the current builder instance
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker buildx du</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker buildx du</code>
+
+Disk usage
+
+Options:
+      <code>--builder string</code>   Override the configured builder instance
+      <code>--filter filter</code>    Provide filter values
+      <code>--verbose</code>          Provide a more verbose output
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker buildx inspect</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker buildx inspect [NAME]</code>
+
+Inspect current builder instance
+
+Options:
+      <code>--bootstrap</code>        Ensure builder has booted before inspecting
+      <code>--builder string</code>   Override the configured builder instance
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker buildx ls</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker buildx ls</code>
+
+List builder instances
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker buildx prune</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker buildx prune</code>
+
+Remove build cache
+
+Options:
+  <code>-a, --all</code>                  Remove all unused images, not just dangling ones
+      <code>--builder string</code>       Override the configured builder instance
+      <code>--filter filter</code>        Provide filter values (e.g., "until=24h")
+  <code>-f, --force</code>                Do not prompt for confirmation
+      <code>--keep-storage bytes</code>   Amount of disk space to keep for cache
+      <code>--verbose</code>              Provide a more verbose output
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker buildx rm</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker buildx rm [NAME]</code>
+
+Remove a builder instance
+
+Options:
+      <code>--all-inactive</code>     Remove all inactive builders
+      <code>--builder string</code>   Override the configured builder instance
+  <code>-f, --force</code>            Do not prompt for confirmation
+      <code>--keep-daemon</code>      Keep the buildkitd daemon running
+      <code>--keep-state</code>       Keep BuildKit state
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker buildx stop</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker buildx stop [NAME]</code>
+
+Stop builder instance
+
+Options:
+      <code>--builder string</code>   Override the configured builder instance
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker buildx use</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker buildx use [OPTIONS] NAME</code>
+
+Set the current builder instance
+
+Options:
+      <code>--builder string</code>   Override the configured builder instance
+      <code>--default</code>          Set builder as default for current context
+      <code>--global</code>           Builder persists context changes
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker buildx version</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker buildx version</code>
+
+Show buildx version information
+		</pre>
+	</div>
+
+	</div>
+
+	</div>
+
+
+	<button class="outercollapsible">&nbsp;docker compose</button>
+	<div class="outerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker compose [OPTIONS] COMMAND</code>
+
+	<code>Docker Compose</code>
+
+Options:
+      <code>--ansi string</code>                Control when to print ANSI control characters ("never"|"always"|"auto") (default "auto")
+      <code>--compatibility</code>              Run compose in backward compatibility mode
+      <code>--env-file string</code>            Specify an alternate environment file.
+  <code>-f, --file stringArray</code>           Compose configuration files
+      <code>--profile stringArray</code>        Specify a profile to enable
+      <code>--project-directory string</code>   Specify an alternate working directory (default: the path of the Compose file)
+  <code>-p, --project-name string</code>        Project name
+
+Commands:
+  build       Build or rebuild services
+  convert     Converts the compose file to platform's canonical format
+  cp          Copy files/folders between a service container and the local filesystem
+  create      Creates containers for a service.
+  down        Stop and remove containers, networks
+  events      Receive real time events from containers.
+  exec        Execute a command in a running container.
+  images      List images used by the created containers
+  kill        Force stop service containers.
+  logs        View output from containers
+  ls          List running compose projects
+  pause       Pause services
+  port        Print the public port for a port binding.
+  ps          List containers
+  pull        Pull service images
+  push        Push service images
+  restart     Restart containers
+  rm          Removes stopped service containers
+  run         Run a one-off command on a service.
+  start       Start services
+  stop        Stop services
+  top         Display the running processes
+  unpause     Unpause services
+  up          Create and start containers
+  version     Show the Docker Compose version information
+
+Run 'docker compose COMMAND --help' for more information on a command.
+		</pre>
+	</div>
+
+	<button class="innercollapsible">&nbsp;docker compose build</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker compose build [SERVICE...]</code>
+
+Build or rebuild services
+
+Options:
+      <code>--build-arg stringArray</code>   Set build-time variables for services.
+      <code>--no-cache</code>                Do not use cache when building the image
+      <code>--progress string</code>         Set type of progress output (auto, tty, plain, quiet) (default "auto")
+      <code>--pull</code>                    Always attempt to pull a newer version of the image.
+  <code>-q, --quiet</code>                   Don't print anything to STDOUT
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker compose convert</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker compose convert SERVICES</code>
+
+Converts the compose file to platform's canonical format
+
+Aliases:
+  convert, config
+
+Options:
+      <code>--format string</code>           Format the output. Values: [yaml | json] (default "yaml")
+      <code>--hash string</code>             Print the service config hash, one per line.
+      <code>--images</code>                  Print the image names, one per line.
+      <code>--no-interpolate</code>          Don't interpolate environment variables.
+      <code>--no-normalize</code>            Don't normalize compose model.
+  <code>-o, --output string</code>           Save to file (default to stdout)
+      <code>--profiles</code>                Print the profile names, one per line.
+  <code>-q, --quiet</code>                   Only validate the configuration, don't print anything.
+      <code>--resolve-image-digests</code>   Pin image tags to digests.
+      <code>--services</code>                Print the service names, one per line.
+      <code>--volumes</code>                 Print the volume names, one per line.
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker compose cp</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker compose cp [OPTIONS] SERVICE:SRC_PATH DEST_PATH|-</code>
+	<code>docker compose cp [OPTIONS] SRC_PATH|- SERVICE:DEST_PATH</code>
+
+Copy files/folders between a service container and the local filesystem
+
+Options:
+      <code>--all</code>           Copy to all the containers of the service.
+  <code>-a, --archive</code>       Archive mode (copy all uid/gid information)
+  <code>-L, --follow-link</code>   Always follow symbol link in SRC_PATH
+      <code>--index int</code>     Index of the container if there are multiple instances of a service [default: 1]. (default 1)
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker compose create</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker compose create [SERVICE...]</code>
+
+Creates containers for a service.
+
+Options:
+      <code>--build</code>            Build images before starting containers.
+      <code>--force-recreate</code>   Recreate containers even if their configuration and image haven't changed.
+      <code>--no-build</code>         Don't build an image, even if it's missing.
+      <code>--no-recreate</code>      If containers already exist, don't recreate them. Incompatible with --force-recreate.
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker compose down</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker compose down</code>
+
+Stop and remove containers, networks
+
+Options:
+      <code>--remove-orphans</code>    Remove containers for services not defined in the Compose file.
+      <code>--rmi string</code>        Remove images used by services. "local" remove only images that don't have a custom tag ("local"|"all")
+  <code>-t, --timeout int</code>       Specify a shutdown timeout in seconds (default 10)
+  <code>-v, --volumes volumes</code>    Remove named volumes declared in the volumes section of the Compose file and anonymous volumes attached to containers.
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker compose events</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker compose events [options] [--] [SERVICE...]</code>
+
+Receive real time events from containers.
+
+Options:
+      <code>--json</code>   Output events as a stream of json objects
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker compose exec</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker compose exec [options] [-e KEY=VAL...] [--] SERVICE COMMAND [ARGS...]</code>
+
+Execute a command in a running container.
+
+Options:
+  <code>-d, --detach</code>                       Detached mode: Run command in the background.
+  <code>-e, --env stringArray</code>              Set environment variables
+      <code>--index int</code>                    index of the container if there are multiple instances of a service [default: 1]. (default 1)
+  <code>-T, --no-TTY docker</code> compose exec   Disable pseudo-TTY allocation. By default docker compose exec allocates a TTY.
+      <code>--privileged</code>                   Give extended privileges to the process.
+  <code>-u, --user string</code>                  Run the command as this user.
+  <code>-w, --workdir string</code>               Path to workdir directory for this command.
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker compose images</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker compose images [SERVICE...]</code>
+
+List images used by the created containers
+
+Options:
+  <code>-q, --quiet</code>   Only display IDs
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker compose kill</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker compose kill [options] [SERVICE...]</code>
+
+Force stop service containers.
+
+Options:
+  <code>-s, --signal string</code>   SIGNAL to send to the container. (default "SIGKILL")
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker compose logs</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker compose logs [SERVICE...]</code>
+
+View output from containers
+
+Options:
+  <code>-f, --follow</code>          Follow log output.
+      <code>--no-color</code>        Produce monochrome output.
+      <code>--no-log-prefix</code>   Don't print prefix in logs.
+      <code>--since string</code>    Show logs since timestamp (e.g. 2013-01-02T13:23:37Z) or relative (e.g. 42m for 42 minutes)
+      <code>--tail string</code>     Number of lines to show from the end of the logs for each container. (default "all")
+  <code>-t, --timestamps</code>      Show timestamps.
+      <code>--until string</code>    Show logs before a timestamp (e.g. 2013-01-02T13:23:37Z) or relative (e.g. 42m for 42 minutes)
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker compose ls</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker compose ls</code>
+
+List running compose projects
+
+Options:
+  <code>-a, --all</code>             Show all stopped Compose projects
+      <code>--filter filter</code>   Filter output based on conditions provided.
+      <code>--format string</code>   Format the output. Values: [pretty | json]. (default "pretty")
+  <code>-q, --quiet</code>           Only display IDs.
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker compose pause</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker compose pause [SERVICE...]</code>
+
+Pause services
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker compose port</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker compose port [options] [--] SERVICE PRIVATE_PORT</code>
+
+Print the public port for a port binding.
+
+Options:
+      <code>--index int</code>         index of the container if service has multiple replicas (default 1)
+      <code>--protocol string</code>   tcp or udp (default "tcp")
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker compose ps</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker compose ps [SERVICE...]</code>
+
+List containers
+
+Options:
+  <code>-a, --all</code>                  Show all stopped containers (including those created by the run command)
+      <code>--format string</code>        Format the output. Values: [pretty | json] (default "pretty")
+  <code>-q, --quiet</code>                Only display IDs
+      <code>--services</code>             Display services
+      <code>--status stringArray</code>   Filter services by status. Values: [paused | restarting | removing | running | dead | created | exited]
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker compose pull</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker compose pull [SERVICE...]</code>
+
+Pull service images
+
+Options:
+      <code>--ignore-pull-failures</code>   Pull what it can and ignores images with pull failures
+      <code>--include-deps</code>           Also pull services declared as dependencies
+  <code>-q, --quiet</code>                  Pull without printing progress information
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker compose push</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker compose push [SERVICE...]</code>
+
+Push service images
+
+Options:
+      <code>--ignore-push-failures</code>   Push what it can and ignores images with push failures
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker compose restart</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker compose restart</code>
+
+Restart containers
+
+Options:
+  <code>-t, --timeout int</code>   Specify a shutdown timeout in seconds (default 10)
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker compose rm</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker compose rm [SERVICE...]</code>
+
+Removes stopped service containers
+
+By default, anonymous volumes attached to containers will not be removed. You
+can override this with -v. To list all volumes, use "docker volume ls".
+
+Any data which is not in a volume will be lost.
+
+Options:
+  <code>-f, --force</code>     Don't ask to confirm removal
+  <code>-s, --stop</code>      Stop the containers, if required, before removing
+  <code>-v, --volumes</code>   Remove any anonymous volumes attached to containers
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker compose run</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker compose run [options] [-v VOLUME...] [-p PORT...] [-e KEY=VAL...] [-l KEY=VALUE...] SERVICE [COMMAND] [ARGS...]</code>
+
+Run a one-off command on a service.
+
+Options:
+  <code>-d, --detach</code>                Run container in background and print container ID
+      <code>--entrypoint string</code>     Override the entrypoint of the image
+  <code>-e, --env stringArray</code>       Set environment variables
+  <code>-i, --interactive</code>           Keep STDIN open even if not attached. (default true)
+  <code>-l, --label stringArray</code>     Add or override a label
+      <code>--name string</code>            Assign a name to the container
+  <code>-T, --no-TTY</code>                Disable pseudo-noTty allocation. By default docker compose run allocates a TTY
+      <code>--no-deps</code>               Don't start linked services.
+  <code>-p, --publish stringArray</code>   Publish a container's port(s) to the host.
+      <code>--quiet-pull</code>            Pull without printing progress information.
+      <code>--rm</code>                    Automatically remove the container when it exits
+      <code>--service-ports</code>         Run command with the service's ports enabled and mapped to the host.
+      <code>--use-aliases</code>           Use the service's network useAliases in the network(s) the container connects to.
+  <code>-u, --user string</code>           Run as specified username or uid
+  <code>-v, --volume stringArray</code>    Bind mount a volume.
+  <code>-w, --workdir string</code>        Working directory inside the container
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker compose start</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker compose start [SERVICE...]</code>
+
+Start services
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker compose stop</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker compose stop [SERVICE...]</code>
+
+Stop services
+
+Options:
+  <code>-t, --timeout int</code>   Specify a shutdown timeout in seconds (default 10)
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker compose top</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker compose top [SERVICES...]</code>
+
+Display the running processes
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker compose unpause</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker compose unpause [SERVICE...]</code>
+
+Unpause services
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker compose up</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker compose up [SERVICE...]</code>
+
+Create and start containers
+
+Options:
+      <code>--abort-on-container-exit</code>   Stops all containers if any container was stopped. Incompatible with -d
+      <code>--always-recreate-deps</code>      Recreate dependent containers. Incompatible with --no-recreate.
+      <code>--attach stringArray</code>        Attach to service output.
+      <code>--attach-dependencies</code>       Attach to dependent containers.
+      <code>--build</code>                     Build images before starting containers.
+  <code>-d, --detach</code>                    Detached mode: Run containers in the background
+      <code>--exit-code-from string</code>     Return the exit code of the selected service container. Implies --abort-on-container-exit
+      <code>--force-recreate</code>            Recreate containers even if their configuration and image haven't changed.
+      <code>--no-build</code>                  Don't build an image, even if it's missing.
+      <code>--no-color</code>                  Produce monochrome output.
+      <code>--no-deps</code>                   Don't start linked services.
+      <code>--no-log-prefix</code>             Don't print prefix in logs.
+      <code>--no-recreate</code>               If containers already exist, don't recreate them. Incompatible with --force-recreate.
+      <code>--no-start</code>                  Don't start the services after creating them.
+      <code>--quiet-pull</code>                Pull without printing progress information.
+      <code>--remove-orphans</code>            Remove containers for services not defined in the Compose file.
+  <code>-V, --renew-anon-volumes</code>        Recreate anonymous volumes instead of retrieving data from the previous containers.
+      <code>--scale scale</code>               Scale SERVICE to NUM instances. Overrides the scale setting in the Compose file if present.
+  <code>-t, --timeout int</code>               Use this timeout in seconds for container shutdown when attached or when containers are already running. (default 10)
+      <code>--wait</code>                      Wait for services to be running|healthy. Implies detached mode.
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker compose version</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker compose version</code>
+
+Show the Docker Compose version information
+
+Options:
+  <code>-f, --format string</code>   Format the output. Values: [pretty | json]. (Default: pretty)
+      <code>--short</code>           Shows only Compose's version number.
+		</pre>
+	</div>
+
+	</div>
+
+	</div>
+
+
+	<button class="outercollapsible">&nbsp;docker config</button>
+	<div class="outerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker config COMMAND</code>
+
+Manage Docker configs
+
+Commands:
+  create      Create a config from a file or STDIN
+  inspect     Display detailed information on one or more configs
+  ls          List configs
+  rm          Remove one or more configs
+
+Run 'docker config COMMAND --help' for more information on a command.
+		</pre>
+	</div>
+
+	<button class="innercollapsible">&nbsp;docker config create</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker config create [OPTIONS] CONFIG file|-</code>
+
+Create a config from a file or STDIN
+
+Options:
+  <code>-l, --label list</code>               Config labels
+      <code>--template-driver string</code>   Template driver
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker config inspect</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker config inspect [OPTIONS] CONFIG [CONFIG...]</code>
+
+Display detailed information on one or more configs
+
+Options:
+  <code>-f, --format string</code>   Format the output using the given Go template
+      <code>--pretty</code>          Print the information in a human friendly format
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker config ls</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker config ls [OPTIONS]</code>
+
+List configs
+
+Aliases:
+  ls, list
+
+Options:
+  <code>-f, --filter filter</code>   Filter output based on conditions provided
+      <code>--format string</code>   Pretty-print configs using a Go template
+  <code>-q, --quiet</code>           Only display IDs
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker config rm</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker config rm CONFIG [CONFIG...]</code>
+
+Remove one or more configs
+
+Aliases:
+  rm, remove
+		</pre>
+	</div>
+
+	</div>
+
+	</div>
+
+
+	<button class="outercollapsible">&nbsp;docker container</button>
+	<div class="outerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker container COMMAND</code>
+
+Manage containers
+
+Commands:
+  attach      Attach local standard input, output, and error streams to a running container
+  commit      Create a new image from a container's changes
+  cp          Copy files/folders between a container and the local filesystem
+  create      Create a new container
+  diff        Inspect changes to files or directories on a container's filesystem
+  exec        Run a command in a running container
+  export      Export a container's filesystem as a tar archive
+  inspect     Display detailed information on one or more containers
+  kill        Kill one or more running containers
+  logs        Fetch the logs of a container
+  ls          List containers
+  pause       Pause all processes within one or more containers
+  port        List port mappings or a specific mapping for the container
+  prune       Remove all stopped containers
+  rename      Rename a container
+  restart     Restart one or more containers
+  rm          Remove one or more containers
+  run         Run a command in a new container
+  start       Start one or more stopped containers
+  stats       Display a live stream of container(s) resource usage statistics
+  stop        Stop one or more running containers
+  top         Display the running processes of a container
+  unpause     Unpause all processes within one or more containers
+  update      Update configuration of one or more containers
+  wait        Block until one or more containers stop, then print their exit codes
+
+Run 'docker container COMMAND --help' for more information on a command.
+		</pre>
+	</div>
+
+	<button class="innercollapsible">&nbsp;docker container attach</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker container attach [OPTIONS] CONTAINER</code>
+
+Attach local standard input, output, and error streams to a running container
+
+Options:
+      <code>--detach-keys string</code>   Override the key sequence for detaching a container
+      <code>--no-stdin</code>             Do not attach STDIN
+      <code>--sig-proxy</code>            Proxy all received signals to the process (default true)
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker container commit</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker container commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]</code>
+
+Create a new image from a container's changes
+
+Options:
+  <code>-a, --author string</code>    Author (e.g., "John Hannibal Smith <hannibal@a-team.com>")
+  <code>-c, --change list</code>      Apply Dockerfile instruction to the created image
+  <code>-m, --message string</code>   Commit message
+  <code>-p, --pause</code>            Pause container during commit (default true)
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker container cp</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker container cp [OPTIONS] CONTAINER:SRC_PATH DEST_PATH|-</code>
+	docker cp [OPTIONS] SRC_PATH|- CONTAINER:DEST_PATH
+
+Copy files/folders between a container and the local filesystem
+
+Use '-' as the source to read a tar archive from stdin
+and extract it to a directory destination in a container.
+Use '-' as the destination to stream a tar archive of a
+container source to stdout.
+
+Options:
+  <code>-a, --archive</code>       Archive mode (copy all uid/gid information)
+  <code>-L, --follow-link</code>   Always follow symbol link in SRC_PATH
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker container create</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker container create [OPTIONS] IMAGE [COMMAND] [ARG...]</code>
+
+Create a new container
+
+Options:
+      <code>--add-host list</code>                  Add a custom host-to-IP mapping (host:ip)
+  <code>-a, --attach list</code>                    Attach to STDIN, STDOUT or STDERR
+      <code>--blkio-weight uint16</code>            Block IO (relative weight), between 10 and 1000, or 0 to disable (default 0)
+      <code>--blkio-weight-device list</code>       Block IO weight (relative device weight) (default [])
+      <code>--cap-add list</code>                   Add Linux capabilities
+      <code>--cap-drop list</code>                  Drop Linux capabilities
+      <code>--cgroup-parent string</code>           Optional parent cgroup for the container
+      <code>--cgroupns string</code>                Cgroup namespace to use (host|private) 'host':    Run the container in the Docker host's cgroup namespace 'private': Run the container in its own private cgroup namespace '':        Use the cgroup namespace as configured by the default-cgroupns-mode option on the daemon (default)
+      <code>--cidfile string</code>                 Write the container ID to the file
+      <code>--cpu-period int</code>                 Limit CPU CFS (Completely Fair Scheduler) period
+      <code>--cpu-quota int</code>                  Limit CPU CFS (Completely Fair Scheduler) quota
+      <code>--cpu-rt-period int</code>              Limit CPU real-time period in microseconds
+      <code>--cpu-rt-runtime int</code>             Limit CPU real-time runtime in microseconds
+  <code>-c, --cpu-shares int</code>                 CPU shares (relative weight)
+      <code>--cpus decimal</code>                   Number of CPUs
+      <code>--cpuset-cpus string</code>             CPUs in which to allow execution (0-3, 0,1)
+      <code>--cpuset-mems string</code>             MEMs in which to allow execution (0-3, 0,1)
+      <code>--device list</code>                    Add a host device to the container
+      <code>--device-cgroup-rule list</code>        Add a rule to the cgroup allowed devices list
+      <code>--device-read-bps list</code>           Limit read rate (bytes per second) from a device (default [])
+      <code>--device-read-iops list</code>          Limit read rate (IO per second) from a device (default [])
+      <code>--device-write-bps list</code>          Limit write rate (bytes per second) to a device (default [])
+      <code>--device-write-iops list</code>         Limit write rate (IO per second) to a device (default [])
+      <code>--disable-content-trust</code>          Skip image verification (default true)
+      <code>--dns list</code>                       Set custom DNS servers
+      <code>--dns-option list</code>                Set DNS options
+      <code>--dns-search list</code>                Set custom DNS search domains
+      <code>--domainname string</code>              Container NIS domain name
+      <code>--entrypoint string</code>              Overwrite the default ENTRYPOINT of the image
+  <code>-e, --env list</code>                       Set environment variables
+      <code>--env-file list</code>                  Read in a file of environment variables
+      <code>--expose list</code>                    Expose a port or a range of ports
+      <code>--gpus</code> gpu-request               GPU devices to add to the container ('all' to pass all GPUs)
+      <code>--group-add list</code>                 Add additional groups to join
+      <code>--health-cmd string</code>              Command to run to check health
+      <code>--health-interval duration</code>       Time between running the check (ms|s|m|h) (default 0s)
+      <code>--health-retries int</code>             Consecutive failures needed to report unhealthy
+      <code>--health-start-period duration</code>   Start period for the container to initialize before starting health-retries countdown (ms|s|m|h) (default 0s)
+      <code>--health-timeout duration</code>        Maximum time to allow one check to run (ms|s|m|h) (default 0s)
+      <code>--help</code>                           Print usage
+  <code>-h, --hostname string</code>                Container host name
+      <code>--init</code>                           Run an init inside the container that forwards signals and reaps processes
+  <code>-i, --interactive</code>                    Keep STDIN open even if not attached
+      <code>--ip string</code>                      IPv4 address (e.g., 172.30.100.104)
+      <code>--ip6 string</code>                     IPv6 address (e.g., 2001:db8::33)
+      <code>--ipc string</code>                     IPC mode to use
+      <code>--isolation string</code>               Container isolation technology
+      <code>--kernel-memory bytes</code>            Kernel memory limit
+  <code>-l, --label list</code>                     Set meta data on a container
+      <code>--label-file list</code>                Read in a line delimited file of labels
+      <code>--link list</code>                      Add link to another container
+      <code>--link-local-ip list</code>             Container IPv4/IPv6 link-local addresses
+      <code>--log-driver string</code>              Logging driver for the container
+      <code>--log-opt list</code>                   Log driver options
+      <code>--mac-address string</code>             Container MAC address (e.g., 92:d0:c6:0a:29:33)
+  <code>-m, --memory bytes</code>                   Memory limit
+      <code>--memory-reservation bytes</code>       Memory soft limit
+      <code>--memory-swap bytes</code>              Swap limit equal to memory plus swap: '-1' to enable unlimited swap
+      <code>--memory-swappiness int</code>          Tune container memory swappiness (0 to 100) (default -1)
+      <code>--mount mount</code>                    Attach a filesystem mount to the container
+      <code>--name string</code>                    Assign a name to the container
+      <code>--network network</code>                Connect a container to a network
+      <code>--network-alias list</code>             Add network-scoped alias for the container
+      <code>--no-healthcheck</code>                 Disable any container-specified HEALTHCHECK
+      <code>--oom-kill-disable</code>               Disable OOM Killer
+      <code>--oom-score-adj int</code>              Tune host's OOM preferences (-1000 to 1000)
+      <code>--pid string</code>                     PID namespace to use
+      <code>--pids-limit int</code>                 Tune container pids limit (set -1 for unlimited)
+      <code>--platform string</code>                Set platform if server is multi-platform capable
+      <code>--privileged</code>                     Give extended privileges to this container
+  <code>-p, --publish list</code>                   Publish a container's port(s) to the host
+  <code>-P, --publish-all</code>                    Publish all exposed ports to random ports
+      <code>--pull string</code>                    Pull image before creating ("always"|"missing"|"never") (default "missing")
+      <code>--read-only</code>                      Mount the container's root filesystem as read only
+      <code>--restart string</code>                 Restart policy to apply when a container exits (default "no")
+      <code>--rm</code>                             Automatically remove the container when it exits
+      <code>--runtime string</code>                 Runtime to use for this container
+      <code>--security-opt list</code>              Security Options
+      <code>--shm-size bytes</code>                 Size of /dev/shm
+      <code>--stop-signal string</code>             Signal to stop a container (default "15")
+      <code>--stop-timeout int</code>               Timeout (in seconds) to stop a container
+      <code>--storage-opt list</code>               Storage driver options for the container
+      <code>--sysctl map</code>                     Sysctl options (default map[])
+      <code>--tmpfs list</code>                     Mount a tmpfs directory
+  <code>-t, --tty</code>                            Allocate a pseudo-TTY
+      <code>--ulimit ulimit</code>                  Ulimit options (default [])
+  <code>-u, --user string</code>                    Username or UID (format: <name|uid>[:<group|gid>])
+      <code>--userns string</code>                  User namespace to use
+      <code>--uts string</code>                     UTS namespace to use
+  <code>-v, --volume list</code>                    Bind mount a volume
+      <code>--volume-driver string</code>           Optional volume driver for the container
+      <code>--volumes-from list</code>              Mount volumes from the specified container(s)
+  <code>-w, --workdir string</code>                 Working directory inside the container
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker container diff</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker container diff CONTAINER</code>
+
+Inspect changes to files or directories on a container's filesystem
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker container exec</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker container exec [OPTIONS] CONTAINER COMMAND [ARG...]</code>
+
+Run a command in a running container
+
+Options:
+  <code>-d, --detach</code>               Detached mode: run command in the background
+      <code>--detach-keys string</code>   Override the key sequence for detaching a container
+  <code>-e, --env list</code>             Set environment variables
+      <code>--env-file list</code>        Read in a file of environment variables
+  <code>-i, --interactive</code>          Keep STDIN open even if not attached
+      <code>--privileged</code>           Give extended privileges to the command
+  <code>-t, --tty</code>                  Allocate a pseudo-TTY
+  <code>-u, --user string</code>          Username or UID (format: <name|uid>[:<group|gid>])
+  <code>-w, --workdir string</code>       Working directory inside the container
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker container export</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker container export [OPTIONS] CONTAINER</code>
+
+Export a container's filesystem as a tar archive
+
+Options:
+  <code>-o, --output string</code>   Write to a file, instead of STDOUT
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker container inspect</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker container inspect [OPTIONS] CONTAINER [CONTAINER...]</code>
+
+Display detailed information on one or more containers
+
+Options:
+  <code>-f, --format string</code>   Format the output using the given Go template
+  <code>-s, --size</code>            Display total file sizes
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker container kill</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker container kill [OPTIONS] CONTAINER [CONTAINER...]</code>
+
+Kill one or more running containers
+
+Options:
+  <code>-s, --signal string</code>   Signal to send to the container (default "KILL")
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker container logs</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker container logs [OPTIONS] CONTAINER</code>
+
+Fetch the logs of a container
+
+Options:
+      <code>--details</code>        Show extra details provided to logs
+  <code>-f, --follow</code>         Follow log output
+      <code>--since string</code>   Show logs since timestamp (e.g. 2013-01-02T13:23:37Z) or relative (e.g. 42m for 42 minutes)
+  <code>-n, --tail string</code>    Number of lines to show from the end of the logs (default "all")
+  <code>-t, --timestamps</code>     Show timestamps
+      <code>--until string</code>   Show logs before a timestamp (e.g. 2013-01-02T13:23:37Z) or relative (e.g. 42m for 42 minutes)
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker container ls</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker container ls [OPTIONS]</code>
+
+List containers
+
+Aliases:
+  ls, ps, list
+
+Options:
+  <code>-a, --all</code>             Show all containers (default shows just running)
+  <code>-f, --filter filter</code>   Filter output based on conditions provided
+      <code>--format string</code>   Pretty-print containers using a Go template
+  <code>-n, --last int</code>        Show n last created containers (includes all states) (default -1)
+  <code>-l, --latest</code>          Show the latest created container (includes all states)
+      <code>--no-trunc</code>        Don't truncate output
+  <code>-q, --quiet</code>           Only display container IDs
+  <code>-s, --size</code>            Display total file sizes
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker container pause</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker container pause CONTAINER [CONTAINER...]</code>
+
+Pause all processes within one or more containers
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker container port</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker container port CONTAINER [PRIVATE_PORT[/PROTO]]</code>
+
+List port mappings or a specific mapping for the container
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker container prune</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker container prune [OPTIONS]</code>
+
+Remove all stopped containers
+
+Options:
+      <code>--filter filter</code>   Provide filter values (e.g. 'until=<timestamp>')
+  <code>-f, --force</code>           Do not prompt for confirmation
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker container rename</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker container rename CONTAINER NEW_NAME</code>
+
+Rename a container
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker container restart</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker container restart [OPTIONS] CONTAINER [CONTAINER...]</code>
+
+Restart one or more containers
+
+Options:
+  <code>-t, --time int</code>   Seconds to wait for stop before killing the container (default 10)
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker container rm</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker container rm [OPTIONS] CONTAINER [CONTAINER...]</code>
+
+Remove one or more containers
+
+Options:
+  <code>-f, --force</code>     Force the removal of a running container (uses SIGKILL)
+  <code>-l, --link</code>      Remove the specified link
+  <code>-v, --volumes</code>   Remove anonymous volumes associated with the container
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker container run</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker container run [OPTIONS] IMAGE [COMMAND] [ARG...]</code>
+
+Run a command in a new container
+
+Options:
+      <code>--add-host list</code>                  Add a custom host-to-IP mapping (host:ip)
+  <code>-a, --attach list</code>                    Attach to STDIN, STDOUT or STDERR
+      <code>--blkio-weight uint16</code>            Block IO (relative weight), between 10 and 1000, or 0 to disable (default 0)
+      <code>--blkio-weight-device list</code>       Block IO weight (relative device weight) (default [])
+      <code>--cap-add list</code>                   Add Linux capabilities
+      <code>--cap-drop list</code>                  Drop Linux capabilities
+      <code>--cgroup-parent string</code>           Optional parent cgroup for the container
+      <code>--cgroupns string</code>                Cgroup namespace to use (host|private) 'host':    Run the container in the Docker host's cgroup namespace 'private': Run the container in its own private cgroup namespace '':        Use the cgroup namespace as configured by the default-cgroupns-mode option on the daemon (default)
+      <code>--cidfile string</code>                 Write the container ID to the file
+      <code>--cpu-period int</code>                 Limit CPU CFS (Completely Fair Scheduler) period
+      <code>--cpu-quota int</code>                  Limit CPU CFS (Completely Fair Scheduler) quota
+      <code>--cpu-rt-period int</code>              Limit CPU real-time period in microseconds
+      <code>--cpu-rt-runtime int</code>             Limit CPU real-time runtime in microseconds
+  <code>-c, --cpu-shares int</code>                 CPU shares (relative weight)
+      <code>--cpus decimal</code>                   Number of CPUs
+      <code>--cpuset-cpus string</code>             CPUs in which to allow execution (0-3, 0,1)
+      <code>--cpuset-mems string</code>             MEMs in which to allow execution (0-3, 0,1)
+  <code>-d, --detach</code>                         Run container in background and print container ID
+      <code>--detach-keys string</code>             Override the key sequence for detaching a container
+      <code>--device list</code>                    Add a host device to the container
+      <code>--device-cgroup-rule list</code>        Add a rule to the cgroup allowed devices list
+      <code>--device-read-bps list</code>           Limit read rate (bytes per second) from a device (default [])
+      <code>--device-read-iops list</code>          Limit read rate (IO per second) from a device (default [])
+      <code>--device-write-bps list</code>          Limit write rate (bytes per second) to a device (default [])
+      <code>--device-write-iops list</code>         Limit write rate (IO per second) to a device (default [])
+      <code>--disable-content-trust</code>          Skip image verification (default true)
+      <code>--dns list</code>                       Set custom DNS servers
+      <code>--dns-option list</code>                Set DNS options
+      <code>--dns-search list</code>                Set custom DNS search domains
+      <code>--domainname string</code>              Container NIS domain name
+      <code>--entrypoint string</code>              Overwrite the default ENTRYPOINT of the image
+  <code>-e, --env list</code>                       Set environment variables
+      <code>--env-file list</code>                  Read in a file of environment variables
+      <code>--expose list</code>                    Expose a port or a range of ports
+      <code>--gpus</code> gpu-request               GPU devices to add to the container ('all' to pass all GPUs)
+      <code>--group-add list</code>                 Add additional groups to join
+      <code>--health-cmd string</code>              Command to run to check health
+      <code>--health-interval duration</code>       Time between running the check (ms|s|m|h) (default 0s)
+      <code>--health-retries int</code>             Consecutive failures needed to report unhealthy
+      <code>--health-start-period duration</code>   Start period for the container to initialize before starting health-retries countdown (ms|s|m|h) (default 0s)
+      <code>--health-timeout duration</code>        Maximum time to allow one check to run (ms|s|m|h) (default 0s)
+      <code>--help</code>                           Print usage
+  <code>-h, --hostname string</code>                Container host name
+      <code>--init</code>                           Run an init inside the container that forwards signals and reaps processes
+  <code>-i, --interactive</code>                    Keep STDIN open even if not attached
+      <code>--ip string</code>                      IPv4 address (e.g., 172.30.100.104)
+      <code>--ip6 string</code>                     IPv6 address (e.g., 2001:db8::33)
+      <code>--ipc string</code>                     IPC mode to use
+      <code>--isolation string</code>               Container isolation technology
+      <code>--kernel-memory bytes</code>            Kernel memory limit
+  <code>-l, --label list</code>                     Set meta data on a container
+      <code>--label-file list</code>                Read in a line delimited file of labels
+      <code>--link list</code>                      Add link to another container
+      <code>--link-local-ip list</code>             Container IPv4/IPv6 link-local addresses
+      <code>--log-driver string</code>              Logging driver for the container
+      <code>--log-opt list</code>                   Log driver options
+      <code>--mac-address string</code>             Container MAC address (e.g., 92:d0:c6:0a:29:33)
+  <code>-m, --memory bytes</code>                   Memory limit
+      <code>--memory-reservation bytes</code>       Memory soft limit
+      <code>--memory-swap bytes</code>              Swap limit equal to memory plus swap: '-1' to enable unlimited swap
+      <code>--memory-swappiness int</code>          Tune container memory swappiness (0 to 100) (default -1)
+      <code>--mount mount</code>                    Attach a filesystem mount to the container
+      <code>--name string</code>                    Assign a name to the container
+      <code>--network network</code>                Connect a container to a network
+      <code>--network-alias list</code>             Add network-scoped alias for the container
+      <code>--no-healthcheck</code>                 Disable any container-specified HEALTHCHECK
+      <code>--oom-kill-disable</code>               Disable OOM Killer
+      <code>--oom-score-adj int</code>              Tune host's OOM preferences (-1000 to 1000)
+      <code>--pid string</code>                     PID namespace to use
+      <code>--pids-limit int</code>                 Tune container pids limit (set -1 for unlimited)
+      <code>--platform string</code>                Set platform if server is multi-platform capable
+      <code>--privileged</code>                     Give extended privileges to this container
+  <code>-p, --publish list</code>                   Publish a container's port(s) to the host
+  <code>-P, --publish-all</code>                    Publish all exposed ports to random ports
+      <code>--pull string</code>                    Pull image before running ("always"|"missing"|"never") (default "missing")
+      <code>--read-only</code>                      Mount the container's root filesystem as read only
+      <code>--restart string</code>                 Restart policy to apply when a container exits (default "no")
+      <code>--rm</code>                             Automatically remove the container when it exits
+      <code>--runtime string</code>                 Runtime to use for this container
+      <code>--security-opt list</code>              Security Options
+      <code>--shm-size bytes</code>                 Size of /dev/shm
+      <code>--sig-proxy</code>                      Proxy received signals to the process (default true)
+      <code>--stop-signal string</code>             Signal to stop a container (default "15")
+      <code>--stop-timeout int</code>               Timeout (in seconds) to stop a container
+      <code>--storage-opt list</code>               Storage driver options for the container
+      <code>--sysctl map</code>                     Sysctl options (default map[])
+      <code>--tmpfs list</code>                     Mount a tmpfs directory
+  <code>-t, --tty</code>                            Allocate a pseudo-TTY
+      <code>--ulimit ulimit</code>                  Ulimit options (default [])
+  <code>-u, --user string</code>                    Username or UID (format: <name|uid>[:<group|gid>])
+      <code>--userns string</code>                  User namespace to use
+      <code>--uts string</code>                     UTS namespace to use
+  <code>-v, --volume list</code>                    Bind mount a volume
+      <code>--volume-driver string</code>           Optional volume driver for the container
+      <code>--volumes-from list</code>              Mount volumes from the specified container(s)
+  <code>-w, --workdir string</code>                 Working directory inside the container
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker container start</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker container start [OPTIONS] CONTAINER [CONTAINER...]</code>
+
+Start one or more stopped containers
+
+Options:
+  <code>-a, --attach</code>               Attach STDOUT/STDERR and forward signals
+      <code>--detach-keys string</code>   Override the key sequence for detaching a container
+  <code>-i, --interactive</code>          Attach container's STDIN
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker container stats</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker container stats [OPTIONS] [CONTAINER...]</code>
+
+Display a live stream of container(s) resource usage statistics
+
+Options:
+  <code>-a, --all</code>             Show all containers (default shows just running)
+      <code>--format string</code>   Pretty-print images using a Go template
+      <code>--no-stream</code>       Disable streaming stats and only pull the first result
+      <code>--no-trunc</code>        Do not truncate output
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker container stop</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker container stop [OPTIONS] CONTAINER [CONTAINER...]</code>
+
+Stop one or more running containers
+
+Options:
+  <code>-t, --time int</code>   Seconds to wait for stop before killing it (default 10)
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker container top</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker container top CONTAINER [ps OPTIONS]</code>
+
+Display the running processes of a container
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker container unpause</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker container unpause CONTAINER [CONTAINER...]</code>
+
+Unpause all processes within one or more containers
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker container update</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker container update [OPTIONS] CONTAINER [CONTAINER...]</code>
+
+Update configuration of one or more containers
+
+Options:
+      <code>--blkio-weight uint16</code>        Block IO (relative weight), between 10 and 1000, or 0 to disable (default 0)
+      <code>--cpu-period int</code>             Limit CPU CFS (Completely Fair Scheduler) period
+      <code>--cpu-quota int</code>              Limit CPU CFS (Completely Fair Scheduler) quota
+      <code>--cpu-rt-period int</code>          Limit the CPU real-time period in microseconds
+      <code>--cpu-rt-runtime int</code>         Limit the CPU real-time runtime in microseconds
+  <code>-c, --cpu-shares int</code>             CPU shares (relative weight)
+      <code>--cpus decimal</code>               Number of CPUs
+      <code>--cpuset-cpus string</code>         CPUs in which to allow execution (0-3, 0,1)
+      <code>--cpuset-mems string</code>         MEMs in which to allow execution (0-3, 0,1)
+      <code>--kernel-memory bytes</code>        Kernel memory limit
+  <code>-m, --memory bytes</code>               Memory limit
+      <code>--memory-reservation bytes</code>   Memory soft limit
+      <code>--memory-swap bytes</code>          Swap limit equal to memory plus swap: '-1' to enable unlimited swap
+      <code>--pids-limit int</code>             Tune container pids limit (set -1 for unlimited)
+      <code>--restart string</code>             Restart policy to apply when a container exits
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker container wait</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker container wait CONTAINER [CONTAINER...]</code>
+
+Block until one or more containers stop, then print their exit codes
+		</pre>
+	</div>
+
+	</div>
+
+	</div>
+
+
+	<button class="outercollapsible">&nbsp;docker context</button>
+	<div class="outerPanel">
+	<div class="content">
+		<pre>
+Manage contexts
+
+Usage:
+  <code>docker context [command]</code>
+
+Available Commands:
+  create      Create new context
+  export      Export a context to a tar or kubeconfig file
+  import      Import a context from a tar or zip file
+  inspect     Display detailed information on one or more contexts
+  list        List available contexts
+  rm          Remove one or more contexts
+  show        Print the current context
+  update      Update a context
+  use         Set the default context
+
+Flags:
+  <code>-h, --help</code>   Help for context
+
+Use "docker context [command] --help" for more information about a command.
+		</pre>
+	</div>
+
+	<button class="innercollapsible">&nbsp;docker context create</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Create a new context
+
+Create docker engine context:
+$ docker context create CONTEXT [flags]
+
+
+Create Azure Container Instances context:
+$ docker context create aci CONTEXT [flags]
+(see docker context create aci --help)
+
+
+Create Amazon ECS context:
+$ docker context create ecs CONTEXT [flags]
+(see docker context create ecs --help)
+
+
+Docker endpoint config:
+
+NAME                DESCRIPTION
+from                Copy named context's Docker endpoint configuration
+host                Docker endpoint on which to connect
+ca                  Trust certs signed only by this CA
+cert                Path to TLS certificate file
+key                 Path to TLS key file
+skip-tls-verify     Skip TLS certificate validation
+
+Kubernetes endpoint config:
+
+NAME                 DESCRIPTION
+from                 Copy named context's Kubernetes endpoint configuration
+config-file          Path to a Kubernetes config file
+context-override     Overrides the context set in the kubernetes config file
+namespace-override   Overrides the namespace set in the kubernetes config file
+
+Example:
+
+$ docker context create my-context --description "some description" --docker "host=tcp://myserver:2376,ca=~/ca-file,cert=~/cert-file,key=~/key-file"
+
+Usage:
+  <code>docker context create CONTEXT [flags]</code>
+  <code>docker context create [command]</code>
+
+Available Commands:
+  aci         Create a context for Azure Container Instances
+  ecs         Create a context for Amazon ECS
+
+Flags:
+      <code>--default-stack-orchestrator string</code>   Default orchestrator for stack operations to use with this context (swarm|kubernetes|all)
+      <code>--description string</code>                  Description of the context
+      <code>--docker stringToString</code>               Set the docker endpoint (default [])
+      <code>--from string</code>                         Create context from a named context
+  <code>-h, --help</code>                                Help for create
+      <code>--kubernetes stringToString</code>           Set the kubernetes endpoint (default [])
+
+Use "docker context create [command] --help" for more information about a command.
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker context export</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Export a context to a tar or kubeconfig file
+
+Usage:
+  <code>docker context export [flags]</code>
+
+Flags:
+  <code>-h, --help</code>         Help for export
+      <code>--kubeconfig</code>   Export as a kubeconfig file
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker context import</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Import a context from a tar or zip file
+
+Usage:
+  <code>docker context import [flags]</code>
+
+Flags:
+  <code>-h, --help</code>   Help for import
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker context inspect</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Display detailed information on one or more contexts
+
+Usage:
+  <code>docker context inspect [flags]</code>
+
+Flags:
+  <code>-f, --format string</code>   Format the output using the given Go template
+  <code>-h, --help</code>            Help for inspect
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker context list</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+List available contexts
+
+Usage:
+  <code>docker context list [flags]</code>
+
+Aliases:
+  list, ls
+
+Flags:
+      <code>--format string</code>   Format the output. Values: [pretty | json]. (Default: pretty)
+  <code>-h, --help</code>            Help for list
+  <code>-q, --quiet</code>           Only show context names
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker context rm</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Remove one or more contexts
+
+Usage:
+  <code>docker context rm CONTEXT [CONTEXT...] [flags]</code>
+
+Aliases:
+  rm, remove
+
+Flags:
+  <code>-f, --force</code>   Force removing current context
+  <code>-h, --help</code>    Help for rm
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker context show</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Print the current context
+
+Usage:
+  <code>docker context show [flags]</code>
+
+Flags:
+  <code>-h, --help</code>   Help for show
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker context update</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Update a context
+
+Docker endpoint config:
+
+NAME                DESCRIPTION
+from                Copy named context's Docker endpoint configuration
+host                Docker endpoint on which to connect
+ca                  Trust certs signed only by this CA
+cert                Path to TLS certificate file
+key                 Path to TLS key file
+skip-tls-verify     Skip TLS certificate validation
+
+Kubernetes endpoint config:
+
+NAME                 DESCRIPTION
+from                 Copy named context's Kubernetes endpoint configuration
+config-file          Path to a Kubernetes config file
+context-override     Overrides the context set in the kubernetes config file
+namespace-override   Overrides the namespace set in the kubernetes config file
+
+Example:
+
+$ docker context update my-context --description "some description" --docker "host=tcp://myserver:2376,ca=~/ca-file,cert=~/cert-file,key=~/key-file"
+
+Usage:
+  <code>docker context update [flags]</code>
+
+Flags:
+      <code>--default-stack-orchestrator string</code>   Default orchestrator for stack operations to use with this context (swarm|kubernetes|all)
+      <code>--description string</code>                  Description of the context
+      <code>--docker stringToString</code>               Set the docker endpoint (default [])
+  <code>-h, --help</code>                                Help for update
+      <code>--kubernetes stringToString</code>           Set the kubernetes endpoint (default [])
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker context use</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Set the default context
+
+Usage:
+  <code>docker context use CONTEXT [flags]</code>
+
+Flags:
+  <code>-h, --help</code>   Help for use
+		</pre>
+	</div>
+
+	</div>
+
+	</div>
+
+
+	<button class="outercollapsible">&nbsp;docker image</button>
+	<div class="outerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker image COMMAND</code>
+
+Manage images
+
+Commands:
+  build       Build an image from a Dockerfile
+  history     Show the history of an image
+  import      Import the contents from a tarball to create a filesystem image
+  inspect     Display detailed information on one or more images
+  load        Load an image from a tar archive or STDIN
+  ls          List images
+  prune       Remove unused images
+  pull        Pull an image or a repository from a registry
+  push        Push an image or a repository to a registry
+  rm          Remove one or more images
+  save        Save one or more images to a tar archive (streamed to STDOUT by default)
+  tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
+
+Run 'docker image COMMAND --help' for more information on a command.
+		</pre>
+	</div>
+
+	<button class="innercollapsible">&nbsp;docker image build</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker image build [OPTIONS] PATH | URL | -</code>
+
+Build an image from a Dockerfile
+
+Options:
+      <code>--add-host list</code>           Add a custom host-to-IP mapping (host:ip)
+      <code>--build-arg list</code>          Set build-time variables
+      <code>--cache-from strings</code>      Images to consider as cache sources
+      <code>--cgroup-parent string</code>    Optional parent cgroup for the container
+      <code>--compress</code>                Compress the build context using gzip
+      <code>--cpu-period int</code>          Limit the CPU CFS (Completely Fair Scheduler) period
+      <code>--cpu-quota int</code>           Limit the CPU CFS (Completely Fair Scheduler) quota
+  <code>-c, --cpu-shares int</code>          CPU shares (relative weight)
+      <code>--cpuset-cpus string</code>      CPUs in which to allow execution (0-3, 0,1)
+      <code>--cpuset-mems string</code>      MEMs in which to allow execution (0-3, 0,1)
+      <code>--disable-content-trust</code>   Skip image verification (default true)
+  <code>-f, --file string</code>             Name of the Dockerfile (Default is 'PATH/Dockerfile')
+      <code>--force-rm</code>                Always remove intermediate containers
+      <code>--iidfile string</code>          Write the image ID to the file
+      <code>--isolation string</code>        Container isolation technology
+      <code>--label list</code>              Set metadata for an image
+  <code>-m, --memory bytes</code>            Memory limit
+      <code>--memory-swap bytes</code>       Swap limit equal to memory plus swap: '-1' to enable unlimited swap
+      <code>--network string</code>          Set the networking mode for the RUN instructions during build (default "default")
+      <code>--no-cache</code>                Do not use cache when building the image
+      <code>--pull</code>                    Always attempt to pull a newer version of the image
+  <code>-q, --quiet</code>                   Suppress the build output and print image ID on success
+      <code>--rm</code>                      Remove intermediate containers after a successful build (default true)
+      <code>--security-opt strings</code>    Security options
+      <code>--shm-size bytes</code>          Size of /dev/shm
+      <code>--squash</code>                  Squash newly built layers into a single new layer
+  <code>-t, --tag list</code>                Name and optionally a tag in the 'name:tag' format
+      <code>--target string</code>           Set the target build stage to build.
+      <code>--ulimit ulimit</code>           Ulimit options (default [])
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker image history</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker image history [OPTIONS] IMAGE</code>
+
+Show the history of an image
+
+Options:
+      <code>--format string</code>   Pretty-print images using a Go template
+  <code>-H, --human</code>           Print sizes and dates in human readable format (default true)
+      <code>--no-trunc</code>        Don't truncate output
+  <code>-q, --quiet</code>           Only show image IDs
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker image import</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker image import [OPTIONS] file|URL|- [REPOSITORY[:TAG]]</code>
+
+Import the contents from a tarball to create a filesystem image
+
+Options:
+  <code>-c, --change list</code>       Apply Dockerfile instruction to the created image
+  <code>-m, --message string</code>    Set commit message for imported image
+      <code>--platform string</code>   Set platform if server is multi-platform capable
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker image inspect</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker image inspect [OPTIONS] IMAGE [IMAGE...]</code>
+
+Display detailed information on one or more images
+
+Options:
+  <code>-f, --format string</code>   Format the output using the given Go template
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker image load</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker image load [OPTIONS]</code>
+
+Load an image from a tar archive or STDIN
+
+Options:
+  <code>-i, --input string</code>   Read from tar archive file, instead of STDIN
+  <code>-q, --quiet</code>          Suppress the load output
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker image ls</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker image ls [OPTIONS] [REPOSITORY[:TAG]]</code>
+
+List images
+
+Aliases:
+  ls, list
+
+Options:
+  <code>-a, --all</code>             Show all images (default hides intermediate images)
+      <code>--digests</code>         Show digests
+  <code>-f, --filter filter</code>   Filter output based on conditions provided
+      <code>--format string</code>   Pretty-print images using a Go template
+      <code>--no-trunc</code>        Don't truncate output
+  <code>-q, --quiet</code>           Only show image IDs
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker image prune</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker image prune [OPTIONS]</code>
+
+Remove unused images
+
+Options:
+  <code>-a, --all</code>             Remove all unused images, not just dangling ones
+      <code>--filter filter</code>   Provide filter values (e.g. 'until=<timestamp>')
+  <code>-f, --force</code>           Do not prompt for confirmation
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker image pull</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker image pull [OPTIONS] NAME[:TAG|@DIGEST]</code>
+
+Pull an image or a repository from a registry
+
+Options:
+  <code>-a, --all-tags</code>                Download all tagged images in the repository
+      <code>--disable-content-trust</code>   Skip image verification (default true)
+      <code>--platform string</code>         Set platform if server is multi-platform capable
+  <code>-q, --quiet</code>                   Suppress verbose output
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker image push</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker image push [OPTIONS] NAME[:TAG]</code>
+
+Push an image or a repository to a registry
+
+Options:
+  <code>-a, --all-tags</code>                Push all tagged images in the repository
+      <code>--disable-content-trust</code>   Skip image signing (default true)
+  <code>-q, --quiet</code>                   Suppress verbose output
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker image rm</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker image rm [OPTIONS] IMAGE [IMAGE...]</code>
+
+Remove one or more images
+
+Aliases:
+  rm, rmi, remove
+
+Options:
+  <code>-f, --force</code>      Force removal of the image
+      <code>--no-prune</code>   Do not delete untagged parents
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker image save</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker image save [OPTIONS] IMAGE [IMAGE...]</code>
+
+Save one or more images to a tar archive (streamed to STDOUT by default)
+
+Options:
+  <code>-o, --output string</code>   Write to a file, instead of STDOUT
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker image tag</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker image tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG]</code>
+
+Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
+		</pre>
+	</div>
+
+	</div>
+
+	</div>
+
+
+	<button class="outercollapsible">&nbsp;docker manifest</button>
+	<div class="outerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker manifest COMMAND</code>
+
+The **docker manifest** command has subcommands for managing image manifests and
+manifest lists. A manifest list allows you to use one name to refer to the same image
+built for multiple architectures.
+
+To see help for a subcommand, use:
+
+    <code>docker manifest CMD --help</code>
+
+For full details on using docker manifest lists, see the registry v2 specification.
+
+EXPERIMENTAL:
+  <code>docker manifest is an experimental feature.</code>
+  Experimental features provide early access to product functionality. These
+  features may change between releases without warning, or can be removed from a
+  future release. Learn more about experimental features in our documentation:
+  https://docs.docker.com/go/experimental/
+
+Commands:
+  annotate    Add additional information to a local image manifest
+  create      Create a local manifest list for annotating and pushing to a registry
+  inspect     Display an image manifest, or manifest list
+  push        Push a manifest list to a repository
+  rm          Delete one or more manifest lists from local storage
+
+Run 'docker manifest COMMAND --help' for more information on a command.
+		</pre>
+	</div>
+
+	<button class="innercollapsible">&nbsp;docker manifest annotate</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker manifest annotate [OPTIONS] MANIFEST_LIST MANIFEST</code>
+
+Add additional information to a local image manifest
+
+EXPERIMENTAL:
+  <code>docker manifest annotate is an experimental feature.</code>
+  Experimental features provide early access to product functionality. These
+  features may change between releases without warning, or can be removed from a
+  future release. Learn more about experimental features in our documentation:
+  https://docs.docker.com/go/experimental/
+
+Options:
+      <code>--arch string</code>           Set architecture
+      <code>--os string</code>             Set operating system
+      <code>--os-features strings</code>   Set operating system feature
+      <code>--os-version string</code>     Set operating system version
+      <code>--variant string</code>        Set architecture variant
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker manifest create</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker manifest create MANIFEST_LIST MANIFEST [MANIFEST...]</code>
+
+Create a local manifest list for annotating and pushing to a registry
+
+EXPERIMENTAL:
+  <code>docker manifest create is an experimental feature.</code>
+  Experimental features provide early access to product functionality. These
+  features may change between releases without warning, or can be removed from a
+  future release. Learn more about experimental features in our documentation:
+  https://docs.docker.com/go/experimental/
+
+Options:
+  <code>-a, --amend</code>      Amend an existing manifest list
+      <code>--insecure</code>   Allow communication with an insecure registry
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker manifest inspect</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker manifest inspect [OPTIONS] [MANIFEST_LIST] MANIFEST</code>
+
+Display an image manifest, or manifest list
+
+EXPERIMENTAL:
+  <code>docker manifest inspect is an experimental feature.</code>
+  Experimental features provide early access to product functionality. These
+  features may change between releases without warning, or can be removed from a
+  future release. Learn more about experimental features in our documentation:
+  https://docs.docker.com/go/experimental/
+
+Options:
+      <code>--insecure</code>   Allow communication with an insecure registry
+  <code>-v, --verbose</code>    Output additional info including layers and platform
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker manifest push</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker manifest push [OPTIONS] MANIFEST_LIST</code>
+
+Push a manifest list to a repository
+
+EXPERIMENTAL:
+  <code>docker manifest push is an experimental feature.</code>
+  Experimental features provide early access to product functionality. These
+  features may change between releases without warning, or can be removed from a
+  future release. Learn more about experimental features in our documentation:
+  https://docs.docker.com/go/experimental/
+
+Options:
+      <code>--insecure</code>   Allow push to an insecure registry
+  <code>-p, --purge</code>      Remove the local manifest list after push
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker manifest rm</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker manifest rm MANIFEST_LIST [MANIFEST_LIST...]</code>
+
+Delete one or more manifest lists from local storage
+
+EXPERIMENTAL:
+  <code>docker manifest rm is an experimental feature.</code>
+  Experimental features provide early access to product functionality. These
+  features may change between releases without warning, or can be removed from a
+  future release. Learn more about experimental features in our documentation:
+  https://docs.docker.com/go/experimental/
+		</pre>
+	</div>
+
+	</div>
+
+	</div>
+
+
+	<button class="outercollapsible">&nbsp;docker network</button>
+	<div class="outerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker network COMMAND</code>
+
+Manage networks
+
+Commands:
+  connect     Connect a container to a network
+  create      Create a network
+  disconnect  Disconnect a container from a network
+  inspect     Display detailed information on one or more networks
+  ls          List networks
+  prune       Remove all unused networks
+  rm          Remove one or more networks
+
+Run 'docker network COMMAND --help' for more information on a command.
+		</pre>
+	</div>
+
+	<button class="innercollapsible">&nbsp;docker network connect</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker network connect [OPTIONS] NETWORK CONTAINER</code>
+
+Connect a container to a network
+
+Options:
+      <code>--alias strings</code>           Add network-scoped alias for the container
+      <code>--driver-opt strings</code>      driver options for the network
+      <code>--ip string</code>               IPv4 address (e.g., 172.30.100.104)
+      <code>--ip6 string</code>              IPv6 address (e.g., 2001:db8::33)
+      <code>--link list</code>               Add link to another container
+      <code>--link-local-ip strings</code>   Add a link-local address for the container
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker network create</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker network create [OPTIONS] NETWORK</code>
+
+Create a network
+
+Options:
+      <code>--attachable</code>           Enable manual container attachment
+      <code>--aux-address map</code>      Auxiliary IPv4 or IPv6 addresses used by Network driver (default map[])
+      <code>--config-from string</code>   The network from which to copy the configuration
+      <code>--config-only</code>          Create a configuration only network
+  <code>-d, --driver string</code>        Driver to manage the Network (default "bridge")
+      <code>--gateway strings</code>      IPv4 or IPv6 Gateway for the master subnet
+      <code>--ingress</code>              Create swarm routing-mesh network
+      <code>--internal</code>             Restrict external access to the network
+      <code>--ip-range strings</code>     Allocate container ip from a sub-range
+      <code>--ipam-driver string</code>   IP Address Management Driver (default "default")
+      <code>--ipam-opt map</code>         Set IPAM driver specific options (default map[])
+      <code>--ipv6</code>                 Enable IPv6 networking
+      <code>--label list</code>           Set metadata on a network
+  <code>-o, --opt map</code>              Set driver specific options (default map[])
+      <code>--scope string</code>         Control the network's scope
+      <code>--subnet strings</code>       Subnet in CIDR format that represents a network segment
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker network disconnect</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker network disconnect [OPTIONS] NETWORK CONTAINER</code>
+
+Disconnect a container from a network
+
+Options:
+  <code>-f, --force</code>   Force the container to disconnect from a network
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker network inspect</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker network inspect [OPTIONS] NETWORK [NETWORK...]</code>
+
+Display detailed information on one or more networks
+
+Options:
+  <code>-f, --format string</code>   Format the output using the given Go template
+  <code>-v, --verbose</code>         Verbose output for diagnostics
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker network ls</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker network ls [OPTIONS]</code>
+
+List networks
+
+Aliases:
+  ls, list
+
+Options:
+  <code>-f, --filter filter</code>   Provide filter values (e.g. 'driver=bridge')
+      <code>--format string</code>   Pretty-print networks using a Go template
+      <code>--no-trunc</code>        Do not truncate the output
+  <code>-q, --quiet</code>           Only display network IDs
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker network prune</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker network prune [OPTIONS]</code>
+
+Remove all unused networks
+
+Options:
+      <code>--filter filter</code>   Provide filter values (e.g. 'until=<timestamp>')
+  <code>-f, --force</code>           Do not prompt for confirmation
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker network rm</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker network rm NETWORK [NETWORK...]</code>
+
+Remove one or more networks
+
+Aliases:
+  rm, remove
+		</pre>
+	</div>
+
+	</div>
+
+	</div>
+
+
+	<button class="outercollapsible">&nbsp;docker node</button>
+	<div class="outerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker node COMMAND</code>
+
+Manage Swarm nodes
+
+Commands:
+  demote      Demote one or more nodes from manager in the swarm
+  inspect     Display detailed information on one or more nodes
+  ls          List nodes in the swarm
+  promote     Promote one or more nodes to manager in the swarm
+  ps          List tasks running on one or more nodes, defaults to current node
+  rm          Remove one or more nodes from the swarm
+  update      Update a node
+
+Run 'docker node COMMAND --help' for more information on a command.
+		</pre>
+	</div>
+
+	<button class="innercollapsible">&nbsp;docker node demote</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker node demote NODE [NODE...]</code>
+
+Demote one or more nodes from manager in the swarm
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker node inspect</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker node inspect [OPTIONS] self|NODE [NODE...]</code>
+
+Display detailed information on one or more nodes
+
+Options:
+  <code>-f, --format string</code>   Format the output using the given Go template
+      <code>--pretty</code>          Print the information in a human friendly format
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker node ls</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker node ls [OPTIONS]</code>
+
+List nodes in the swarm
+
+Aliases:
+  ls, list
+
+Options:
+  <code>-f, --filter filter</code>   Filter output based on conditions provided
+      <code>--format string</code>   Pretty-print nodes using a Go template
+  <code>-q, --quiet</code>           Only display IDs
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker node promote</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker node promote NODE [NODE...]</code>
+
+Promote one or more nodes to manager in the swarm
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker node ps</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker node ps [OPTIONS] [NODE...]</code>
+
+List tasks running on one or more nodes, defaults to current node
+
+Options:
+  <code>-f, --filter filter</code>   Filter output based on conditions provided
+      <code>--format string</code>   Pretty-print tasks using a Go template
+      <code>--no-resolve</code>      Do not map IDs to Names
+      <code>--no-trunc</code>        Do not truncate output
+  <code>-q, --quiet</code>           Only display task IDs
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker node rm</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker node rm [OPTIONS] NODE [NODE...]</code>
+
+Remove one or more nodes from the swarm
+
+Aliases:
+  rm, remove
+
+Options:
+  <code>-f, --force</code>   Force remove a node from the swarm
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker node update</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker node update [OPTIONS] NODE</code>
+
+Update a node
+
+Options:
+      <code>--availability string</code>   Availability of the node ("active"|"pause"|"drain")
+      <code>--label-add list</code>        Add or update a node label (key=value)
+      <code>--label-rm list</code>         Remove a node label if exists
+      <code>--role string</code>           Role of the node ("worker"|"manager")
+		</pre>
+	</div>
+
+	</div>
+
+	</div>
+
+
+	<button class="outercollapsible">&nbsp;docker plugin</button>
+	<div class="outerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker plugin COMMAND</code>
+
+Manage plugins
+
+Commands:
+  create      Create a plugin from a rootfs and configuration. Plugin data directory must contain config.json and rootfs directory.
+  disable     Disable a plugin
+  enable      Enable a plugin
+  inspect     Display detailed information on one or more plugins
+  install     Install a plugin
+  ls          List plugins
+  push        Push a plugin to a registry
+  rm          Remove one or more plugins
+  set         Change settings for a plugin
+  upgrade     Upgrade an existing plugin
+
+Run 'docker plugin COMMAND --help' for more information on a command.
+		</pre>
+	</div>
+
+	<button class="innercollapsible">&nbsp;docker plugin create</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker plugin create [OPTIONS] PLUGIN PLUGIN-DATA-DIR</code>
+
+Create a plugin from a rootfs and configuration. Plugin data directory must contain config.json and rootfs directory.
+
+Options:
+      <code>--compress</code>   Compress the context using gzip
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker plugin disable</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker plugin disable [OPTIONS] PLUGIN</code>
+
+Disable a plugin
+
+Options:
+  <code>-f, --force</code>   Force the disable of an active plugin
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker plugin enable</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker plugin enable [OPTIONS] PLUGIN</code>
+
+Enable a plugin
+
+Options:
+      <code>--timeout int</code>   HTTP client timeout (in seconds) (default 30)
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker plugin inspect</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker plugin inspect [OPTIONS] PLUGIN [PLUGIN...]</code>
+
+Display detailed information on one or more plugins
+
+Options:
+  <code>-f, --format string</code>   Format the output using the given Go template
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker plugin install</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker plugin install [OPTIONS] PLUGIN [KEY=VALUE...]</code>
+
+Install a plugin
+
+Options:
+      <code>--alias string</code>            Local name for plugin
+      <code>--disable</code>                 Do not enable the plugin on install
+      <code>--disable-content-trust</code>   Skip image verification (default true)
+      <code>--grant-all-permissions</code>   Grant all permissions necessary to run the plugin
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker plugin ls</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker plugin ls [OPTIONS]</code>
+
+List plugins
+
+Aliases:
+  ls, list
+
+Options:
+  <code>-f, --filter filter</code>   Provide filter values (e.g. 'enabled=true')
+      <code>--format string</code>   Pretty-print plugins using a Go template
+      <code>--no-trunc</code>        Don't truncate output
+  <code>-q, --quiet</code>           Only display plugin IDs
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker plugin push</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker plugin push [OPTIONS] PLUGIN[:TAG]</code>
+
+Push a plugin to a registry
+
+Options:
+      <code>--disable-content-trust</code>   Skip image signing (default true)
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker plugin rm</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker plugin rm [OPTIONS] PLUGIN [PLUGIN...]</code>
+
+Remove one or more plugins
+
+Aliases:
+  rm, remove
+
+Options:
+  <code>-f, --force</code>   Force the removal of an active plugin
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker plugin set</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker plugin set PLUGIN KEY=VALUE [KEY=VALUE...]</code>
+
+Change settings for a plugin
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker plugin upgrade</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker plugin upgrade [OPTIONS] PLUGIN [REMOTE]</code>
+
+Upgrade an existing plugin
+
+Options:
+      <code>--disable-content-trust</code>   Skip image verification (default true)
+      <code>--grant-all-permissions</code>   Grant all permissions necessary to run the plugin
+      <code>--skip-remote-check</code>       Do not check if specified remote plugin matches existing plugin image
+		</pre>
+	</div>
+
+	</div>
+
+	</div>
+
+
+	<button class="outercollapsible">&nbsp;docker scan</button>
+	<div class="outerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker scan [OPTIONS] IMAGE</code>
+
+A tool to scan your images
+
+Options:
+      <code>--accept-license</code>    Accept using a third party scanning provider
+      <code>--dependency-tree</code>   Show dependency tree with scan results
+      <code>--exclude-base</code>      Exclude base image from vulnerability scanning (requires --file)
+  <code>-f, --file string</code>       Dockerfile associated with image, provides more detailed results
+      <code>--group-issues</code>      Aggregate duplicated vulnerabilities and group them to a single one (requires --json)
+      <code>--json</code>              Output results in JSON format
+      <code>--login</code>             Authenticate to the scan provider using an optional token (with --token), or web base token if empty
+      <code>--reject-license</code>    Reject using a third party scanning provider
+      <code>--severity string</code>   Only report vulnerabilities of provided level or higher (low|medium|high)
+      <code>--token string</code>      Authentication token to login to the third party scanning provider
+      <code>--version</code>           Display version of the scan plugin
+		</pre>
+	</div>
+	</div>
+
+
+	<button class="outercollapsible">&nbsp;docker secret</button>
+	<div class="outerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker secret COMMAND</code>
+
+Manage Docker secrets
+
+Commands:
+  create      Create a secret from a file or STDIN as content
+  inspect     Display detailed information on one or more secrets
+  ls          List secrets
+  rm          Remove one or more secrets
+
+Run 'docker secret COMMAND --help' for more information on a command.
+		</pre>
+	</div>
+
+	<button class="innercollapsible">&nbsp;docker secret create</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker secret create [OPTIONS] SECRET [file|-]</code>
+
+Create a secret from a file or STDIN as content
+
+Options:
+  <code>-d, --driver string</code>            Secret driver
+  <code>-l, --label list</code>               Secret labels
+      <code>--template-driver string</code>   Template driver
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker secret inspect</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker secret inspect [OPTIONS] SECRET [SECRET...]</code>
+
+Display detailed information on one or more secrets
+
+Options:
+  <code>-f, --format string</code>   Format the output using the given Go template
+      <code>--pretty</code>          Print the information in a human friendly format
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker secret ls</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker secret ls [OPTIONS]</code>
+
+List secrets
+
+Aliases:
+  ls, list
+
+Options:
+  <code>-f, --filter filter</code>   Filter output based on conditions provided
+      <code>--format string</code>   Pretty-print secrets using a Go template
+  <code>-q, --quiet</code>           Only display IDs
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker secret rm</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker secret rm SECRET [SECRET...]</code>
+
+Remove one or more secrets
+
+Aliases:
+  rm, remove
+		</pre>
+	</div>
+
+	</div>
+
+	</div>
+
+
+	<button class="outercollapsible">&nbsp;docker service</button>
+	<div class="outerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker service COMMAND</code>
+
+Manage services
+
+Commands:
+  create      Create a new service
+  inspect     Display detailed information on one or more services
+  logs        Fetch the logs of a service or task
+  ls          List services
+  ps          List the tasks of one or more services
+  rm          Remove one or more services
+  rollback    Revert changes to a service's configuration
+  scale       Scale one or multiple replicated services
+  update      Update a service
+
+Run 'docker service COMMAND --help' for more information on a command.
+		</pre>
+	</div>
+
+	<button class="innercollapsible">&nbsp;docker service create</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker service create [OPTIONS] IMAGE [COMMAND] [ARG...]</code>
+
+Create a new service
+
+Options:
+      <code>--cap-add list</code>                       Add Linux capabilities
+      <code>--cap-drop list</code>                      Drop Linux capabilities
+      <code>--config config</code>                      Specify configurations to expose to the service
+      <code>--constraint list</code>                    Placement constraints
+      <code>--container-label list</code>               Container labels
+      <code>--credential-spec</code> credential-spec    Credential spec for managed service account (Windows only)
+  <code>-d, --detach</code>                             Exit immediately instead of waiting for the service to converge
+      <code>--dns list</code>                           Set custom DNS servers
+      <code>--dns-option list</code>                    Set DNS options
+      <code>--dns-search list</code>                    Set custom DNS search domains
+      <code>--endpoint-mode string</code>               Endpoint mode (vip or dnsrr) (default "vip")
+      <code>--entrypoint command</code>                 Overwrite the default ENTRYPOINT of the image
+  <code>-e, --env list</code>                           Set environment variables
+      <code>--env-file list</code>                      Read in a file of environment variables
+      <code>--generic-resource list</code>              User defined resources
+      <code>--group list</code>                         Set one or more supplementary user groups for the container
+      <code>--health-cmd string</code>                  Command to run to check health
+      <code>--health-interval duration</code>           Time between running the check (ms|s|m|h)
+      <code>--health-retries int</code>                 Consecutive failures needed to report unhealthy
+      <code>--health-start-period duration</code>       Start period for the container to initialize before counting retries towards unstable (ms|s|m|h)
+      <code>--health-timeout duration</code>            Maximum time to allow one check to run (ms|s|m|h)
+      <code>--host list</code>                          Set one or more custom host-to-IP mappings (host:ip)
+      <code>--hostname string</code>                    Container hostname
+      <code>--init</code>                               Use an init inside each service container to forward signals and reap processes
+      <code>--isolation string</code>                   Service container isolation mode
+  <code>-l, --label list</code>                         Service labels
+      <code>--limit-cpu decimal</code>                  Limit CPUs
+      <code>--limit-memory bytes</code>                 Limit Memory
+      <code>--limit-pids int</code>                     Limit maximum number of processes (default 0 = unlimited)
+      <code>--log-driver string</code>                  Logging driver for service
+      <code>--log-opt list</code>                       Logging driver options
+      <code>--max-concurrent uint</code>                Number of job tasks to run concurrently (default equal to --replicas)
+      <code>--mode string</code>                        Service mode (replicated, global, replicated-job, or global-job) (default "replicated")
+      <code>--mount mount</code>                        Attach a filesystem mount to the service
+      <code>--name string</code>                        Service name
+      <code>--network network</code>                    Network attachments
+      <code>--no-healthcheck</code>                     Disable any container-specified HEALTHCHECK
+      <code>--no-resolve-image</code>                   Do not query the registry to resolve image digest and supported platforms
+      <code>--placement-pref pref</code>                Add a placement preference
+  <code>-p, --publish port</code>                       Publish a port as a node port
+  <code>-q, --quiet</code>                              Suppress progress output
+      <code>--read-only</code>                          Mount the container's root filesystem as read only
+      <code>--replicas uint</code>                      Number of tasks
+      <code>--replicas-max-per-node uint</code>         Maximum number of tasks per node (default 0 = unlimited)
+      <code>--reserve-cpu decimal</code>                Reserve CPUs
+      <code>--reserve-memory bytes</code>               Reserve Memory
+      <code>--restart-condition string</code>           Restart when condition is met ("none"|"on-failure"|"any") (default "any")
+      <code>--restart-delay duration</code>             Delay between restart attempts (ns|us|ms|s|m|h) (default 5s)
+      <code>--restart-max-attempts uint</code>          Maximum number of restarts before giving up
+      <code>--restart-window duration</code>            Window used to evaluate the restart policy (ns|us|ms|s|m|h)
+      <code>--rollback-delay duration</code>            Delay between task rollbacks (ns|us|ms|s|m|h) (default 0s)
+      <code>--rollback-failure-action string</code>     Action on rollback failure ("pause"|"continue") (default "pause")
+      <code>--rollback-max-failure-ratio float</code>   Failure rate to tolerate during a rollback (default 0)
+      <code>--rollback-monitor duration</code>          Duration after each task rollback to monitor for failure (ns|us|ms|s|m|h) (default 5s)
+      <code>--rollback-order string</code>              Rollback order ("start-first"|"stop-first") (default "stop-first")
+      <code>--rollback-parallelism uint</code>          Maximum number of tasks rolled back simultaneously (0 to roll back all at once) (default 1)
+      <code>--secret secret</code>                      Specify secrets to expose to the service
+      <code>--stop-grace-period duration</code>         Time to wait before force killing a container (ns|us|ms|s|m|h) (default 10s)
+      <code>--stop-signal string</code>                 Signal to stop the container
+      <code>--sysctl list</code>                        Sysctl options
+  <code>-t, --tty</code>                                Allocate a pseudo-TTY
+      <code>--ulimit ulimit</code>                      Ulimit options (default [])
+      <code>--update-delay duration</code>              Delay between updates (ns|us|ms|s|m|h) (default 0s)
+      <code>--update-failure-action string</code>       Action on update failure ("pause"|"continue"|"rollback") (default "pause")
+      <code>--update-max-failure-ratio float</code>     Failure rate to tolerate during an update (default 0)
+      <code>--update-monitor duration</code>            Duration after each task update to monitor for failure (ns|us|ms|s|m|h) (default 5s)
+      <code>--update-order string</code>                Update order ("start-first"|"stop-first") (default "stop-first")
+      <code>--update-parallelism uint</code>            Maximum number of tasks updated simultaneously (0 to update all at once) (default 1)
+  <code>-u, --user string</code>                        Username or UID (format: <name|uid>[:<group|gid>])
+      <code>--with-registry-auth</code>                 Send registry authentication details to swarm agents
+  <code>-w, --workdir string</code>                     Working directory inside the container
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker service inspect</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker service inspect [OPTIONS] SERVICE [SERVICE...]</code>
+
+Display detailed information on one or more services
+
+Options:
+  <code>-f, --format string</code>   Format the output using the given Go template
+      <code>--pretty</code>          Print the information in a human friendly format
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker service logs</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker service logs [OPTIONS] SERVICE|TASK</code>
+
+Fetch the logs of a service or task
+
+Options:
+      <code>--details</code>        Show extra details provided to logs
+  <code>-f, --follow</code>         Follow log output
+      <code>--no-resolve</code>     Do not map IDs to Names in output
+      <code>--no-task-ids</code>    Do not include task IDs in output
+      <code>--no-trunc</code>       Do not truncate output
+      <code>--raw</code>            Do not neatly format logs
+      <code>--since string</code>   Show logs since timestamp (e.g. 2013-01-02T13:23:37Z) or relative (e.g. 42m for 42 minutes)
+  <code>-n, --tail string</code>    Number of lines to show from the end of the logs (default "all")
+  <code>-t, --timestamps</code>     Show timestamps
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker service ls</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker service ls [OPTIONS]</code>
+
+List services
+
+Aliases:
+  ls, list
+
+Options:
+  <code>-f, --filter filter</code>   Filter output based on conditions provided
+      <code>--format string</code>   Pretty-print services using a Go template
+  <code>-q, --quiet</code>           Only display IDs
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker service ps</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker service ps [OPTIONS] SERVICE [SERVICE...]</code>
+
+List the tasks of one or more services
+
+Options:
+  <code>-f, --filter filter</code>   Filter output based on conditions provided
+      <code>--format string</code>   Pretty-print tasks using a Go template
+      <code>--no-resolve</code>      Do not map IDs to Names
+      <code>--no-trunc</code>        Do not truncate output
+  <code>-q, --quiet</code>           Only display task IDs
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker service rm</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker service rm SERVICE [SERVICE...]</code>
+
+Remove one or more services
+
+Aliases:
+  rm, remove
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker service rollback</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker service rollback [OPTIONS] SERVICE</code>
+
+Revert changes to a service's configuration
+
+Options:
+  <code>-d, --detach</code>   Exit immediately instead of waiting for the service to converge
+  <code>-q, --quiet</code>    Suppress progress output
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker service scale</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker service scale SERVICE=REPLICAS [SERVICE=REPLICAS...]</code>
+
+Scale one or multiple replicated services
+
+Options:
+  <code>-d, --detach</code>   Exit immediately instead of waiting for the service to converge
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker service update</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker service update [OPTIONS] SERVICE</code>
+
+Update a service
+
+Options:
+      <code>--args command</code>                       Service command args
+      <code>--cap-add list</code>                       Add Linux capabilities
+      <code>--cap-drop list</code>                      Drop Linux capabilities
+      <code>--config-add config</code>                  Add or update a config file on a service
+      <code>--config-rm list</code>                     Remove a configuration file
+      <code>--constraint-add list</code>                Add or update a placement constraint
+      <code>--constraint-rm list</code>                 Remove a constraint
+      <code>--container-label-add list</code>           Add or update a container label
+      <code>--container-label-rm list</code>            Remove a container label by its key
+      <code>--credential-spec</code> credential-spec    Credential spec for managed service account (Windows only)
+  <code>-d, --detach</code>                             Exit immediately instead of waiting for the service to converge
+      <code>--dns-add list</code>                       Add or update a custom DNS server
+      <code>--dns-option-add list</code>                Add or update a DNS option
+      <code>--dns-option-rm list</code>                 Remove a DNS option
+      <code>--dns-rm list</code>                        Remove a custom DNS server
+      <code>--dns-search-add list</code>                Add or update a custom DNS search domain
+      <code>--dns-search-rm list</code>                 Remove a DNS search domain
+      <code>--endpoint-mode string</code>               Endpoint mode (vip or dnsrr)
+      <code>--entrypoint command</code>                 Overwrite the default ENTRYPOINT of the image
+      <code>--env-add list</code>                       Add or update an environment variable
+      <code>--env-rm list</code>                        Remove an environment variable
+      <code>--force</code>                              Force update even if no changes require it
+      <code>--generic-resource-add list</code>          Add a Generic resource
+      <code>--generic-resource-rm list</code>           Remove a Generic resource
+      <code>--group-add list</code>                     Add an additional supplementary user group to the container
+      <code>--group-rm list</code>                      Remove a previously added supplementary user group from the container
+      <code>--health-cmd string</code>                  Command to run to check health
+      <code>--health-interval duration</code>           Time between running the check (ms|s|m|h)
+      <code>--health-retries int</code>                 Consecutive failures needed to report unhealthy
+      <code>--health-start-period duration</code>       Start period for the container to initialize before counting retries towards unstable (ms|s|m|h)
+      <code>--health-timeout duration</code>            Maximum time to allow one check to run (ms|s|m|h)
+      <code>--host-add list</code>                      Add a custom host-to-IP mapping (host:ip)
+      <code>--host-rm list</code>                       Remove a custom host-to-IP mapping (host:ip)
+      <code>--hostname string</code>                    Container hostname
+      <code>--image string</code>                       Service image tag
+      <code>--init</code>                               Use an init inside each service container to forward signals and reap processes
+      <code>--isolation string</code>                   Service container isolation mode
+      <code>--label-add list</code>                     Add or update a service label
+      <code>--label-rm list</code>                      Remove a label by its key
+      <code>--limit-cpu decimal</code>                  Limit CPUs
+      <code>--limit-memory bytes</code>                 Limit Memory
+      <code>--limit-pids int</code>                     Limit maximum number of processes (default 0 = unlimited)
+      <code>--log-driver string</code>                  Logging driver for service
+      <code>--log-opt list</code>                       Logging driver options
+      <code>--max-concurrent uint</code>                Number of job tasks to run concurrently (default equal to --replicas)
+      <code>--mount-add mount</code>                    Add or update a mount on a service
+      <code>--mount-rm list</code>                      Remove a mount by its target path
+      <code>--network-add network</code>                Add a network
+      <code>--network-rm list</code>                    Remove a network
+      <code>--no-healthcheck</code>                     Disable any container-specified HEALTHCHECK
+      <code>--no-resolve-image</code>                   Do not query the registry to resolve image digest and supported platforms
+      <code>--placement-pref-add pref</code>            Add a placement preference
+      <code>--placement-pref-rm pref</code>             Remove a placement preference
+      <code>--publish-add port</code>                   Add or update a published port
+      <code>--publish-rm port</code>                    Remove a published port by its target port
+  <code>-q, --quiet</code>                              Suppress progress output
+      <code>--read-only</code>                          Mount the container's root filesystem as read only
+      <code>--replicas uint</code>                      Number of tasks
+      <code>--replicas-max-per-node uint</code>         Maximum number of tasks per node (default 0 = unlimited)
+      <code>--reserve-cpu decimal</code>                Reserve CPUs
+      <code>--reserve-memory bytes</code>               Reserve Memory
+      <code>--restart-condition string</code>           Restart when condition is met ("none"|"on-failure"|"any")
+      <code>--restart-delay duration</code>             Delay between restart attempts (ns|us|ms|s|m|h)
+      <code>--restart-max-attempts uint</code>          Maximum number of restarts before giving up
+      <code>--restart-window duration</code>            Window used to evaluate the restart policy (ns|us|ms|s|m|h)
+      <code>--rollback</code>                           Rollback to previous specification
+      <code>--rollback-delay duration</code>            Delay between task rollbacks (ns|us|ms|s|m|h)
+      <code>--rollback-failure-action string</code>     Action on rollback failure ("pause"|"continue")
+      <code>--rollback-max-failure-ratio float</code>   Failure rate to tolerate during a rollback
+      <code>--rollback-monitor duration</code>          Duration after each task rollback to monitor for failure (ns|us|ms|s|m|h)
+      <code>--rollback-order string</code>              Rollback order ("start-first"|"stop-first")
+      <code>--rollback-parallelism uint</code>          Maximum number of tasks rolled back simultaneously (0 to roll back all at once)
+      <code>--secret-add secret</code>                  Add or update a secret on a service
+      <code>--secret-rm list</code>                     Remove a secret
+      <code>--stop-grace-period duration</code>         Time to wait before force killing a container (ns|us|ms|s|m|h)
+      <code>--stop-signal string</code>                 Signal to stop the container
+      <code>--sysctl-add list</code>                    Add or update a Sysctl option
+      <code>--sysctl-rm list</code>                     Remove a Sysctl option
+  <code>-t, --tty</code>                                Allocate a pseudo-TTY
+      <code>--ulimit-add ulimit</code>                  Add or update a ulimit option (default [])
+      <code>--ulimit-rm list</code>                     Remove a ulimit option
+      <code>--update-delay duration</code>              Delay between updates (ns|us|ms|s|m|h)
+      <code>--update-failure-action string</code>       Action on update failure ("pause"|"continue"|"rollback")
+      <code>--update-max-failure-ratio float</code>     Failure rate to tolerate during an update
+      <code>--update-monitor duration</code>            Duration after each task update to monitor for failure (ns|us|ms|s|m|h)
+      <code>--update-order string</code>                Update order ("start-first"|"stop-first")
+      <code>--update-parallelism uint</code>            Maximum number of tasks updated simultaneously (0 to update all at once)
+  <code>-u, --user string</code>                        Username or UID (format: <name|uid>[:<group|gid>])
+      <code>--with-registry-auth</code>                 Send registry authentication details to swarm agents
+  <code>-w, --workdir string</code>                     Working directory inside the container
+		</pre>
+	</div>
+
+	</div>
+
+	</div>
+
+
+	<button class="outercollapsible">&nbsp;docker stack</button>
+	<div class="outerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker stack [OPTIONS] COMMAND</code>
+
+Manage Docker stacks
+
+Options:
+      <code>--orchestrator string</code>   Orchestrator to use (swarm|kubernetes|all)
+
+Commands:
+  deploy      Deploy a new stack or update an existing stack
+  ls          List stacks
+  ps          List the tasks in the stack
+  rm          Remove one or more stacks
+  services    List the services in the stack
+
+Run 'docker stack COMMAND --help' for more information on a command.
+		</pre>
+	</div>
+
+	<button class="innercollapsible">&nbsp;docker stack deploy</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker stack deploy [OPTIONS] STACK</code>
+
+Deploy a new stack or update an existing stack
+
+Aliases:
+  deploy, up
+
+Options:
+  <code>-c, --compose-file strings</code>   Path to a Compose file, or "-" to read from stdin
+      <code>--orchestrator string</code>    Orchestrator to use (swarm|kubernetes|all)
+      <code>--prune</code>                  Prune services that are no longer referenced
+      <code>--resolve-image string</code>   Query the registry to resolve image digest and supported platforms ("always"|"changed"|"never") (default "always")
+      <code>--with-registry-auth</code>     Send registry authentication details to Swarm agents
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker stack ls</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker stack ls [OPTIONS]</code>
+
+List stacks
+
+Aliases:
+  ls, list
+
+Options:
+      <code>--format string</code>         Pretty-print stacks using a Go template
+      <code>--orchestrator string</code>   Orchestrator to use (swarm|kubernetes|all)
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker stack ps</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker stack ps [OPTIONS] STACK</code>
+
+List the tasks in the stack
+
+Options:
+  <code>-f, --filter filter</code>         Filter output based on conditions provided
+      <code>--format string</code>         Pretty-print tasks using a Go template
+      <code>--no-resolve</code>            Do not map IDs to Names
+      <code>--no-trunc</code>              Do not truncate output
+      <code>--orchestrator string</code>   Orchestrator to use (swarm|kubernetes|all)
+  <code>-q, --quiet</code>                 Only display task IDs
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker stack rm</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker stack rm [OPTIONS] STACK [STACK...]</code>
+
+Remove one or more stacks
+
+Aliases:
+  rm, remove, down
+
+Options:
+      <code>--orchestrator string</code>   Orchestrator to use (swarm|kubernetes|all)
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker stack services</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker stack services [OPTIONS] STACK</code>
+
+List the services in the stack
+
+Options:
+  <code>-f, --filter filter</code>         Filter output based on conditions provided
+      <code>--format string</code>         Pretty-print services using a Go template
+      <code>--orchestrator string</code>   Orchestrator to use (swarm|kubernetes|all)
+  <code>-q, --quiet</code>                 Only display IDs
+		</pre>
+	</div>
+
+	</div>
+
+	</div>
+
+
+	<button class="outercollapsible">&nbsp;docker swarm</button>
+	<div class="outerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker swarm COMMAND</code>
+
+Manage Swarm
+
+Commands:
+  ca          Display and rotate the root CA
+  init        Initialize a swarm
+  join        Join a swarm as a node and/or manager
+  join-token  Manage join tokens
+  leave       Leave the swarm
+  unlock      Unlock swarm
+  unlock-key  Manage the unlock key
+  update      Update the swarm
+
+Run 'docker swarm COMMAND --help' for more information on a command.
+		</pre>
+	</div>
+
+	<button class="innercollapsible">&nbsp;docker swarm ca</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker swarm ca [OPTIONS]</code>
+
+Display and rotate the root CA
+
+Options:
+      <code>--ca-cert</code> pem-file          Path to the PEM-formatted root CA certificate to use for the new cluster
+      <code>--ca-key</code> pem-file           Path to the PEM-formatted root CA key to use for the new cluster
+      <code>--cert-expiry duration</code>      Validity period for node certificates (ns|us|ms|s|m|h) (default 2160h0m0s)
+  <code>-d, --detach</code>                    Exit immediately instead of waiting for the root rotation to converge
+      <code>--external-ca</code> external-ca   Specifications of one or more certificate signing endpoints
+  <code>-q, --quiet</code>                     Suppress progress output
+      <code>--rotate</code>                    Rotate the swarm CA - if no certificate or key are provided, new ones will be generated
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker swarm init</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker swarm init [OPTIONS]</code>
+
+Initialize a swarm
+
+Options:
+      <code>--advertise-addr string</code>                  Advertised address (format: <ip|interface>[:port])
+      <code>--autolock</code>                               Enable manager autolocking (requiring an unlock key to start a stopped manager)
+      <code>--availability string</code>                    Availability of the node ("active"|"pause"|"drain") (default "active")
+      <code>--cert-expiry duration</code>                   Validity period for node certificates (ns|us|ms|s|m|h) (default 2160h0m0s)
+      <code>--data-path-addr string</code>                  Address or interface to use for data path traffic (format: <ip|interface>)
+      <code>--data-path-port uint32</code>                  Port number to use for data path traffic (1024 - 49151). If no value is set or is set to 0, the default port (4789) is used.
+      <code>--default-addr-pool ipNetSlice</code>           default address pool in CIDR format (default [])
+      <code>--default-addr-pool-mask-length uint32</code>   default address pool subnet mask length (default 24)
+      <code>--dispatcher-heartbeat duration</code>          Dispatcher heartbeat period (ns|us|ms|s|m|h) (default 5s)
+      <code>--external-ca</code> external-ca                Specifications of one or more certificate signing endpoints
+      <code>--force-new-cluster</code>                      Force create a new cluster from current state
+      <code>--listen-addr</code> node-addr                  Listen address (format: <ip|interface>[:port]) (default 0.0.0.0:2377)
+      <code>--max-snapshots uint</code>                     Number of additional Raft snapshots to retain
+      <code>--snapshot-interval uint</code>                 Number of log entries between Raft snapshots (default 10000)
+      <code>--task-history-limit int</code>                 Task history retention limit (default 5)
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker swarm join</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker swarm join [OPTIONS] HOST:PORT</code>
+
+Join a swarm as a node and/or manager
+
+Options:
+      <code>--advertise-addr string</code>   Advertised address (format: <ip|interface>[:port])
+      <code>--availability string</code>     Availability of the node ("active"|"pause"|"drain") (default "active")
+      <code>--data-path-addr string</code>   Address or interface to use for data path traffic (format: <ip|interface>)
+      <code>--listen-addr</code> node-addr   Listen address (format: <ip|interface>[:port]) (default 0.0.0.0:2377)
+      <code>--token string</code>            Token for entry into the swarm
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker swarm join-token</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker swarm join-token [OPTIONS] (worker|manager)</code>
+
+Manage join tokens
+
+Options:
+  <code>-q, --quiet</code>    Only display token
+      <code>--rotate</code>   Rotate join token
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker swarm leave</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker swarm leave [OPTIONS]</code>
+
+Leave the swarm
+
+Options:
+  <code>-f, --force</code>   Force this node to leave the swarm, ignoring warnings
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker swarm unlock</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker swarm unlock</code>
+
+Unlock swarm
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker swarm unlock-key</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker swarm unlock-key [OPTIONS]</code>
+
+Manage the unlock key
+
+Options:
+  <code>-q, --quiet</code>    Only display token
+      <code>--rotate</code>   Rotate unlock key
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker swarm update</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker swarm update [OPTIONS]</code>
+
+Update the swarm
+
+Options:
+      <code>--autolock</code>                        Change manager autolocking setting (true|false)
+      <code>--cert-expiry duration</code>            Validity period for node certificates (ns|us|ms|s|m|h) (default 2160h0m0s)
+      <code>--dispatcher-heartbeat duration</code>   Dispatcher heartbeat period (ns|us|ms|s|m|h) (default 5s)
+      <code>--external-ca</code> external-ca         Specifications of one or more certificate signing endpoints
+      <code>--max-snapshots uint</code>              Number of additional Raft snapshots to retain
+      <code>--snapshot-interval uint</code>          Number of log entries between Raft snapshots (default 10000)
+      <code>--task-history-limit int</code>          Task history retention limit (default 5)
+		</pre>
+	</div>
+
+	</div>
+
+	</div>
+
+
+	<button class="outercollapsible">&nbsp;docker system</button>
+	<div class="outerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker system COMMAND</code>
+
+Manage Docker
+
+Commands:
+  df          Show docker disk usage
+  events      Get real time events from the server
+  info        Display system-wide information
+  prune       Remove unused data
+
+Run 'docker system COMMAND --help' for more information on a command.
+		</pre>
+	</div>
+
+	<button class="innercollapsible">&nbsp;docker system df</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker system df [OPTIONS]</code>
+
+Show docker disk usage
+
+Options:
+      <code>--format string</code>   Pretty-print images using a Go template
+  <code>-v, --verbose</code>         Show detailed information on space usage
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker system events</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker system events [OPTIONS]</code>
+
+Get real time events from the server
+
+Options:
+  <code>-f, --filter filter</code>   Filter output based on conditions provided
+      <code>--format string</code>   Format the output using the given Go template
+      <code>--since string</code>    Show all events created since timestamp
+      <code>--until string</code>    Stream events until this timestamp
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker system info</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker system info [OPTIONS]</code>
+
+Display system-wide information
+
+Options:
+  <code>-f, --format string</code>   Format the output using the given Go template
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker system prune</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker system prune [OPTIONS]</code>
+
+Remove unused data
+
+Options:
+  <code>-a, --all</code>             Remove all unused images not just dangling ones
+      <code>--filter filter</code>   Provide filter values (e.g. 'label=<key>=<value>')
+  <code>-f, --force</code>           Do not prompt for confirmation
+      <code>--volumes</code>         Prune volumes
+		</pre>
+	</div>
+
+	</div>
+
+	</div>
+
+
+	<button class="outercollapsible">&nbsp;docker trust</button>
+	<div class="outerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker trust COMMAND</code>
+
+Manage trust on Docker images
+
+Management Commands:
+  key         Manage keys for signing Docker images
+  signer      Manage entities who can sign Docker images
+
+Commands:
+  inspect     Return low-level information about keys and signatures
+  revoke      Remove trust for an image
+  sign        Sign an image
+
+Run 'docker trust COMMAND --help' for more information on a command.
+		</pre>
+	</div>
+
+	<button class="innercollapsible">&nbsp;docker trust inspect</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker trust inspect IMAGE[:TAG] [IMAGE[:TAG]...]</code>
+
+Return low-level information about keys and signatures
+
+Options:
+      <code>--pretty</code>   Print the information in a human friendly format
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker trust revoke</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker trust revoke [OPTIONS] IMAGE[:TAG]</code>
+
+Remove trust for an image
+
+Options:
+  <code>-y, --yes</code>   Do not prompt for confirmation
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker trust sign</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker trust sign IMAGE:TAG</code>
+
+Sign an image
+
+Options:
+      <code>--local</code>   Sign a locally tagged image
+		</pre>
+	</div>
+
+	</div>
+
+	</div>
+
+
+	<button class="outercollapsible">&nbsp;docker volume</button>
+	<div class="outerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker volume COMMAND</code>
+
+Manage volumes
+
+Commands:
+  create      Create a volume
+  inspect     Display detailed information on one or more volumes
+  ls          List volumes
+  prune       Remove all unused local volumes
+  rm          Remove one or more volumes
+
+Run 'docker volume COMMAND --help' for more information on a command.
+		</pre>
+	</div>
+
+	<button class="innercollapsible">&nbsp;docker volume create</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker volume create [OPTIONS] [VOLUME]</code>
+
+Create a volume
+
+Options:
+  <code>-d, --driver string</code>   Specify volume driver name (default "local")
+      <code>--label list</code>      Set metadata for a volume
+  <code>-o, --opt map</code>         Set driver specific options (default map[])
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker volume inspect</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker volume inspect [OPTIONS] VOLUME [VOLUME...]</code>
+
+Display detailed information on one or more volumes
+
+Options:
+  <code>-f, --format string</code>   Format the output using the given Go template
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker volume ls</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker volume ls [OPTIONS]</code>
+
+List volumes
+
+Aliases:
+  ls, list
+
+Options:
+  <code>-f, --filter filter</code>   Provide filter values (e.g. 'dangling=true')
+      <code>--format string</code>   Pretty-print volumes using a Go template
+  <code>-q, --quiet</code>           Only display volume names
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker volume prune</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker volume prune [OPTIONS]</code>
+
+Remove all unused local volumes
+
+Options:
+      <code>--filter filter</code>   Provide filter values (e.g. 'label=<label>')
+  <code>-f, --force</code>           Do not prompt for confirmation
+		</pre>
+	</div>
+
+	</div>
+
+
+	<button class="innercollapsible">&nbsp;docker volume rm</button>
+	<div class="innerPanel">
+	<div class="content">
+		<pre>
+Usage:  <code>docker volume rm [OPTIONS] VOLUME [VOLUME...]</code>
+
+Remove one or more volumes. You cannot remove a volume that is in use by a container.
+
+Aliases:
+  rm, remove
+
+Examples:
+
+$ docker volume rm hello
+hello
+
+
+Options:
+  <code>-f, --force</code>   Force the removal of one or more volumes
+		</pre>
+	</div>
+
+	</div>
+
+	</div>
+
+
+<script>
+	var allCollapsibles = document.querySelectorAll('.outercollapsible,.innercollapsible');
+	allCollapsibles.forEach( item => {
+		item.addEventListener("click", function() {
+			this.classList.toggle("active");
+			if(this.nextElementSibling.classList.contains('show')) {
+				this.nextElementSibling.classList.remove('show')
+			} else {
+				this.nextElementSibling.classList.add('show')
+			}
+		});
+	});
+	function expandAll() {
+		allCollapsibles.forEach( item => {
+			item.classList.add("active");
+			if(!item.nextElementSibling.classList.contains('show')) {
+				item.nextElementSibling.classList.add('show')
+			}
+		});
+	}
+	function collapseAll() {
+		allCollapsibles.forEach( item => {
+			item.classList.remove("active");
+			if(item.nextElementSibling.classList.contains('show')) {
+				item.nextElementSibling.classList.remove('show')
+			}
+		});
+	}
+	function invertAll() {
+		allCollapsibles.forEach( item => {
+			item.classList.toggle("active");
+			if(item.nextElementSibling.classList.contains('show')) {
+				item.nextElementSibling.classList.remove('show')
+			}
+			else {
+				item.nextElementSibling.classList.add('show')
+			}
+		});
+	}
+</script>
+
+</body>
+</html>
