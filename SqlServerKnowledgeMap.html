@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>SQL Server Knowledge Map</title>
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAx5JREFUWEfNls9LFGEcxp93NpMgAn+Awc4eakd3rUOOkGmHsiR1IIiunfoTQqI6GBEJRtChY5cMOnSLIGgkJM1LPwh3DGpn3NlD7CsSSRcr1pWdN97B11620d2ZLW1P877s+z6f7/O8vwh2+Ed2WB+hAebs3G0CcpWD62kt9PjKgmueIGO7DATn9ZT2lE/C29sCIIQs251mQL9cwbYAmKrKDEpJxnY9Pa0pHMBy3CLzyCu9MzlU7xqqKQIOIYT2nBlE/8QDf1zGzn3X0+1764GoCYALmInEqFEojPnfEpAszp0KC1PzAFNVVw1KG0UkDFAI4ElAMwalpyZV9Q0DjhFCLg8XCnerAdUMUFH5S4PSAVNVxwFc45ULMCFoqupHAIcATBuUnt4MJDSAsFnEINrPVfUngEYCKKVicd+55eUVAVUJJ8NEAqgUX2+/Nig9Ljng757N2qI/NAAfKCzn3w2MtZZjsW7P80YI0DtMadNUPN4ysLj4jQAbu0dEWLlQIwGs038yKD0ckP0agDID7hHgiqhUKZdPDi0tzUY+iuVFWFaU5pjnzQNISGuCC+8SDlVb/aEjWM/5JoAbcgRCMOrdUFMET+LxlqZSabXY2LgiyDkEY0yxnHyZ9zFgrDutXa+18lAOmIlECYw17D7ag+bxO4HX8D9zwLeekMdGoXBBiGRsdwFAO78NrezCWUaUZ1Fvxi0j4OL7p2b8ijOO+0VPaW3cuveO0xpjsa/8O6rwlhGYfX1DbROPLnWnNUOq2n+AiNwZmE1A0vVCBDpg2e5sV1o7wSe3bHeUAbcEsW+74+a7UlpS9GVs1wWQjOLGHwD+0yvgJ08uXJm33WEPMP2IIj7RAgGCxCzb9RhAGMN9RSE/GGMjQf+rexvKlVRWJbujKLHeIx0H3m7EkHUf6p3axboB+AS/hcg7gPXwvq5UMsYPHbnqDwufD5a9tXw9C3HTbcghCCEeFxZQQnwu6+YIgSaEo+bPx1c9iq1svoMR5si7QLY54+Re6Kn2wbDWhzqKKyefs91JAmw8yaNsv7oAolYbNK5qBH9T7L8E+AWIkZgwtDzmbwAAAABJRU5ErkJggg==" sizes="32x32" />
+<style>
+body {
+	background-color: #333333;
+	color: white;
+	font-family: Consolas,"courier new";
+	margin: 50px;
+}
+
+ul,	#myUL {
+	list-style-type: none;
+}
+
+#myUL {
+	margin: 0;
+	padding: 0;
+}
+
+.skip {
+	color: #A0A0A0;
+}
+
+.know {
+	/* color: lightgreen; */
+	color: white;
+}
+
+.none {
+	color: white;
+}
+
+.negcaret {
+	cursor: pointer;
+	-webkit-user-select: none;	/* Safari 3.1+ */
+	-moz-user-select: none;		/* Firefox 2+ */
+	-ms-user-select: none;		/* IE 10+ */
+	user-select: none;
+}
+
+.negcaret::before {
+	content: "-";
+	display: inline-block;
+	margin-right: 6px;
+	color: #A0A0A0;
+}
+
+.poscaret {
+	cursor: pointer;
+	-webkit-user-select: none;	/* Safari 3.1+ */
+	-moz-user-select: none;		/* Firefox 2+ */
+	-ms-user-select: none;		/* IE 10+ */
+	user-select: none;
+}
+
+.poscaret::before {
+	content: "+";
+	display: inline-block;
+	margin-right: 6px;
+	color: #A0A0A0;
+}
+
+.poscaret-down::before {
+	content: "-";
+	display: inline-block;
+	margin-right: 6px;
+	color: #A0A0A0;
+}
+
+.nested {
+	display: none;
+}
+
+.active {
+	display: block;
+}
+
+a:link {
+	color: #606060;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+a:visited {
+	color: #606060;
+}
+
+a:hover {
+	color: turquoise;
+}
+
+a.viewcontrol {
+	color: #A0A0A0;
+}
+</style>
+</head>
+<body>
+<h1>SQL Server Knowledge Map</h1>
+<h3>
+<a title="collapse all" class="viewcontrol" href="javascript:collapseAll();">-</a>
+<a title="invert all"   class="viewcontrol" href="javascript:invertAll();"  >x</a>
+<a title="expand all"   class="viewcontrol" href="javascript:expandAll();"  >+</a>
+</h3>
+<ul id="myUL">
+<li class="none"><span class="poscaret">Platform</span>
+<ul class="nested">
+<li class="none"><span class="poscaret">Azure SQL</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/">docs</a>
+<ul class="nested">
+<li class="none"><span class="negcaret">Azure Service Tiers</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/database/service-tier-general-purpose">docs</a></li>
+<li class="know"><span class="poscaret">Azure SQL Database</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/database/">docs</a>
+<ul class="nested">
+<li class="none"><span class="negcaret">Single database</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/database/single-database-overview">docs</a></li>
+<li class="none"><span class="negcaret">Elastic Database (sharding)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/database/elastic-scale-introduction">docs</a></li>
+<li class="none"><span class="negcaret">Elastic Pools</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/database/elastic-pool-overview">docs</a></li>
+<li class="none"><span class="negcaret">Hyperscale</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/database/service-tier-hyperscale">docs</a></li>
+<li class="none"><span class="negcaret">Serverless</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/database/serverless-tier-overview">docs</a></li>
+<li class="none"><span class="negcaret">Logical servers</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/database/logical-servers">docs</a></li>
+<li class="none"><span class="negcaret">Purchasing models (vCore,DTU)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/database/purchasing-models">docs</a></li>
+<li class="none"><span class="negcaret">What's New</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/database/doc-changes-updates-release-notes-whats-new">docs</a></li>
+</ul>
+</li>
+<li class="none"><span class="poscaret">Azure SQL Managed Instance</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/managed-instance/">docs</a>
+<ul class="nested">
+<li class="none"><span class="negcaret">Single instance</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview">docs</a></li>
+<li class="none"><span class="negcaret">Instance Pools</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/managed-instance/instance-pools-overview">docs</a></li>
+<li class="none"><span class="negcaret">Purchasing models (vCore)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/managed-instance/service-tiers-managed-instance-vcore">docs</a></li>
+<li class="none"><span class="negcaret">Known issues</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/managed-instance/doc-changes-updates-known-issues">docs</a></li>
+<li class="none"><span class="negcaret">What's New</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/managed-instance/doc-changes-updates-release-notes-whats-new">docs</a></li>
+</ul>
+</li>
+<li class="none"><span class="poscaret">SQL Server on Azure VMs</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/virtual-machines/">docs</a>
+<ul class="nested">
+<li class="none"><span class="negcaret">SQL Server on a Linux VM</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/virtual-machines/linux/sql-server-on-linux-vm-what-is-iaas-overview">docs</a></li>
+<li class="know"><span class="negcaret">SQL Server on a Windows VM</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview">docs</a></li>
+<li class="none"><span class="negcaret">SQL Server IaaS Agent extension</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/virtual-machines/windows/sql-server-iaas-agent-extension-automate-management">docs</a></li>
+<li class="none"><span class="negcaret">Licensing models</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/virtual-machines/windows/licensing-model-azure-hybrid-benefit-ahb-change">docs</a></li>
+<li class="none"><span class="negcaret">Virtual machines</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/virtual-machines/">docs</a></li>
+</ul>
+</li>
+<li class="none"><span class="negcaret">Azure Synapse Analytics</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/synapse-analytics/">docs</a></li>
+<li class="none"><span class="negcaret">SQL Server on Azure Arc-enabled servers</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/sql-server/azure-arc/overview">docs</a></li>
+<li class="none"><span class="negcaret">Azure Artc-enabled data services</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-arc/data/overview">docs</a></li>
+<li class="none"><span class="negcaret">Azure VMs</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/virtual-machines/">docs</a></li>
+<li class="none"><span class="negcaret">Feature comparison</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/database/features-comparison">docs</a></li>
+<li class="none"><span class="negcaret">Service Level Agreements</span> <a target="_blank" href="https://azure.microsoft.com/en-us/support/legal/sla/">docs</a></li>
+</ul>
+</li>
+<li class="none"><span class="poscaret">SQL Server</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/">docs</a>
+<ul class="nested">
+<li class="know"><span class="poscaret">SQL Server on Windows</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/sql-server">docs</a>
+<ul class="nested">
+<li class="none"><span class="poscaret">2019</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/sql-server/?view=sql-server-ver15">docs</a>
+<ul class="nested">
+<li class="none"><span class="negcaret">Editions & Features</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/sql-server/editions-and-components-of-sql-server-2019">docs</a></li>
+<li class="none"><span class="negcaret">Release Notes</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/sql-server/sql-server-2019-release-notes">docs</a></li>
+<li class="none"><span class="negcaret">What's New</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/sql-server/what-s-new-in-sql-server-2019">docs</a></li>
+</ul>
+</li>
+<li class="none"><span class="poscaret">2017</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/sql-server/?view=sql-server-2017">docs</a>
+<ul class="nested">
+<li class="none"><span class="negcaret">Editions & Features</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/sql-server/editions-and-components-of-sql-server-2017">docs</a></li>
+<li class="none"><span class="negcaret">Release Notes</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/sql-server/sql-server-2017-release-notes">docs</a></li>
+<li class="none"><span class="negcaret">What's New</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/sql-server/what-s-new-in-sql-server-2017">docs</a></li>
+</ul>
+</li>
+<li class="none"><span class="poscaret">2016</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/sql-server/?view=sql-server-2016">docs</a>
+<ul class="nested">
+<li class="none"><span class="negcaret">Editions & Features</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/sql-server/editions-and-components-of-sql-server-2016">docs</a></li>
+<li class="none"><span class="negcaret">Release Notes</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/sql-server/sql-server-2016-release-notes">docs</a></li>
+<li class="none"><span class="negcaret">What's New</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/sql-server/what-s-new-in-sql-server-2016">docs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="none"><span class="poscaret">SQL Server on Linux</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-overview">docs</a>
+<ul class="nested">
+<li class="none"><span class="negcaret">2019</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/sql-server/?view=sql-server-linux-2019">docs</a></li>
+<li class="none"><span class="negcaret">2017</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/sql-server/?view=sql-server-linux-2017">docs</a></li>
+</ul>
+</li>
+<li class="none"><span class="negcaret">Express LocalDB</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/sql-server-express-localdb">docs</a></li>
+<li class="none"><span class="negcaret">SQL Server Compact</span> <a target="_blank" href="https://www.microsoft.com/en-us/download/details.aspx?id=30709">docs</a></li>
+</ul>
+</li>
+<li class="none"><span class="negcaret">Azure Data Architecture Guide</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/architecture/data-guide/databases-architecture-design">docs</a></li>
+<li class="none"><span class="negcaret">Azure Well-Architected Framework</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/architecture/framework/">docs</a></li>
+<li class="none"><span class="negcaret">Reference Architectures</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/architecture/browse/?products=sql-server">docs</a></li>
+</ul>
+</li>
+</ul>
+<ul id="myUL">
+<li class="none"><span class="poscaret">Deployment</span>
+<ul class="nested">
+<li class="none"><span class="poscaret">Azure SQL</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/">docs</a>
+<ul class="nested">
+<li class="know"><span class="negcaret">Azure Portal</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/database/connect-query-portal">docs</a></li>
+<li class="none"><span class="poscaret">Azure CLI</span> <a target="_blank" href="https://docs.microsoft.com/en-us/cli/azure/azure-cli-reference-for-sql">docs</a>
+<ul class="nested">
+<li class="none"><span class="negcaret">Azure CLI samples</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/database/az-cli-script-samples-content-guide">docs</a></li>
+</ul>
+</li>
+<li class="none"><span class="negcaret">Cloud Shell</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/deploy-cloud-shell">docs</a></li>
+<li class="know"><span class="poscaret">Powershell</span> <a target="_blank" href="https://docs.microsoft.com/en-us/powershell/module/az.sql">docs</a>
+<ul class="nested">
+<li class="know"><span class="negcaret">Powershell samples</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/database/powershell-script-content-guide">docs</a></li>
+</ul>
+</li>
+<li class="none"><span class="negcaret">REST API</span> <a target="_blank" href="https://docs.microsoft.com/en-us/rest/api/sql/">docs</a></li>
+<li class="know"><span class="poscaret">ARM templates</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/">docs</a>
+<ul class="nested">
+<li class="know"><span class="negcaret">ARM template samples</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/database/arm-templates-content-guide">docs</a></li>
+<li class="none"><span class="negcaret">Azure Pipelines</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/add-template-to-azure-pipelines">docs</a></li>
+<li class="none"><span class="negcaret">GitHub Actions</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/deploy-github-actions">docs</a></li>
+</ul>
+</li>
+<li class="know"><span class="poscaret">Bicep templates</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/">docs</a>
+<ul class="nested">
+<li class="none"><span class="negcaret">Azure Pipelines</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/add-template-to-azure-pipelines">docs</a></li>
+<li class="none"><span class="negcaret">GitHub Actions</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/deploy-github-actions">docs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="none"><span class="poscaret">On-premises	install</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/database-engine/install-windows/install-sql-server">docs</a>
+<ul class="nested">
+<li class="none"><span class="negcaret">Planning</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/sql-server/install/planning-a-sql-server-installation">docs</a></li>
+<li class="know"><span class="negcaret">Command line</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/database-engine/install-windows/install-sql-server-from-the-command-prompt">docs</a></li>
+<li class="none"><span class="negcaret">Configuration</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/database-engine-instances-sql-server">docs</a></li>
+<li class="know"><span class="negcaret">Configuration file</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/database-engine/install-windows/install-sql-server-using-a-configuration-file">docs</a></li>
+<li class="know"><span class="negcaret">Wizard</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/database-engine/install-windows/install-sql-server-from-the-installation-wizard-setup">docs</a></li>
+<li class="none"><span class="negcaret">Upgrade</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/database-engine/install-windows/upgrade-sql-server">docs</a></li>
+<li class="none"><span class="negcaret">Uninstall</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/sql-server/install/uninstall-sql-server">docs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul id="myUL">
+<li class="none"><span class="poscaret">Migration</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/sql-server/migrate/">docs</a>
+<ul class="nested">
+<li class="none"><span class="negcaret">Cloud Adoption Framework</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/migrate/azure-best-practices/sql-migration">docs</a></li>
+<li class="none"><span class="negcaret">Azure Migrate</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/migrate/">docs</a></li>
+<li class="none"><span class="negcaret">Migrate to Azure SQL</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/migration-guides/">docs</a></li>
+<li class="none"><span class="negcaret">Data Migration Assistant (DMA)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/dma/dma-overview">docs</a></li>
+<li class="none"><span class="negcaret">Azure Database Migration Service (DMS)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/dms/">docs</a></li>
+<li class="none"><span class="negcaret">Azure SQL Migration extension for Azure Data Studio</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/azure-data-studio/extensions/azure-sql-migration-extension">docs</a></li>
+<li class="none"><span class="negcaret">SSMS</span> <a target="_blank" href="https://developer.relatude.com/deploying-a-sql-database-to-azure-with-sql-server-management-studio">docs</a></li>
+<li class="none"><span class="negcaret">Database Experimentation Assistant (DEA)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/dea/database-experimentation-assistant-overview">docs</a></li>
+<li class="none"><span class="negcaret">SQL Server Migration Assistant (SSMA)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/ssma/sql-server-migration-assistant">docs</a></li>
+<li class="none"><span class="negcaret">Query Tuning Assistant</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/performance/upgrade-dbcompat-using-qta">docs</a></li>
+<li class="none"><span class="negcaret">Azure Data Box</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/databox/">docs</a></li>
+<li class="none"><span class="negcaret">Post-migration Validation & Optimization</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/post-migration-validation-and-optimization-guide">docs</a></li>
+</ul>
+</li>
+</ul>
+<ul id="myUL">
+<li class="none"><span class="poscaret">Connection</span>
+<ul class="nested">
+<li class="none"><span class="poscaret">Azure connectivity architecture</span>
+<ul class="nested">
+<li class="none"><span class="negcaret">Azure SQL Database</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/database/connectivity-architecture">docs</a></li>
+<li class="none"><span class="negcaret">Azure SQL Managed Instance</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/managed-instance/connectivity-architecture-overview">docs</a></li>
+</ul>
+</li>
+<li class="know"><span class="poscaret">Connection strings</span> <a target="_blank" href="https://www.connectionstrings.com/sql-server/">docs</a>
+<ul class="nested">
+<li class="none"><span class="negcaret">Shared Memory</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/tools/configuration-manager/creating-a-valid-connection-string-using-shared-memory-protocol">docs</a></li>
+<li class="none"><span class="negcaret">Named Pipes</span> <a target="_blank" href="https://docs.microsoft.com/en-us/previous-versions/sql/sql-server-2016/ms189307(v=sql.130)">docs</a></li>
+<li class="none"><span class="negcaret">TCP/IP Sockets</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/tools/configuration-manager/creating-a-valid-connection-string-using-tcp-ip">docs</a></li>
+</ul>
+</li>
+<li class="none"><span class="poscaret">Drivers</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/connect/sql-connection-libraries">docs</a>
+<ul class="nested">
+<li class="none"><span class="negcaret">Microsoft OLE DB Driver for SQL Server</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/connect/oledb/oledb-driver-for-sql-server">docs</a></li>
+<li class="none"><span class="negcaret">Microsoft ODBC Driver for SQL Server</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/connect/odbc/microsoft-odbc-driver-for-sql-server">docs</a></li>
+<li class="skip"><span class="negcaret">SQL Server Native Client (SQLNCLI)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/native-client/sql-server-native-client">docs</a></li>
+<li class="skip"><span class="negcaret">SQL Server Native Client OLE DB</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/native-client/ole-db/sql-server-native-client-ole-db">docs</a></li>
+<li class="skip"><span class="negcaret">SQL Server Native Client ODBC</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/native-client/odbc/sql-server-native-client-odbc">docs</a></li>
+</ul>
+</li>
+<li class="none"><span class="poscaret">Network configuration</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/server-network-configuration">docs</a>
+<ul class="nested">
+<li class="none"><span class="negcaret">Azure network access controls</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/database/network-access-controls-overview">docs</a></li>
+<li class="none"><span class="negcaret">Azure outbound firewall rules</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/database/outbound-firewall-rule-overview">docs</a></li>
+<li class="none"><span class="negcaret">Azure Private Link</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/database/private-endpoint-overview">docs</a></li>
+<li class="none"><span class="negcaret">Azure VNet endpoints</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/database/vnet-service-endpoint-rule-overview">docs</a></li>
+<li class="none"><span class="negcaret">SQL Server pipes</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/configure-a-server-to-listen-on-an-alternate-pipe">docs</a></li>
+<li class="none"><span class="negcaret">SQL Server ports</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/configure-a-server-to-listen-on-a-specific-tcp-port">docs</a></li>
+<li class="none"><span class="negcaret">Troubleshooting</span> <a target="_blank" href="https://docs.microsoft.com/en-us/troubleshoot/sql/connect/resolve-connectivity-errors-overview">docs</a></li>
+</ul>
+</li>
+<li class="none"><span class="negcaret">Transmission protocols</span> <a target="_blank" href="https://docs.microsoft.com/en-us/openspecs/sql_server_protocols/ms-sqlprotlp/f16558b2-4561-45be-89c9-6f9114514c97">docs</a></li>
+<li class="none"><span class="negcaret">SQL Server Browser Service</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/tools/configuration-manager/sql-server-browser-service">docs</a></li>
+<li class="none"><span class="negcaret">Dedicated Admin Connection (DAC)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/diagnostic-connection-for-database-administrators">docs</a></li>
+<li class="none"><span class="negcaret">Admin lock-out</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/connect-to-sql-server-when-system-administrators-are-locked-out">docs</a></li>
+</ul>
+</li>
+</ul>
+<ul id="myUL">
+<li class="none"><span class="poscaret">Security</span>
+<ul class="nested">
+<li class="none"><span class="negcaret">Advanced Threat Protection</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/database/threat-detection-overview">docs</a></li>
+<li class="know"><span class="poscaret">Auditing</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-database-engine">docs</a>
+<ul class="nested">
+<li class="none"><span class="negcaret">Azure SQL Database</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/database/auditing-overview">docs</a></li>
+<li class="none"><span class="negcaret">Azure SQL Managed Instance</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/managed-instance/auditing-configure">docs</a></li>
+<li class="none"><span class="negcaret">SQL Server</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-database-engine">docs</a></li>
+</ul>
+</li>
+<li class="know"><span class="poscaret">Authentication and access</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions">docs</a>
+<ul class="nested">
+<li class="none"><span class="negcaret">Azure AD Authentication</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/database/authentication-aad-overview">docs</a></li>
+<li class="none"><span class="negcaret">Windows Authentication for Azure AD</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/managed-instance/winauth-azuread-overview">docs</a></li>
+</ul>
+</li>
+<li class="none"><span class="negcaret">Automated patching on SQL VMs</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/virtual-machines/windows/automated-patching">docs</a></li>
+<li class="none"><span class="negcaret">Azure DNS Aliases</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/database/dns-alias-overview">docs</a></li>
+<li class="none"><span class="negcaret">Azure Policy</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/database/security-controls-policy">docs</a></li>
+<li class="none"><span class="negcaret">Azure SQL Database Ledger</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/database/ledger-landing">docs</a></li>
+<li class="none"><span class="negcaret">Azure SQL Database server roles</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/database/security-server-roles">docs</a></li>
+<li class="none"><span class="negcaret">Azure SQL Database database roles</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/security/authentication-access/database-level-roles">docs</a></li>
+<li class="none"><span class="poscaret">Configuration</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/database-engine-instances-sql-server">docs</a>
+<ul class="nested">
+<li class="none"><span class="negcaret">TRUSTWORTHY Database Property</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/security/trustworthy-database-property">docs</a></li>
+</ul>
+</li>
+<li class="none"><span class="negcaret">Credentials</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/security/authentication-access/credentials-database-engine">docs</a></li>
+<li class="know"><span class="negcaret">Data Discovery and Classification</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/security/sql-data-discovery-and-classification">docs</a></li>
+<li class="know"><span class="negcaret">Dynamic Data Masking</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/security/dynamic-data-masking">docs</a></li>
+<li class="none"><span class="poscaret">Encryption</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/sql-server-encryption">docs</a>
+<ul class="nested">
+<li class="none"><span class="negcaret">Always Encrypted</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/database/always-encrypted-landing">docs</a></li>
+<li class="none"><span class="negcaret">Always Encrypted with secure enclaves</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/always-encrypted-enclaves">docs</a></li>
+<li class="none"><span class="negcaret">Azure Key Vault Integration</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/virtual-machines/windows/azure-key-vault-integration-configure">docs</a></li>
+<li class="none"><span class="negcaret">Certificates & Keys</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/security/sql-server-certificates-and-asymmetric-keys">docs</a></li>
+<li class="none"><span class="negcaret">Encryption Algorithm</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/choose-an-encryption-algorithm">docs</a></li>
+<li class="none"><span class="negcaret">Encryption hierarchy</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/encryption-hierarchy">docs</a></li>
+<li class="none"><span class="negcaret">Encryption Keys</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/sql-server-and-database-encryption-keys-database-engine">docs</a></li>
+<li class="know"><span class="negcaret">Transparent Data Encryption (TDE)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/transparent-data-encryption">docs</a></li>
+</ul>
+</li>
+<li class="none"><span class="negcaret">Extended Protection connections</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/connect-to-the-database-engine-using-extended-protection">docs</a></li>
+<li class="none"><span class="negcaret">Microsoft Defender for SQL</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/database/azure-defender-for-sql">docs</a></li>
+<li class="none"><span class="negcaret">Password policy</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/security/password-policy">docs</a></li>
+<li class="know"><span class="negcaret">Permissions</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/security/permissions-database-engine">docs</a></li>
+<li class="know"><span class="negcaret">Row-level security</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/security/row-level-security">docs</a></li>
+<li class="none"><span class="negcaret">Security baselines (Azure)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/security/benchmark/azure/baselines/sql-database-security-baseline">docs</a></li>
+<li class="none"><span class="negcaret">Secure public endpoints (MI)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/managed-instance/public-endpoint-overview">docs</a></li>
+<li class="none"><span class="negcaret">Server trust groups (MI)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/managed-instance/server-trust-group-overview">docs</a></li>
+<li class="none"><span class="negcaret">SQL injection</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/security/sql-injection">docs</a></li>
+<li class="none"><span class="negcaret">SQL Vulnerability Assessment (VA)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/security/sql-vulnerability-assessment">docs</a></li>
+<li class="none"><span class="negcaret">Surface area configuration</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/security/surface-area-configuration">docs</a></li>
+</ul>
+</li>
+</ul>
+<ul id="myUL">
+<li class="none"><span class="poscaret">HADR</span>
+<ul class="nested">
+<li class="none"><span class="negcaret">Azure Backup</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/backup/backup-azure-sql-database">docs</a></li>
+<li class="none"><span class="negcaret">Azure Site Recovery</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/site-recovery/">docs</a></li>
+<li class="know"><span class="poscaret">Backup and restore</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases">docs</a>
+<ul class="nested">
+<li class="none"><span class="negcaret">Azure SQL automated backups</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/database/automated-backups-overview">docs</a></li>
+<li class="none"><span class="negcaret">Hyperscale backups</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/database/automated-backups-overview?view=azuresql&tabs=single-database#hyperscale-backups-and-storage-redundancy">docs</a></li>
+<li class="know"><span class="negcaret">Manual backups</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/backup-restore/backup-overview-sql-server">docs</a></li>
+<li class="know"><span class="negcaret">Manual restore</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/backup-restore/restore-and-recovery-overview-sql-server">docs</a></li>
+<li class="none"><span class="negcaret">File-snapshot backups</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/backup-restore/file-snapshot-backups-for-database-files-in-azure">docs</a></li>
+<li class="none"><span class="negcaret">SQL Server Managed Backup to Microsoft Azure</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/backup-restore/sql-server-managed-backup-to-microsoft-azure">docs</a></li>
+<li class="none"><span class="negcaret">Automated Backup v2 for Azure VMs</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/virtual-machines/windows/automated-backup">docs</a></li>
+</ul>
+</li>
+<li class="none"><span class="poscaret">Azure SQL business continuity</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview">docs</a>
+<ul class="nested">
+<li class="none"><span class="negcaret">Azure SQL database active geo-replication</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/database/active-geo-replication-overview">docs</a></li>
+<li class="none"><span class="poscaret">Auto-failover groups</span>
+<ul class="nested">
+<li class="none"><span class="negcaret">Azure SQL database</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/database/auto-failover-group-sql-db">docs</a></li>
+<li class="none"><span class="negcaret">Azure SQL Managed Instance</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/managed-instance/auto-failover-group-sql-mi">docs</a></li>
+</ul>
+</li>
+<li class="none"><span class="poscaret">Azure SQL Server on Azure VMs</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview">docs</a>
+<ul class="nested">
+<li class="none"><span class="negcaret">Availability Sets</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/virtual-machines/availability-set-overview">docs</a></li>
+<li class="none"><span class="negcaret">Availability Zones</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/availability-zones/az-overview">docs</a></li>
+</ul>
+</li>
+<li class="none"><span class="negcaret">High availability</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/database/high-availability-sla">docs</a></li>
+<li class="none"><span class="negcaret">Outage recovery</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/database/disaster-recovery-guidance">docs</a></li>
+<li class="none"><span class="negcaret">Recovery drills</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/database/disaster-recovery-drills">docs</a></li>
+</ul>
+</li>
+<li class="none"><span class="poscaret">SQL Server business continuity</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/database-engine/sql-server-business-continuity-dr">docs</a>
+<ul class="nested">
+<li class="none"><span class="negcaret">Windows Server Failover Clusters</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/virtual-machines/windows/hadr-windows-server-failover-cluster-overview">docs</a></li>
+<li class="know"><span class="negcaret">Always On Availability Groups</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server">docs</a></li>
+<li class="none"><span class="negcaret">Always On Failover Cluster Instance</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server">docs</a></li>
+<li class="none"><span class="negcaret">Managed Instance Link</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/managed-instance/managed-instance-link-feature-overview">docs</a></li>
+<li class="skip"><span class="negcaret">Database Mirroring</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/database-engine/database-mirroring/database-mirroring-sql-server">docs</a></li>
+<li class="know"><span class="negcaret">Log shipping</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/database-engine/log-shipping/about-log-shipping-sql-server">docs</a></li>
+</ul>
+</li>
+<li class="none"><span class="negcaret">Azure Service Health Alerts</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/service-health/alerts-activity-log-service-notifications-portal">docs</a></li>
+</ul>
+</li>
+</ul>
+<ul id="myUL">
+<li class="none"><span class="poscaret">Internals</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/sql-server-guides">docs</a>
+<ul class="nested">
+<li class="none"><span class="negcaret">Query Processing Architecture</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/query-processing-architecture-guide">docs</a></li>
+<li class="none"><span class="negcaret">Thread & Task Architecture</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/thread-and-task-architecture-guide">docs</a></li>
+<li class="none"><span class="negcaret">Memory Management Architecture</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/memory-management-architecture-guide">docs</a></li>
+<li class="none"><span class="negcaret">Transaction Locking & Row Versioning Guide</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/sql-server-transaction-locking-and-row-versioning-guide">docs</a></li>
+<li class="none"><span class="negcaret">Transaction Log Architecture & Management Guide</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide">docs</a></li>
+<li class="none"><span class="negcaret">Index Architecture & Design</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/sql-server-index-design-guide">docs</a></li>
+<li class="none"><span class="negcaret">Ghost record cleanup process</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/ghost-record-cleanup-process-guide">docs</a></li>
+</ul>
+</li>
+</ul>
+<ul id="myUL">
+<li class="none"><span class="poscaret">Development</span>
+<ul class="nested">
+<li class="none"><span class="poscaret">Basic</span>
+<ul class="nested">
+<li class="know"><span class="poscaret">Transact-SQL</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/t-sql/language-reference">docs</a>
+<ul class="nested">
+<li class="know"><span class="negcaret">Data types</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql">docs</a></li>
+<li class="know"><span class="negcaret">Language Elements</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/t-sql/language-elements/language-elements-transact-sql">docs</a></li>
+<li class="know"><span class="negcaret">Queries</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/t-sql/queries/queries">docs</a></li>
+<li class="know"><span class="negcaret">Statements</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/t-sql/statements/statements">docs</a></li>
+</ul>
+</li>
+<li class="know"><span class="negcaret">Collation</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/collations/collation-and-unicode-support">docs</a></li>
+<li class="know"><span class="negcaret">Cursors</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/cursors">docs</a></li>
+<li class="know"><span class="negcaret">Databases</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/databases/databases">docs</a></li>
+<li class="none"><span class="negcaret">Errors</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/errors-events/database-engine-events-and-errors">docs</a></li>
+<li class="none"><span class="negcaret">Error severities</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/errors-events/database-engine-error-severities">docs</a></li>
+<li class="know"><span class="negcaret">Functions</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/t-sql/functions/functions">docs</a></li>
+<li class="know"><span class="negcaret">Indexes</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/indexes/indexes">docs</a></li>
+<li class="know"><span class="negcaret">Joins</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/performance/joins">docs</a></li>
+<li class="know"><span class="negcaret">Scripting</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/ssms/scripting/database-engine-scripting">docs</a></li>
+<li class="know"><span class="negcaret">Stored procedures</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/stored-procedures/stored-procedures-database-engine">docs</a></li>
+<li class="know"><span class="negcaret">Subqueries</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/performance/subqueries">docs</a></li>
+<li class="know"><span class="negcaret">Synonyms</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/synonyms/synonyms-database-engine">docs</a></li>
+<li class="know"><span class="negcaret">Tables</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/tables/tables">docs</a></li>
+<li class="know"><span class="poscaret">Triggers</span>
+<ul class="nested">
+<li class="know"><span class="negcaret">Logon triggers</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/triggers/logon-triggers">docs</a></li>
+<li class="know"><span class="negcaret">DDL triggers</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/triggers/ddl-triggers">docs</a></li>
+<li class="know"><span class="negcaret">DML triggers</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/triggers/dml-triggers">docs</a></li>
+</ul>
+</li>
+<li class="know"><span class="negcaret">User-defined functions</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/user-defined-functions/user-defined-functions">docs</a></li>
+<li class="know"><span class="negcaret">Views</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/views/views">docs</a></li>
+</ul>
+</li>
+<li class="none"><span class="poscaret">Advanced</span>
+<ul class="nested">
+<li class="know"><span class="negcaret">Change Data Capture (CDC)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/track-changes/about-change-data-capture-sql-server">docs</a></li>
+<li class="know"><span class="negcaret">Change tracking</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/track-changes/about-change-tracking-sql-server">docs</a></li>
+<li class="none"><span class="negcaret">Common Language Runtime (CLR)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/clr-integration/common-language-runtime-integration-overview">docs</a></li>
+<li class="none"><span class="negcaret">Data Quality Services (DQS)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/data-quality-services/data-quality-services">docs</a></li>
+<li class="none"><span class="negcaret">Distributed Transactions</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/t-sql/language-elements/begin-distributed-transaction-transact-sql">docs</a></li>
+<li class="none"><span class="negcaret">Elastic Database Transactions</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/database/elastic-transactions-overview">docs</a></li>
+<li class="none"><span class="negcaret">Event notification</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/service-broker/event-notifications">docs</a></li>
+<li class="none"><span class="negcaret">Extended Stored Procedures</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/extended-stored-procedures-programming/database-engine-extended-stored-procedures-programming">docs</a></li>
+<li class="none"><span class="negcaret">Filestream</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/blob/filestream-sql-server">docs</a></li>
+<li class="know"><span class="negcaret">Filetable</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/blob/filetables-sql-server">docs</a></li>
+<li class="know"><span class="negcaret">Full-text search</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/linked-servers/linked-servers-database-engine">docs</a></li>
+<li class="know"><span class="negcaret">Hierarchical data</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/hierarchical-data-sql-server">docs</a></li>
+<li class="none"><span class="negcaret">JSON</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/json/json-data-sql-server">docs</a></li>
+<li class="none"><span class="negcaret">Language Extensions (Java, C#, Python, and R)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/language-extensions/language-extensions-overview">docs</a></li>
+<li class="none"><span class="negcaret">Polybase</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/polybase/polybase-guide">docs</a></li>
+<li class="none"><span class="negcaret">Remote Blob Store (RBS)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/blob/remote-blob-store-rbs-sql-server">docs</a></li>
+<li class="know"><span class="negcaret">Sequence numbers</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/sequence-numbers/sequence-numbers">docs</a></li>
+<li class="none"><span class="negcaret">Service Broker</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/sql-server-service-broker">docs</a></li>
+<li class="none"><span class="negcaret">Spatial data</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/spatial/spatial-data-sql-server">docs</a></li>
+<li class="none"><span class="negcaret">SQL Graph</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/graphs/sql-graph-overview">docs</a></li>
+<li class="none"><span class="negcaret">Temporal tables (Azure)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/temporal-tables">docs</a></li>
+<li class="none"><span class="negcaret">Temporal tables (SQL Server)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/tables/temporal-tables">docs</a></li>
+<li class="know"><span class="negcaret">XML data</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/xml/xml-data-sql-server">docs</a></li>
+<li class="none"><span class="negcaret">xQuery</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/xquery/xquery-language-reference-sql-server">docs</a></li>
+</ul>
+</li>
+<li class="none"><span class="poscaret">Move Data</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/import-export/overview-import-export">docs</a>
+<ul class="nested">
+<li class="none"><span class="negcaret">Azure BACPAC Import</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/database/database-import">docs</a></li>
+<li class="none"><span class="negcaret">Azure BACPAC Export</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/database/database-export">docs</a></li>
+<li class="none"><span class="negcaret">Azure Data Factory</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/data-factory/introduction">docs</a></li>
+<li class="none"><span class="negcaret">Azure Data Sync</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/database/sql-data-sync-data-sql-server-sql-database">docs</a></li>
+<li class="none"><span class="poscaret">Bulk data</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/import-export/bulk-import-and-export-of-data-sql-server">docs</a>
+<ul class="nested">
+<li class="none"><span class="negcaret">Azure blob storage</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage">docs</a></li>
+<li class="know"><span class="negcaret">bcp</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/import-export/import-and-export-bulk-data-by-using-the-bcp-utility-sql-server">docs</a></li>
+<li class="know"><span class="negcaret">BULK INSERT/OPENROWSET(BULK...)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/import-export/import-bulk-data-by-using-bulk-insert-or-openrowset-bulk-sql-server">docs</a></li>
+<li class="none"><span class="negcaret">Excel</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/import-export/import-data-from-excel-to-sql">docs</a></li>
+<li class="know"><span class="negcaret">Import Flat File Wizard</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/import-export/import-flat-file-wizard">docs</a></li>
+<li class="none"><span class="negcaret">XML documents</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/import-export/examples-of-bulk-import-and-export-of-xml-documents-sql-server">docs</a></li>
+</ul>
+</li>
+<li class="know"><span class="negcaret">Data tier applications DACPAC/BACPAC</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/data-tier-applications/data-tier-applications">docs</a></li>
+<li class="know"><span class="negcaret">Import and Export Wizard</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/import-export/overview-import-export">docs</a></li>
+<li class="know"><span class="negcaret">Replication (SQL Server)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/replication/sql-server-replication">docs</a></li>
+<li class="know"><span class="negcaret">Replication (Managed Instance)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/managed-instance/replication-transactional-overview">docs</a></li>
+<li class="know"><span class="negcaret">SQL Server Integration Services (SSIS)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/integration-services/sql-server-integration-services">docs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul id="myUL">
+<li class="none"><span class="poscaret">Performance</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/performance/isolate-performance-problems">docs</a>
+<ul class="nested">
+<li class="none"><span class="poscaret">Monitoring</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/performance/performance-monitoring-and-tuning-tools">docs</a>
+<ul class="nested">
+<li class="none"><span class="negcaret">Activity Monitor (SSMS)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/performance-monitor/activity-monitor">docs</a></li>
+<li class="none"><span class="negcaret">Azure Monitor</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/database/monitoring-sql-database-azure-monitor">docs</a></li>
+<li class="none"><span class="negcaret">Data Collector</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/data-collection/data-collection">docs</a></li>
+<li class="none"><span class="negcaret">Diagnosing latch contention</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/diagnose-resolve-latch-contention">docs</a></li>
+<li class="none"><span class="negcaret">Diagnosing spinlock contention</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/diagnose-resolve-spinlock-contention">docs</a></li>
+<li class="none"><span class="poscaret">Dynamic Management Views</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/execution-related-dynamic-management-views-and-functions-transact-sql">docs</a>
+<ul class="nested">
+<li class="none"><span class="negcaret">Wait stats</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql">docs</a></li>
+</ul>
+</li>
+<li class="none"><span class="negcaret">Error Logs</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/performance/view-the-sql-server-error-log-sql-server-management-studio">docs</a></li>
+<li class="none"><span class="negcaret">Event Logs</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/performance/view-the-windows-application-log-windows-10">docs</a></li>
+<li class="know"><span class="negcaret">Extended events</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/extended-events/extended-events">docs</a></li>
+<li class="none"><span class="negcaret">Performance baselines</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/performance/establish-a-performance-baseline">docs</a></li>
+<li class="none"><span class="negcaret">Performance Dashboard (SSMS)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/performance/performance-dashboard">docs</a></li>
+<li class="none"><span class="negcaret">Performance Monitor (perfmon)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/performance-monitor/monitor-resource-usage-system-monitor">docs</a></li>
+<li class="know"><span class="negcaret">Query Store</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store">docs</a></li>
+<li class="skip"><span class="negcaret">SQL Server Profiler</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/tools/sql-server-profiler/sql-server-profiler">docs</a></li>
+<li class="know"><span class="negcaret">SQL Server Replication Monitor</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/replication/monitor/monitoring-replication">docs</a></li>
+<li class="skip"><span class="negcaret">SQL Trace</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/sql-trace/sql-trace">docs</a></li>
+</ul>
+</li>
+<li class="none"><span class="poscaret">Remediation</span>
+<ul class="nested">
+<li class="none"><span class="negcaret">Accelerated database recovery (ADR)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/accelerated-database-recovery-concepts">docs</a></li>
+<li class="none"><span class="negcaret">Automatic Tuning</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/automatic-tuning/automatic-tuning">docs</a></li>
+<li class="none"><span class="negcaret">Buffer Pool Extension</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/buffer-pool-extension">docs</a></li>
+<li class="none"><span class="negcaret">Columnstore indexes</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/indexes/columnstore-indexes-overview">docs</a></li>
+<li class="none"><span class="negcaret">Database Tuning Advisor (DTA)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/tools/dta/dta-utility">docs</a></li>
+<li class="none"><span class="negcaret">Database Engine Tuning Advisor</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/performance/database-engine-tuning-advisor">docs</a></li>
+<li class="none"><span class="negcaret">DBCC CLONEDATABASE</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/t-sql/database-console-commands/dbcc-clonedatabase-transact-sql">docs</a></li>
+<li class="none"><span class="negcaret">Elastic database (sharding)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/database/elastic-scale-introduction">docs</a></li>
+<li class="know"><span class="negcaret">Execution plans</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/performance/execution-plans">docs</a></li>
+<li class="none"><span class="negcaret">In-Memory OLTP (Azure)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/in-memory-oltp-overview">docs</a></li>
+<li class="none"><span class="negcaret">In-Memory OLTP (SQL Server)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/in-memory-oltp/overview-and-usage-scenarios">docs</a></li>
+<li class="know"><span class="negcaret">Indexes</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/indexes/indexes">docs</a></li>
+<li class="none"><span class="negcaret">Live Query Statistics (LQS)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/performance/live-query-statistics">docs</a></li>
+<li class="know"><span class="negcaret">Partitions</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/partitions/partitioned-tables-and-indexes">docs</a></li>
+<li class="none"><span class="negcaret">Plan guides</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/performance/plan-guides">docs</a></li>
+<li class="know"><span class="negcaret">Query Store</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store">docs</a></li>
+<li class="none"><span class="negcaret">Query Tuning Assistant (QTA)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/performance/upgrade-dbcompat-using-qta">docs</a></li>
+<li class="none"><span class="negcaret">Read Scale-Out</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/database/read-scale-out">docs</a></li>
+<li class="none"><span class="negcaret">Resource Governor</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/resource-governor/resource-governor">docs</a></li>
+<li class="none"><span class="negcaret">Scale up/down</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/database/scale-resources">docs</a></li>
+<li class="know"><span class="negcaret">Statistics</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/statistics/statistics">docs</a></li>
+<li class="none"><span class="negcaret">Storage Spaces (RAID)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/windows-server/storage/storage-spaces/overview">docs</a></li>
+<li class="none"><span class="negcaret">Stretch database</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/sql-server/stretch-database/stretch-database">docs</a></li>
+<li class="none"><span class="negcaret">Trace Flags</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql">docs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul id="myUL">
+<li class="none"><span class="poscaret">Administration</span>
+<ul class="nested">
+<li class="none"><span class="negcaret">Azure Billing</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/database/service-tiers-vcore">docs</a></li>
+<li class="none"><span class="negcaret">Azure Service Tiers</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/database/service-tier-general-purpose">docs</a></li>
+<li class="none"><span class="negcaret">Azure SQL VM Best practices</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices-checklist">docs</a></li>
+<li class="none"><span class="negcaret">Azure SQL VM on a Dedicated Host</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/virtual-machines/windows/dedicated-host">docs</a></li>
+<li class="skip"><span class="negcaret">Big Data Clusters</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/big-data-cluster/">docs</a></li>
+<li class="none"><span class="negcaret">Central Management Servers</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/administer-multiple-servers-using-central-management-servers">docs</a></li>
+<li class="none"><span class="negcaret">Checkpoints</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/logs/database-checkpoints-sql-server">docs</a></li>
+<li class="none"><span class="negcaret">Configuration</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/database-engine-instances-sql-server">docs</a></li>
+<li class="know"><span class="negcaret">Data compression</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/data-compression/data-compression">docs</a></li>
+<li class="know"><span class="negcaret">Database Mail</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/database-mail/database-mail">docs</a></li>
+<li class="know"><span class="negcaret">DBCC</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/t-sql/database-console-commands/dbcc-transact-sql">docs</a></li>
+<li class="none"><span class="negcaret">Elastic Job agent</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/database/job-automation-overview">docs</a></li>
+<li class="none"><span class="negcaret">Error Logs</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/performance/view-the-sql-server-error-log-sql-server-management-studio">docs</a></li>
+<li class="none"><span class="negcaret">Event Logs</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/performance/view-the-windows-application-log-windows-10">docs</a></li>
+<li class="know"><span class="negcaret">Linked servers</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/linked-servers/linked-servers-database-engine">docs</a></li>
+<li class="none"><span class="negcaret">Log file viewer</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/logs/log-file-viewer">docs</a></li>
+<li class="none"><span class="negcaret">Log streaming export</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure">docs</a></li>
+<li class="know"><span class="negcaret">Maintenance Plans</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/maintenance-plans/maintenance-plans">docs</a></li>
+<li class="none"><span class="negcaret">Maintenance windows</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/database/maintenance-window-faq">docs</a></li>
+<li class="none"><span class="negcaret">Move Azure resources</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/database/move-resources-across-regions">docs</a></li>
+<li class="none"><span class="negcaret">Policy-based management</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/policy-based-management/administer-servers-by-using-policy-based-management">docs</a></li>
+<li class="none"><span class="negcaret">Resource limits</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/database/resource-limits-logical-server">docs</a></li>
+<li class="none"><span class="negcaret">Service Broker</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/sql-server-service-broker">docs</a></li>
+<li class="none"><span class="negcaret">SQL Assessment API (Azure)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/virtual-machines/windows/sql-assessment-for-sql-vm">docs</a></li>
+<li class="none"><span class="negcaret">SQL Assessment API (SQL Server)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/tools/sql-assessment-api/sql-assessment-api-overview">docs</a></li>
+<li class="know"><span class="negcaret">SQL Server Agent</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/ssms/agent/sql-server-agent">docs</a></li>
+<li class="know"><span class="negcaret">SQL Server Configuration Manager</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/sql-server-configuration-manager">docs</a></li>
+<li class="none"><span class="negcaret">SQL Server Utility</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/manage/sql-server-utility-features-and-tasks">docs</a></li>
+<li class="none"><span class="negcaret">SQL Server VMs storage configuration</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/virtual-machines/windows/storage-configuration">docs</a></li>
+<li class="none"><span class="negcaret">System databases</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/databases/system-databases">docs</a></li>
+<li class="none"><span class="negcaret">Trace Flags</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql">docs</a></li>
+<li class="know"><span class="negcaret">Transaction Log Management</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/logs/the-transaction-log-sql-server">docs</a></li>
+</ul>
+</li>
+</ul>
+<ul id="myUL">
+<li class="none"><span class="poscaret">Tools</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/tools/overview-sql-tools">docs</a>
+<ul class="nested">
+<li class="none"><span class="poscaret">Command-line</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/tools/command-prompt-utility-reference-database-engine">docs</a>
+<ul class="nested">
+<li class="know"><span class="negcaret">azcopy</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10">docs</a></li>
+<li class="none"><span class="negcaret">Azure CLI</span> <a target="_blank" href="https://docs.microsoft.com/en-us/cli/azure/">docs</a></li>
+<li class="know"><span class="negcaret">Azure PowerShell</span> <a target="_blank" href="https://docs.microsoft.com/en-us/powershell/azure">docs</a></li>
+<li class="know"><span class="negcaret">bcp (Bulk Copy Program)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/tools/bcp-utility">docs</a></li>
+<li class="none"><span class="negcaret">dreplay (Distributed Replay)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/tools/distributed-replay/sql-server-distributed-replay">docs</a></li>
+<li class="none"><span class="negcaret">dta (Database Tuning Advisor)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/tools/dta/dta-utility">docs</a></li>
+<li class="none"><span class="negcaret">mssql-cli</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/tools/mssql-cli">docs</a></li>
+<li class="none"><span class="negcaret">mssql-conf</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-configure-mssql-conf">docs</a></li>
+<li class="none"><span class="negcaret">mssql-scripter</span> <a target="_blank" href="https://github.com/microsoft/mssql-scripter/blob/dev/README.rst">docs</a></li>
+<li class="none"><span class="negcaret">osql</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/tools/osql-utility">docs</a></li>
+<li class="skip"><span class="negcaret">profiler (SQL Server Profiler)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/tools/profiler-utility">docs</a></li>
+<li class="none"><span class="negcaret">sqlagent90 (SQL Server Agent)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/tools/sqlagent90-application">docs</a></li>
+<li class="know"><span class="negcaret">sqlcmd</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/tools/sqlcmd-utility">docs</a></li>
+<li class="none"><span class="negcaret">sqldiag</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/tools/sqldiag-utility">docs</a></li>
+<li class="none"><span class="negcaret">sqllocaldb</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/tools/sqllocaldb-utility">docs</a></li>
+<li class="none"><span class="negcaret">sqllogship</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/tools/sqllogship-application">docs</a></li>
+<li class="none"><span class="negcaret">sqlmaint</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/tools/sqlmaint-utility">docs</a></li>
+<li class="none"><span class="negcaret">sqlpackage</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/tools/sqlpackage/sqlpackage">docs</a></li>
+<li class="skip"><span class="negcaret">sqlps (utility)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/tools/sqlps-utility">docs</a></li>
+<li class="none"><span class="negcaret">sqlps (PowerShell)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/powershell/sql-server-powershell">docs</a></li>
+<li class="none"><span class="negcaret">sqlservr</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/tools/sqlservr-application">docs</a></li>
+<li class="none"><span class="negcaret">ssbdiagnose (SSB Diagnose)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/tools/ssbdiagnose/ssbdiagnose-utility-service-broker">docs</a></li>
+<li class="none"><span class="negcaret">ssms (SQL Server Management Studio)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/ssms/ssms-utility">docs</a></li>
+<li class="none"><span class="negcaret">tablediff</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/tools/tablediff-utility">docs</a></li>
+</ul>
+</li>
+<li class="know"><span class="negcaret">Azure Data Studio</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/azure-data-studio/">docs</a></li>
+<li class="know"><span class="negcaret">Azure Portal</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-portal/">docs</a></li>
+<li class="know"><span class="negcaret">Azure Portal Desktop</span> <a target="_blank" href="https://portal.azure.com/App/Download?acceptLicense=true">docs</a></li>
+<li class="know"><span class="negcaret">Azure Portal Mobile</span> <a target="_blank" href="https://azure.microsoft.com/en-us/get-started/azure-portal/mobile-app/">docs</a></li>
+<li class="none"><span class="negcaret">Database Engine Tuning Advisor (DTA)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/performance/database-engine-tuning-advisor">docs</a></li>
+<li class="none"><span class="negcaret">SQL Server Backup to Microsoft Azure Tool</span> <a target="_blank" href="https://www.microsoft.com/en-us/download/details.aspx?id=40740">docs</a></li>
+<li class="know"><span class="negcaret">SQL Server Configuration Manager</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/tools/configuration-manager/sql-server-services">docs</a></li>
+<li class="know"><span class="negcaret">SQL Server Data Tools (SSDT)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/ssdt/sql-server-data-tools">docs</a></li>
+<li class="none"><span class="negcaret">SQL Server Extended Features</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/tools/download-sql-feature-packs">docs</a></li>
+<li class="none"><span class="negcaret">SQL Server Management Objects (SMO)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/server-management-objects-smo/overview-smo">docs</a></li>
+<li class="know"><span class="negcaret">SQL Server Management Studio (SSMS)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/ssms/sql-server-management-studio-ssms">docs</a></li>
+<li class="skip"><span class="negcaret">SQL Server Profiler</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/tools/sql-server-profiler/sql-server-profiler">docs</a></li>
+<li class="know"><span class="negcaret">SQL Server Replication Monitor</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/replication/monitor/monitoring-replication">docs</a></li>
+<li class="skip"><span class="negcaret">SQL Trace</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/sql-trace/sql-trace">docs</a></li>
+<li class="skip"><span class="negcaret">SQLXML</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/sqlxml/sqlxml-4-0-programming-concepts">docs</a></li>
+<li class="know"><span class="poscaret">Visual Studio Code</span> <a target="_blank" href="https://code.visualstudio.com/">docs</a>
+<ul class="nested">
+<li class="none"><span class="negcaret">mssql extension</span> <a target="_blank" href="https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql">docs</a></li>
+</ul>
+</li>
+<li class="know"><span class="negcaret">Windows Management Instrumentation (WMI)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/wmi-provider-configuration/wmi-provider-for-configuration-management">docs</a></li>
+</ul>
+</li>
+</ul>
+<ul id="myUL">
+<li class="none"><span class="poscaret">Reference</span>
+<ul class="nested">
+<li class="none"><span class="negcaret">Archived Content (SQL 2005-2012)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/previous-versions/sql/">docs</a></li>
+<li class="none"><span class="negcaret">Azure SQL Database REST API</span> <a target="_blank" href="https://docs.microsoft.com/en-us/rest/api/sql/">docs</a></li>
+<li class="none"><span class="negcaret">Azure SQL glossary of terms</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/glossary-terms">docs</a></li>
+<li class="none"><span class="negcaret">Database Samples</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/samples/sql-samples-where-are">docs</a></li>
+<li class="none"><span class="negcaret">Event classes</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/event-classes/sql-server-event-class-reference">docs</a></li>
+<li class="none"><span class="negcaret">Public data sets</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/public-data-sets?view=azuresql">docs</a></li>
+<li class="none"><span class="negcaret">SQL Server PowerShell</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/powershell/sql-server-powershell">docs</a></li>
+<li class="none"><span class="negcaret">Transact-SQL (T-SQL) language reference</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/t-sql/language-reference">docs</a></li>
+<li class="none"><span class="negcaret">T-SQL differences</span> <a target="_blank" href="https://docs.microsoft.com/en-us/azure/azure-sql/managed-instance/transact-sql-tsql-differences-sql-server">docs</a></li>
+<li class="none"><span class="negcaret">xQuery</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/xquery/xquery-language-reference-sql-server">docs</a></li>
+<li class="none"><span class="poscaret">System objects</span>
+<ul class="nested">
+<li class="none"><span class="negcaret">System catalog views</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/system-catalog-views/catalog-views-transact-sql">docs</a></li>
+<li class="none"><span class="negcaret">System compatability views</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/system-compatibility-views/system-compatibility-views-transact-sql">docs</a></li>
+<li class="none"><span class="negcaret">System dynamic management views</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views">docs</a></li>
+<li class="none"><span class="negcaret">System functions</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/system-functions/system-functions-category-transact-sql">docs</a></li>
+<li class="none"><span class="negcaret">System information schema and views</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/system-information-schema-views/system-information-schema-views-transact-sql">docs</a></li>
+<li class="none"><span class="negcaret">System stored procedures</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/system-stored-procedures/system-stored-procedures-transact-sql">docs</a></li>
+<li class="none"><span class="negcaret">System tables</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/relational-databases/system-tables/system-tables-transact-sql">docs</a></li>
+<li class="none"><span class="negcaret">System views (PDW)</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/analytics-platform-system/tsql-system-views">docs</a></li>
+<li class="none"><span class="negcaret">Transact-SQL Reference</span> <a target="_blank" href="https://docs.microsoft.com/en-us/sql/t-sql/language-reference">docs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<script>
+var toggler = document.getElementsByClassName("poscaret");
+var i;
+
+for (i = 0; i < toggler.length; i++) {
+	toggler[i].addEventListener("click", function () {
+		this.parentElement.querySelector(".nested").classList.toggle("active");
+		this.classList.toggle("poscaret-down");
+	});
+}
+
+function expandAll() {
+	for (i = 0; i < toggler.length; i++) {
+		toggler[i].parentElement.querySelector(".nested").classList.add("active");
+		toggler[i].classList.add("poscaret-down");
+	}
+};
+
+function collapseAll() {
+	for (i = 0; i < toggler.length; i++) {
+		toggler[i].parentElement.querySelector(".nested").classList.remove("active");
+		toggler[i].classList.remove("poscaret-down");
+	}
+};
+
+function invertAll() {
+	for (i = 0; i < toggler.length; i++) {
+		toggler[i].parentElement.querySelector(".nested").classList.toggle("active");
+		toggler[i].classList.toggle("poscaret-down");
+	}
+};
+</script>
+</body>
+</html>
