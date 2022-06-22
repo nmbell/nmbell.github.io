@@ -1,7 +1,7 @@
-[DockerCheatSheet](DockerCheatSheet.html)
+[Docker cheat cheet](DockerCheatSheet.html)
 
 
-[RegExCheatSheet](RegExCheatSheet.html)
+[RegEx cheat cheet](RegExCheatSheet.html)
 
 
-[SqlServerKnowledgeMap](SqlServerKnowledgeMap.html)
+[SQL Server knowledge map](SqlServerKnowledgeMap.html)
