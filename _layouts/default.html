@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: " en-US" }}">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- <meta name="theme-color" content="#157878"> -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<link rel="stylesheet" href="/assets/css/style.css">
+	<link rel="icon" href="https://raw.githubusercontent.com/nmbell/nmbell.github.io/main/images/favicon.ico">
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<meta name="msapplication-TileColor" content="#da532c">
+	<meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+
+	<!-- <a id="skip-to-content" href="#content">Skip to the content.</a> -->
+
+	<header class="home-header" role="banner">
+		<div class="homeheader">
+			<img class="homeheaderlogo" alt="nmbell logo" src="https://raw.githubusercontent.com/nmbell/nmbell.github.io/main/images/favicon-200x200.png">
+			<span class="homeheadertitle"><h1 class="project-name">{{ page.title | default: site.title | default: site.github.repository_name }}</h1></span>
+		</div>
+		<h2 class="project-tagline">{{ page.description | default: site.description | default: site.github.project_tagline }}</h2>
+	</header>
+
+	<main id="content" class="main-content" role="main">
+		{{ content }}
+	</main>
+
+</body>
+
+</html>
