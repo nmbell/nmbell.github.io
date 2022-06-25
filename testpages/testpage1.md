@@ -1,3 +1,7 @@
+---
+title: This is the test page title
+---
+
 This is a test page:
 
 - [LinkedIn](https://www.linkedin.com/)
@@ -13,4 +17,3 @@ This is a test page:
 - [Degreed](https://degreed.com/)
 
 ---
-
