@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+	<meta charset="UTF-8">
+	<title>About Me</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="robots" content="noindex,nofollow">
+	<meta name="theme-color" content="#00324b">
+	<meta name="msapplication-TileColor" content="#00324b">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<link rel="stylesheet" href="/assets/css/style.css">
+	<link rel="icon" href="/images/favicon.ico" sizes="any">
+	<link rel="icon" type="image/svg+xml" href="/images/icon.svg">
+	<link rel="apple-touch-icon" sizes="180x180" href="/images/icon-180-apple-touch.png">
+	<link rel="manifest" href="/images/site.webmanifest">
+
+	<script>
+	function insertMailTo() {
+		var   n = 'enoemos'.split('').reverse().join('')
+			, s = '@'
+			, k = 'moc.niamodym'.split('').reverse().join('')
+			, e = n + s + k
+			, l = '<a href=mailto:{{spam@uce.gov}}>{{spam@uce.gov}}</a>'.replace(/{{.+?(}})/g, e);
+		document.write(l);
+	};
+	</script>
+</head>
+
+<body>
+
+	<a id="skip-to-content" href="#content">Skip to content</a>
+
+	<header class="page-header" role="banner">
+		<div class="pageheader">
+			<div>
+				<a href="/">
+					<img class="pageheaderlogo" alt="nmbell logo link to homepage" src="/images/icon-75.png">
+				</a>
+			</div>
+			<div>
+				<span class="pageheadertitle">
+					<h1 class="page-name">About Me</h1>
+				</span>
+			</div>
+		</div>
+	</header>
+
+	<main id="content" class="main-content" role="main">
+		<p>This is a landing page:</p>
+
+		<ul>
+		  <li>
+		    <p><a href="https://nmbell.github.io/testpages/testpage1">Test page one</a></p>
+		  </li>
+		  <li>
+		    <p><a href="https://nmbell.github.io/testpages/testpage2">Test page two</a></p>
+		  </li>
+		  <li>
+		    <p>This is an email address: <script>insertMailTo();</script></p>
+		  </li>
+		</ul>
+
+	</main>
+</body>
+
+</html>
