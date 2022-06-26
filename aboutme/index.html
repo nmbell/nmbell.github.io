@@ -16,14 +16,22 @@
 	<link rel="manifest" href="/images/site.webmanifest">
 
 	<script>
-	function insertMailTo() {
-		var   n = 'enoemos'.split('').reverse().join('')
-			, s = '@'
-			, k = 'moc.niamodym'.split('').reverse().join('')
-			, e = n + s + k
-			, l = '<a href=mailto:{{spam@uce.gov}}>{{spam@uce.gov}}</a>'.replace(/{{.+?(}})/g, e);
-		document.write(l);
-	};
+		function insertMailTo() {
+			var n = 'enoemos'.split('').reverse().join('')
+				, s = '@'
+				, k = 'moc.niamodym'.split('').reverse().join('')
+				, e = n + s + k
+				, l = '<a href=mailto:{{spam@uce.gov}}>{{spam@uce.gov}}</a>'.replace(/{{.+?(}})/g, e);
+			document.write(l);
+		};
+		function insertTel() {
+			var n = '54321'.split('').reverse().join('')
+				, s = '6'
+				, k = '0987'.split('').reverse().join('')
+				, e = n + s + k
+				, l = '<a href=tel:{{1234567890}}>{{1234567890}}</a>'.replace(/{{.+?(}})/g, e);
+			document.write(l);
+		};
 	</script>
 </head>
 
@@ -46,20 +54,30 @@
 		</div>
 	</header>
 
-	<main id="content" class="main-content" role="main">
-		<p>This is a landing page:</p>
-
+	<main id="content" class="main-content page-content" role="main">
+		<p>My résumé:</p>
 		<ul>
-		  <li>
-		    <p><a href="https://nmbell.github.io/testpages/testpage1">Test page one</a></p>
-		  </li>
-		  <li>
-		    <p><a href="https://nmbell.github.io/testpages/testpage2">Test page two</a></p>
-		  </li>
-		  <li>
-		    <p>This is an email address: <script>insertMailTo();</script></p>
-		  </li>
+			<li><a href="/aboutme/resume.html">Nathan Bell</a></li>
 		</ul>
+		<br>
+
+		<p>Find me online:</p>
+		<ul>
+			<li>Work experience on <a href="https://www.linkedin.com/">LinkedIn</a></li>
+			<li>Certifications on <a href="https://www.credly.com/">Credly</a></li>
+			<li>PowerShell modules on the <a href="https://www.powershellgallery.com/">PowerShell Gallery</a> or <a href="https://github.com/nmbell">GitHub</a></li>
+			<li>Contributions on <a href="https://stackoverflow.com/">StackOverflow</a></li>
+			<li>Profile on <a href="https://docs.microsoft.com/en-us/">Microsoft Learn</a></li>
+			<li>Reading list on <a href="https://degreed.com/">Degreed</a></li>
+		</ul>
+		<br>
+
+		<p>Contact me:</p>
+		<ul>
+			<li>Email:<script>insertMailTo();</script></li>
+			<li>Phone:<script>insertTel();</script></li>
+		</ul>
+		<br>
 
 	</main>
 </body>
