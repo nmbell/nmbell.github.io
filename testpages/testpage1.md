@@ -14,6 +14,6 @@ This is a test page:
 
 - [Microsoft Learn](https://docs.microsoft.com/en-us/)
 
-- [Degreed](https://degreed.com/)
+- [Libib](https://www.libib.com/)
 
 ---

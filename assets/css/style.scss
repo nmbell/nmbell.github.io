@@ -118,66 +118,6 @@ h1.project-name {
 h2.project-tagline {
     margin-bottom: 1rem;
 }
-
-
-// Regular page
-header.page-header {
-	color: $header-heading-color;
-	text-align: left;
-	background-color: $header-bg-color;
-	background-image: linear-gradient(90deg, $sage-black, $sage-blue);
-
-	@include large {
-		padding: 1rem 6rem;
-	}
-
-	@include medium {
-		padding: 1rem 4rem;
-	}
-
-	@include small {
-		padding: 1rem 2rem;
-	}
-}
-
-div.pageheader {
-    display: flex;
-    align-items: center;
-}
-
-img.pageheaderlogo {
-	display: inline;
-	margin-left: auto;
-
-	@include large {
-		width: 75px;
-		height: 75px;
-	}
-
-	@include medium {
-		width: 75px;
-		height: 75px;
-	}
-
-	@include small {
-		width: 75px;
-		height: 75px;
-	}
-}
-
-span.pageheadertitle {
-    display: inline;
-    vertical-align: middle;
-	padding: 1rem 0rem;
-}
-
-h1.page-name {
-	margin-top: 0;
-    margin-bottom: 0;
-	margin-left: 1rem;
-}
-
-// Content
 main.home-content {
 	margin: 0;
 
@@ -213,20 +153,83 @@ main.home-content {
 	}
 }
 
+
+// Regular page
+header.page-header {
+	color: $header-heading-color;
+	background-color: $header-bg-color;
+	background-image: linear-gradient(90deg, $sage-black, $sage-blue);
+	text-align: left;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	padding: 0;
+}
+
+div.pageheader {
+    display: flex;
+    align-items: center;
+}
+
+div.pageheaderlogo {
+	display: flex;
+    align-items: center;
+	justify-content: center;
+	height: 6rem;
+	width: 7rem;
+	min-width: 6rem;
+}
+
+img.pageheaderimg {
+	width: 5rem;
+	height: 5rem;
+	transition: 1s;
+}
+
+div.pageheadertext {
+	display: inline;
+}
+
+div.pageheadertitle {
+    display: flex;
+    vertical-align: middle;
+	padding: 0;
+}
+
+h1.page-name {
+	margin: 0;
+	font-size: 2rem;
+	transition: 1s;
+}
+
+div.pageheadersubtitle {
+	display: flex;
+    vertical-align: middle;
+	padding: 0;
+}
+
+h2.page-name-sub {
+	margin: 0;
+	font-size: 1.2rem;
+	transition: 1s;
+}
+
 main.page-content {
 	margin: 0;
 
 	@include large {
-		padding: 2rem 6rem;
-		font-size: 1.1rem;
+		padding-left: 5rem;
+		font-size: 1.2rem;
 	}
 
 	@include medium {
-		padding: 2rem 4rem;
+		padding-left: 3.5rem;
+		font-size: 1.1rem;
 	}
 
 	@include small {
-		padding: 2rem 2rem;
+		padding-left: 2rem;
+		font-size: 1rem;
 	}
 
 	blockquote {
@@ -238,23 +241,38 @@ main.page-content {
 		padding: 0;
 		font-family: 'Courier New', Courier, monospace;
 		font-size: 1rem;
-		border-radius: 0;
 	}
 
 	pre {
 		padding: 1rem 1.5rem;
 		font-family: 'Courier New', Courier, monospace;
 		font-size: 1rem;
-		border-radius: 0;
 	}
+}
+
+.main-content .highlight pre, .main-content pre {
+    border-radius: 0;
+}
+
+a.headerlink {
+	color: $sage-grey-light;
+	margin-right: 1em;
 }
 
 a:link {
 	text-decoration: none;
 }
 
-a:hover {
+a:hover,
+a.headerlink:hover {
 	color: $sage-aqua;
+	transition: 0.5s;
+}
+
+a img {
+	padding: 0;
+	margin: 0;
+	display: block;
 }
 
 br {

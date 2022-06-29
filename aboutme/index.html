@@ -13,43 +13,29 @@
 	<link rel="icon" href="/images/favicon.ico" sizes="any">
 	<link rel="icon" type="image/svg+xml" href="/images/icon.svg">
 	<link rel="apple-touch-icon" sizes="180x180" href="/images/icon-180-apple-touch.png">
-	<link rel="manifest" href="/images/site.webmanifest">
-
-	<script>
-		function insertMailTo() {
-			var n = 'enoemos'.split('').reverse().join('')
-				, s = '@'
-				, k = 'moc.niamodym'.split('').reverse().join('')
-				, e = n + s + k
-				, l = '<a href=mailto:{{spam@uce.gov}}>{{spam@uce.gov}}</a>'.replace(/{{.+?(}})/g, e);
-			document.write(l);
-		};
-		function insertTel() {
-			var n = '54321'.split('').reverse().join('')
-				, s = '6'
-				, k = '0987'.split('').reverse().join('')
-				, e = n + s + k
-				, l = '<a href=tel:{{1234567890}}>{{1234567890}}</a>'.replace(/{{.+?(}})/g, e);
-			document.write(l);
-		};
-	</script>
+	<link rel="manifest" href="/site.webmanifest">
+	<script src="/scripts/default.js" defer></script>
+	<script src="/scripts/contact.js"></script>
 </head>
 
 <body>
 
 	<a id="skip-to-content" href="#content">Skip to content</a>
 
-	<header class="page-header" role="banner">
+	<header id="header" class="page-header" role="banner">
 		<div class="pageheader">
-			<div>
+			<div id="pageheaderlogo"class="pageheaderlogo">
 				<a href="/">
-					<img class="pageheaderlogo" alt="nmbell logo link to homepage" src="/images/icon-75.png">
+					<img id="pageheaderimg" class="pageheaderimg" alt="nmbell logo link to homepage" src="/images/icon-75.png">
 				</a>
 			</div>
-			<div>
-				<span class="pageheadertitle">
-					<h1 class="page-name">About Me</h1>
-				</span>
+			<div class="pageheadertext">
+				<div class="pageheadertitle">
+					<h1 id="page-name" class="page-name">About Me</h1>
+				</div>
+				<div class="pageheadersubtitle">
+					<h2 id="page-name-sub" class="page-name-sub"></h2>
+				</div>
 			</div>
 		</div>
 	</header>
@@ -67,19 +53,20 @@
 			<li>Certifications on <a href="https://www.credly.com/">Credly</a></li>
 			<li>PowerShell modules on the <a href="https://www.powershellgallery.com/">PowerShell Gallery</a> or <a href="https://github.com/nmbell">GitHub</a></li>
 			<li>Contributions on <a href="https://stackoverflow.com/">StackOverflow</a></li>
-			<li>Profile on <a href="https://docs.microsoft.com/en-us/">Microsoft Learn</a></li>
-			<li>Reading list on <a href="https://degreed.com/">Degreed</a></li>
+			<li>Learning profile on <a href="https://docs.microsoft.com/en-us/">Microsoft Learn</a></li>
+			<li>Reading list on <a href="https://www.libib.com/">Libib</a></li>
 		</ul>
 		<br>
 
 		<p>Contact me:</p>
 		<ul>
-			<li>Email:<script>insertMailTo();</script></li>
-			<li>Phone:<script>insertTel();</script></li>
+			<li>Email: <script>insertMailTo('enoemos','moc.niamodym');</script></li>
+			<li>Phone: <script>insertTel('321','654','0987');</script></li>
 		</ul>
 		<br>
 
 	</main>
+
 </body>
 
 </html>
