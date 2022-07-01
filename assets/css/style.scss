@@ -1,16 +1,21 @@
 ---
 ---
+z { display: none } // Ignore this
 
+
+// Colors
 $sage-blue: #00324b;
 $sage-black: #000000;
+$sage-grey-dark-extra: #191919;
 $sage-grey-dark: #323232;
+$sage-grey-medium-dark: #4b4b4b;
 $sage-grey-medium: #646464;
+$sage-grey-medium-light: #969696;
 $sage-grey-light: #c8c8c8;
 $sage-white: #fafafa;
 $sage-red: #fa194b;
 $sage-orange: #faaf19;
 $sage-aqua: #4bfae1;
-
 
 // Breakpoints
 $large-breakpoint: 64em;
@@ -38,11 +43,13 @@ $hr-border-color: $sage-grey-dark;
 
 @import "{{ site.theme }}";
 
+
 // Body
 body {
 	background-color: $sage-grey-dark;
-	font-family: Consolas, Monaco, monospace;
+	font-family: Consolas, Monaco, 'Courier New', Courier, monospace;
 }
+
 
 // Home page
 header.home-header {
@@ -69,15 +76,15 @@ div.homeheader {
     text-align: center;
 
 	@include large {
-		width: 200px;
+		width: 14rem;
 	}
 
 	@include medium {
-		width: 150px;
+		width: 10rem;
 	}
 
 	@include small {
-		width: 100px;
+		width: 6rem;
 	}
 }
 
@@ -91,23 +98,19 @@ img.homeheaderlogo {
 	margin-left: auto;
 
 	@include large {
-		width: 200px;
-		height: 200px;
+		width: 14rem;
+		height: 14rem;
 	}
 
 	@include medium {
-		width: 150px;
-		height: 150px;
+		width: 10rem;
+		height: 10rem;
 	}
 
 	@include small {
-		width: 100px;
-		height: 100px;
+		width: 6rem;
+		height: 6rem;
 	}
-}
-
-span.homeheadertitle {
-    display: block;
 }
 
 h1.project-name {
@@ -118,6 +121,7 @@ h1.project-name {
 h2.project-tagline {
     margin-bottom: 1rem;
 }
+
 main.home-content {
 	margin: 0;
 
@@ -138,18 +142,18 @@ main.home-content {
 		font-style: italic;
 	}
 
-	code {
-		padding: 0;
-		font-family: 'Courier New', Courier, monospace;
+	pre {
+		font-family: Consolas, Monaco, 'Courier New', Courier, monospace;
 		font-size: 1rem;
-		border-radius: 0;
+		color: $body-text-color;
+		padding: 1rem 1.5rem;
 	}
 
-	pre {
-		padding: 1rem 1.5rem;
-		font-family: 'Courier New', Courier, monospace;
+	code {
+		font-family: Consolas, Monaco, 'Courier New', Courier, monospace;
 		font-size: 1rem;
-		border-radius: 0;
+		color: $sage-white;
+		padding: 0;
 	}
 }
 
@@ -176,8 +180,9 @@ div.pageheaderlogo {
     align-items: center;
 	justify-content: center;
 	height: 6rem;
-	width: 7rem;
+	width: 6rem;
 	min-width: 6rem;
+	transition: 1s;
 }
 
 img.pageheaderimg {
@@ -216,19 +221,24 @@ h2.page-name-sub {
 
 main.page-content {
 	margin: 0;
+	max-width: 100%;
+	padding-top: 11rem;
 
 	@include large {
 		padding-left: 5rem;
+		padding-right: 5rem;
 		font-size: 1.2rem;
 	}
 
 	@include medium {
-		padding-left: 3.5rem;
+		padding-left: 3rem;
+		padding-right: 3rem;
 		font-size: 1.1rem;
 	}
 
 	@include small {
-		padding-left: 2rem;
+		padding-left: 1rem;
+		padding-right: 1rem;
 		font-size: 1rem;
 	}
 
@@ -237,16 +247,16 @@ main.page-content {
 		font-style: italic;
 	}
 
-	code {
-		padding: 0;
-		font-family: 'Courier New', Courier, monospace;
-		font-size: 1rem;
+	pre {
+		font-family: Consolas, Monaco, 'Courier New', Courier, monospace;
+		color: $body-text-color;
+		padding: 1rem 1.5rem;
 	}
 
-	pre {
-		padding: 1rem 1.5rem;
-		font-family: 'Courier New', Courier, monospace;
-		font-size: 1rem;
+	code {
+		font-family: Consolas, Monaco, 'Courier New', Courier, monospace;
+		color: $sage-white;
+		padding: 0;
 	}
 }
 
@@ -279,4 +289,91 @@ br {
 	display: block;
 	content: "";
 	margin-top: 2em;
+}
+
+
+// Docker cheat sheet
+.outercollapsible,
+.innercollapsible {
+	background-color: $sage-grey-dark;
+	outline: none;
+	text-align: left;
+	width: 100%;
+}
+
+.outercollapsible {
+	border: none;
+	padding: 5px;
+	transition: 0.2s;
+}
+
+.innercollapsible {
+	background-color: $sage-grey-dark-extra;
+	border: 2px solid $sage-grey-dark-extra;
+	padding: 0px;
+}
+
+.active,
+.outercollapsible:hover,
+.innercollapsible:hover {
+	background-color: $sage-grey-medium;
+}
+
+.outercollapsible:before,
+.innercollapsible:before {
+	color: $sage-white;
+	content: '\002B';
+	float: left;
+	font-weight: bold;
+	margin-left: 5px;
+}
+
+.outercollapsible:after {
+	margin-left: 5px;
+}
+
+.innercollapsible:after {
+	margin-left: 25px;
+}
+
+.active:before {
+	content: "\2212";
+}
+
+.panelContent {
+	background-color: $sage-grey-dark-extra;
+	color: $sage-white;
+}
+
+.outerPanel,
+.innerPanel {
+	display: none;
+}
+
+.outerPanel.show,
+.innerPanel.show {
+	display: block;
+	line-height: normal;
+}
+
+div.panelContent pre {
+	background-color: $sage-grey-dark-extra;
+	color: $sage-grey-medium-light;
+	margin: 0;
+	overflow-y: hidden;
+	overflow-x: auto;
+	tab-size: 4;
+	white-space: pre;
+}
+
+div.panelContent pre code {
+	background-color: $sage-grey-dark-extra;
+}
+
+a.viewcontrol {
+	color: $sage-grey-light;
+}
+
+h3 {
+	margin-top: 0;
 }

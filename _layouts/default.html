@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ site.lang | default: "en-US" }}">
+<html lang="{{ site.lang | default: " en-US" }}">
 
 <head>
 	<meta charset="UTF-8">
@@ -15,7 +15,7 @@
 	<link rel="apple-touch-icon" sizes="180x180" href="/images/icon-180-apple-touch.png">
 	<link rel="manifest" href="/site.webmanifest">
 	<script src="/scripts/default.js" defer></script>
-	<script src="/scripts/contact.js"></script>
+	<!-- <script src="/scripts/contact.js"></script> -->
 </head>
 
 <body>
@@ -24,9 +24,10 @@
 
 	<header id="header" class="page-header" role="banner">
 		<div class="pageheader">
-			<div id="pageheaderlogo"class="pageheaderlogo">
+			<div id="pageheaderlogo" class="pageheaderlogo">
 				<a href="/">
-					<img id="pageheaderimg" class="pageheaderimg" alt="nmbell logo link to homepage" src="/images/icon-75.png">
+					<!-- <img id="pageheaderimg" class="pageheaderimg" alt="nmbell logo link to homepage" src="/images/icon-75.png"> -->
+					<img id="pageheaderimg" class="pageheaderimg" alt="nmbell logo link to homepage" src="/images/icon.svg">
 				</a>
 			</div>
 			<div class="pageheadertext">
@@ -34,10 +35,7 @@
 					<h1 id="page-name" class="page-name">{{ page.title | default: site.title | default: site.github.repository_name }}</h1>
 				</div>
 				<div class="pageheadersubtitle">
-					<h2 id="page-name-sub" class="page-name-sub">
-						<script>insertMailTo('enoemos','moc.niamodym','headerlink');</script>
-						<script>insertTel('321','654','0987','headerlink');</script>
-					</h2>
+					<h2 id="page-name-sub" class="page-name-sub"></h2>
 				</div>
 			</div>
 		</div>

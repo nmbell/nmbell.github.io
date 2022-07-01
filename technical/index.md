@@ -1,5 +1,5 @@
 ---
-title: Cheat Sheets
+title: Cheat sheets
 ---
 
 - [Docker cheat sheet](DockerCheatSheet.html)
