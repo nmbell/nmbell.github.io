@@ -4,47 +4,47 @@ z { display: none } // Ignore this
 
 
 // Colors
-$sage-blue: #00324b;
-$sage-black: #000000;
-$sage-grey-dark-extra: #191919;
-$sage-grey-dark: #323232;
-$sage-grey-medium-dark: #4b4b4b;
-$sage-grey-medium: #646464;
+$sage-blue:              #00324b;
+$sage-black:             #000000;
+$sage-grey-dark-extra:   #191919;
+$sage-grey-dark:         #323232;
+$sage-grey-medium-dark:  #4b4b4b;
+$sage-grey-medium:       #646464;
 $sage-grey-medium-light: #969696;
-$sage-grey-light: #c8c8c8;
-$sage-white: #fafafa;
-$sage-red: #fa194b;
-$sage-orange: #faaf19;
-$sage-aqua: #4bfae1;
+$sage-grey-light:        #c8c8c8;
+$sage-white:             #fafafa;
+$sage-red:               #fa194b;
+$sage-orange:            #faaf19;
+$sage-aqua:              #4bfae1;
 
 // Breakpoints
-$large-breakpoint: 64em;
+$large-breakpoint:  64em;
 $medium-breakpoint: 42em;
 
 // Headers
-$header-heading-color: $sage-white;
-$header-bg-color: $sage-black;
+$header-heading-color:      $sage-white;
+$header-bg-color:           $sage-black;
 $header-bg-color-secondary: $sage-blue;
 
 // Text
 $section-headings-color: $sage-white;
-$body-text-color: $sage-grey-light;
-$body-link-color: $sage-white;
-$blockquote-text-color: $sage-grey-light;
-$header-text: 2rem;
+$body-text-color:        $sage-grey-light;
+$body-link-color:        $sage-white;
+$blockquote-text-color:  $sage-grey-light;
+$header-text:    2rem;
 $subheader-text: 1.2rem;
-$large-text: 1rem;
-$medium-text: 0.9rem;
-$small-text: 0.8rem;
+$large-text:     1rem;
+$medium-text:    0.9rem;
+$small-text:     0.8rem;
 
 // Code
-$code-bg-color: $sage-black;
+$code-bg-color:   $sage-black;
 $code-text-color: $sage-grey-light;
 
 // Borders
-$border-color: $sage-grey-dark;
+$border-color:       $sage-grey-dark;
 $table-border-color: $sage-grey-dark;
-$hr-border-color: $sage-grey-dark;
+$hr-border-color:    $sage-grey-dark;
 
 @import "{{ site.theme }}";
 
@@ -64,7 +64,7 @@ header.home-header {
 	background-image: linear-gradient(90deg, $sage-black, $sage-blue);
 
 	@include large {
-		padding: 6rem;
+		padding: 5rem;
 	}
 
 	@include medium {
@@ -72,7 +72,7 @@ header.home-header {
 	}
 
 	@include small {
-		padding: 2rem;
+		padding: 3rem;
 	}
 }
 
@@ -81,11 +81,11 @@ div.homeheader {
     text-align: center;
 
 	@include large {
-		width: 14rem;
+		width: 10rem;
 	}
 
 	@include medium {
-		width: 10rem;
+		width: 8rem;
 	}
 
 	@include small {
@@ -103,13 +103,13 @@ img.homeheaderlogo {
 	margin-left: auto;
 
 	@include large {
-		width: 14rem;
-		height: 14rem;
+		width: 10rem;
+		height: 10rem;
 	}
 
 	@include medium {
-		width: 10rem;
-		height: 10rem;
+		width: 8rem;
+		height: 8rem;
 	}
 
 	@include small {
@@ -131,7 +131,7 @@ main.home-content {
 	margin: 0;
 
 	@include large {
-		padding: 6rem;
+		padding: 5rem;
 	}
 
 	@include medium {
@@ -139,7 +139,7 @@ main.home-content {
 	}
 
 	@include small {
-		padding: 2rem;
+		padding: 3rem;
 	}
 
 	blockquote, code, pre {
@@ -281,28 +281,6 @@ a.headerlink {
 	margin-right: 1em;
 }
 
-a:link {
-	text-decoration: none;
-}
-
-a:hover,
-a.headerlink:hover {
-	color: $sage-aqua;
-	transition: 0.5s;
-}
-
-a img {
-	padding: 0;
-	margin: 0;
-	display: block;
-}
-
-br {
-	display: block;
-	content: "";
-	margin-top: 2em;
-}
-
 
 // Docker cheatsheet
 .outercollapsible,
@@ -315,41 +293,41 @@ br {
 
 .outercollapsible {
 	border: none;
-	padding: 5px;
-	transition: 0.2s;
+	padding: 0.25rem;
 }
 
 .innercollapsible {
 	background-color: $sage-grey-dark-extra;
 	border: 2px solid $sage-grey-dark-extra;
-	padding: 0px;
+	padding: 0;
 }
 
-.active,
+.dcs-active,
 .outercollapsible:hover,
 .innercollapsible:hover {
 	background-color: $sage-grey-medium;
 }
 
-.outercollapsible:before,
-.innercollapsible:before {
+.outercollapsible::before,
+.innercollapsible::before {
 	color: $sage-white;
-	content: '\002B';
+	content: '\002B\00A0';
 	float: left;
 	font-weight: bold;
-	margin-left: 5px;
+	margin-left: 0.25rem;
+	margin-right: 0.25rem;
 }
 
-.outercollapsible:after {
-	margin-left: 5px;
+.outercollapsible::after {
+	margin-left: 0.25rem;
 }
 
-.innercollapsible:after {
-	margin-left: 25px;
+.innercollapsible::after {
+	margin-left: 1.25rem;
 }
 
-.active:before {
-	content: "\2212";
+.dcs-active::before {
+	content: "\2212\00A0";
 }
 
 .panelContent {
@@ -386,7 +364,7 @@ a.viewcontrol {
 	color: $sage-grey-light;
 }
 
-h3 {
+h3.viewcontrol {
 	margin-top: 0;
 }
 
@@ -413,4 +391,107 @@ table.regexTable tbody td code {
 
 table.regexTable thead th {
 	background: $sage-grey-medium;
+}
+
+
+// SQL Server knowledge map
+ul.nested, #myUL {
+	list-style-type: none;
+}
+
+#myUL {
+	margin: 0;
+	padding: 0;
+}
+
+li.skip, li.know, li.none {
+	padding: 0.25rem;
+}
+
+li.skip {
+	color: #969696;
+}
+
+li.know {
+	color: #c8c8c8;
+}
+
+li.none {
+	color: #c8c8c8;
+}
+
+li span.poscaret, li span.negcaret {
+	cursor: pointer;
+	-webkit-user-select: text;
+	-moz-user-select: text;
+	-ms-user-select: text;
+	user-select: text;
+	padding: 0.25rem;
+}
+
+li span.negcaret::before {
+	color: #fafafa;
+	content: '\2212\00A0';
+	float: left;
+	font-weight: bold;
+	margin-left: 0.25rem;
+	margin-right: 0.25rem;
+}
+
+li span.poscaret::before {
+	color: #fafafa;
+	content: '\002B\00A0';
+	float: left;
+	font-weight: bold;
+	margin-left: 0.25rem;
+	margin-right: 0.25rem;
+}
+
+li span.poscaret-down::before {
+	color: #fafafa;
+	content: '\2212\00A0';
+	float: left;
+	font-weight: bold;
+	margin-left: 0.25rem;
+	margin-right: 0.25rem;
+}
+
+ul.nested {
+	display: none;
+}
+
+ul.nested.skm-active {
+	display: block;
+}
+
+a.docslink {
+	color: #969696;
+}
+
+
+// General
+a:link {
+	text-decoration: none;
+}
+
+a:hover,
+a.headerlink:hover {
+	color: $sage-aqua;
+	transition: 0.5s;
+}
+
+a img {
+	padding: 0;
+	margin: 0;
+	display: block;
+}
+
+br {
+	display: block;
+	content: "";
+	margin-top: 2em;
+}
+
+ul {
+	list-style-type: square;
 }

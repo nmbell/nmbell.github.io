@@ -2,7 +2,7 @@ var allCollapsibles = document.querySelectorAll('.outercollapsible,.innercollaps
 
 allCollapsibles.forEach(item => {
 	item.addEventListener("click", function () {
-		this.classList.toggle("active");
+		this.classList.toggle("dcs-active");
 		if (this.nextElementSibling.classList.contains('show')) {
 			this.nextElementSibling.classList.remove('show')
 		} else {
@@ -13,7 +13,7 @@ allCollapsibles.forEach(item => {
 
 function expandAll() {
 	allCollapsibles.forEach(item => {
-		item.classList.add("active");
+		item.classList.add("dcs-active");
 		if (!item.nextElementSibling.classList.contains('show')) {
 			item.nextElementSibling.classList.add('show')
 		}
@@ -22,7 +22,7 @@ function expandAll() {
 
 function collapseAll() {
 	allCollapsibles.forEach(item => {
-		item.classList.remove("active");
+		item.classList.remove("dcs-active");
 		if (item.nextElementSibling.classList.contains('show')) {
 			item.nextElementSibling.classList.remove('show')
 		}
@@ -31,7 +31,7 @@ function collapseAll() {
 
 function invertAll() {
 	allCollapsibles.forEach(item => {
-		item.classList.toggle("active");
+		item.classList.toggle("dcs-active");
 		if (item.nextElementSibling.classList.contains('show')) {
 			item.nextElementSibling.classList.remove('show')
 		}
