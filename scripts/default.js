@@ -10,12 +10,6 @@ function scrollFunction() {
 	var scrollThreshold = 50
 	var smallFactor     = 0.5
 	if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
-		// logoDivStyle.height = "4rem";
-		// logoStyle.width     = "3rem";
-		// logoStyle.height    = "3rem";
-		// h1Style.fontSize    = "1.33rem";
-		// h2Style.fontSize    = "1rem";
-
 		logoDivStyle.height = "3rem";
 		logoStyle.width     = "2.5rem";
 		logoStyle.height    = "2.5rem";

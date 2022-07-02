@@ -31,6 +31,11 @@ $section-headings-color: $sage-white;
 $body-text-color: $sage-grey-light;
 $body-link-color: $sage-white;
 $blockquote-text-color: $sage-grey-light;
+$header-text: 2rem;
+$subheader-text: 1.2rem;
+$large-text: 1rem;
+$medium-text: 0.9rem;
+$small-text: 0.8rem;
 
 // Code
 $code-bg-color: $sage-black;
@@ -137,28 +142,34 @@ main.home-content {
 		padding: 2rem;
 	}
 
-	blockquote {
+	blockquote, code, pre {
+		font-family: Consolas, Monaco, 'Courier New', Courier, monospace;
+		color: $body-text-color;
 		padding: 0;
+		@include large  { font-size: $large-text;  }
+		@include medium { font-size: $medium-text; }
+		@include small  { font-size: $small-text;  }
+	}
+
+	blockquote {
 		font-style: italic;
 	}
 
-	pre {
-		font-family: Consolas, Monaco, 'Courier New', Courier, monospace;
-		font-size: 1rem;
-		color: $body-text-color;
-		padding: 1rem 1.5rem;
+	code {
+		color: $sage-white;
 	}
 
-	code {
-		font-family: Consolas, Monaco, 'Courier New', Courier, monospace;
-		font-size: 1rem;
-		color: $sage-white;
-		padding: 0;
+	pre {
+		padding: 1rem 1.5rem;
 	}
 }
 
 
 // Regular page
+.main-content .highlight pre, .main-content pre {
+    border-radius: 0;
+}
+
 header.page-header {
 	color: $header-heading-color;
 	background-color: $header-bg-color;
@@ -168,6 +179,7 @@ header.page-header {
 	position: fixed;
 	top: 0;
 	padding: 0;
+	z-index: 9999;
 }
 
 div.pageheader {
@@ -203,7 +215,7 @@ div.pageheadertitle {
 
 h1.page-name {
 	margin: 0;
-	font-size: 2rem;
+	font-size: $header-text;
 	transition: 1s;
 }
 
@@ -215,7 +227,7 @@ div.pageheadersubtitle {
 
 h2.page-name-sub {
 	margin: 0;
-	font-size: 1.2rem;
+	font-size: $subheader-text;
 	transition: 1s;
 }
 
@@ -227,41 +239,41 @@ main.page-content {
 	@include large {
 		padding-left: 5rem;
 		padding-right: 5rem;
-		font-size: 1.2rem;
+		font-size: $large-text;
 	}
 
 	@include medium {
 		padding-left: 3rem;
 		padding-right: 3rem;
-		font-size: 1.1rem;
+		font-size: $medium-text;
 	}
 
 	@include small {
 		padding-left: 1rem;
 		padding-right: 1rem;
-		font-size: 1rem;
+		font-size: $small-text;
+	}
+
+	blockquote, code, pre {
+		font-family: Consolas, Monaco, 'Courier New', Courier, monospace;
+		color: $body-text-color;
+		padding: 0;
+		@include large  { font-size: $large-text;  }
+		@include medium { font-size: $medium-text; }
+		@include small  { font-size: $small-text;  }
 	}
 
 	blockquote {
-		padding: 0;
 		font-style: italic;
 	}
 
+	code {
+		color: $sage-white;
+	}
+
 	pre {
-		font-family: Consolas, Monaco, 'Courier New', Courier, monospace;
-		color: $body-text-color;
 		padding: 1rem 1.5rem;
 	}
-
-	code {
-		font-family: Consolas, Monaco, 'Courier New', Courier, monospace;
-		color: $sage-white;
-		padding: 0;
-	}
-}
-
-.main-content .highlight pre, .main-content pre {
-    border-radius: 0;
 }
 
 a.headerlink {
@@ -292,7 +304,7 @@ br {
 }
 
 
-// Docker cheat sheet
+// Docker cheatsheet
 .outercollapsible,
 .innercollapsible {
 	background-color: $sage-grey-dark;
@@ -376,4 +388,29 @@ a.viewcontrol {
 
 h3 {
 	margin-top: 0;
+}
+
+
+// RegEx cheatsheet
+table.regexTable {
+	border: 1px solid $sage-grey-dark;
+	background-color: $sage-grey-dark-extra;
+	background: $sage-grey-dark-extra;
+	text-align: left;
+	border-collapse: collapse;
+	width: auto;
+	display: revert;
+}
+
+table.regexTable td, table.regexTable th {
+	border: 1px solid $sage-grey-dark;
+	padding: 0.25rem 0.5rem;
+}
+
+table.regexTable tbody td code {
+	background-color: $sage-grey-dark-extra;
+}
+
+table.regexTable thead th {
+	background: $sage-grey-medium;
 }

@@ -1,9 +1,9 @@
 ---
-title: Cheat sheets
+title: Cheatsheets
 ---
 
-- [Docker cheat sheet](DockerCheatSheet.html)
+- [Docker cheatsheet](DockerCheatSheet.html)
 
-- [RegEx cheat sheet](RegExCheatSheet.html)
+- [RegEx cheatsheet](RegExCheatSheet.html)
 
 - [SQL Server knowledge map](SqlServerKnowledgeMap.html)

@@ -2,58 +2,50 @@
 <html lang="en-US">
 
 <head>
-	<title>RegEx cheat sheet</title>
-	<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAACxAAAAsQHGLUmNAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAA5xJREFUWIW9V02IHFUQ/r7ufr0bFiOoMWQRjIon0QhRT8uuB1llXSUHL3rwIJscTVAwKiEKghEkBw3IigFRxMOqOSjrDxJwowhqxECCYAzxYowBWYziTHfVm1cetsf0dmamZ5JZCx49r36/rqqu94ZmhmFRq9WaDSHsIvmPmT3nnDtWZ8NhAciy7IY4jn8C4ACA5G9JktwIIO9lFw0lOoA4jmfawQHAzMa993fW2Q0NgJltqvJCCOP/GwCSZy5yHkW/Dg1Ao9EY994vqOo3qro/y7LNFQAnKiYhSZIfywxVvUNVD6rqUVV9DcA6mFlfK8/zT0XESuuvPM8fKumsE5GsJD9eklFVd4uIL/vI8/zlvjNAcrLCuoLkgqo+XuybAI6W5F8Wz0hV583sJQBxxefEIAAWO7EBvOK93wMAZrbUFpjZEQCJqr4DYEdXn/2WwMzWi8jhShnK6dynqve2981mc7OqHuqmLyKvm1k86CCK8jyfJbmd5D0ARivyNwE8SvJsCOEEyfsq8vMAPiQ5nyTJ18DlTcIxEZkmOUNyxsy6ffMnASySXEyS5AgAXSUdoAS91gYR2S8r1E7xeVV90szGetlecgZU9XaSs2Z2P4C7sDJTrFjAhRmTm9kSyY9DCB+NjIycvpwMrFfVZ0TkdIemaqnqHhEJqnpGRA50ab7vRWS7mSUDZaA47T4HcFMHcQvAY2b2N8lDABBCuJnkHMndXVwuOece6HsOxHH8VpfgYmYPO+feJjnVZkZRNJmm6dMk93ZxOaWqLw5yGG3twGtEUbQtTdP3in15Wk4BQJIkLwDYiQu9scrnIADer+x/ATARx/Enxf5KALeV5BPtH865V0MI2wD8WXZA8oNBvoIx7/0TZnY9gK+ccwsAGm2h937azD4rGzjnNgH4vcTaoKqPANgC4Dvn3Pyw5gBEZGe141X17jq7TiWIcPGIrSUzu7bKCyFsrLP7D4D3flpVv1BVUdWmqp7y3j+F0j2vF5E81YF3stawSN8uEQldBsdhMxvpowzXiMhyye6YmcV1dhSRrQC+RY/rmZntS9P02bqXEZFbSM6ZWSNN0wNY3YAdiSLyBoC5Gr1l59xGAL7O4aAUAbi1D72rsiy7btjB2wCkH8XR0dGe/3AuGUBxd6ujnwGcXRMARbMs91Iys+fXIjiwUoJzJB8E8Een2CT3pmn67loBKJ8FV3vvd4QQJkmOATgO4KBz7oe1Cg4A/wKR4LBa+elgLgAAAABJRU5ErkJggg==" sizes="32x32" />
-	<style>
-	body {
-		background-color: #333333;
-		color: white;
-		font-family: Consolas, "courier new";
-		font-size: 15px;
-		margin: 50px;
-	}
-
-	a:-webkit-any-link {
-		color: yellow;
-		cursor: pointer;
-		text-decoration: underline;
-	}
-
-	table.darkTable {
-		border: 1px solid #333;
-		background-color: #000000;
-		text-align: left;
-		border-collapse: collapse;
-	}
-
-	table.darkTable td, table.darkTable th {
-		border: 1px solid #333;
-		padding: 5px 10px;
-	}
-
-	table.darkTable tbody td {
-		color: #E6E6E6;
-	}
-
-	table.darkTable {
-		background: #222;
-	}
-
-	table.darkTable thead th {
-		background: #555;
-		font-size: 15px;
-		color: #E6E6E6;
-		text-align: center;
-	}
-	</style>
+	<meta charset="UTF-8">
+	<title>RegEx cheatsheet</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="robots" content="noindex,nofollow">
+	<meta name="theme-color" content="#00324b">
+	<meta name="msapplication-TileColor" content="#00324b">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<link rel="stylesheet" href="/assets/css/style.css">
+	<!-- <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAACxAAAAsQHGLUmNAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAA5xJREFUWIW9V02IHFUQ/r7ufr0bFiOoMWQRjIon0QhRT8uuB1llXSUHL3rwIJscTVAwKiEKghEkBw3IigFRxMOqOSjrDxJwowhqxECCYAzxYowBWYziTHfVm1cetsf0dmamZ5JZCx49r36/rqqu94ZmhmFRq9WaDSHsIvmPmT3nnDtWZ8NhAciy7IY4jn8C4ACA5G9JktwIIO9lFw0lOoA4jmfawQHAzMa993fW2Q0NgJltqvJCCOP/GwCSZy5yHkW/Dg1Ao9EY994vqOo3qro/y7LNFQAnKiYhSZIfywxVvUNVD6rqUVV9DcA6mFlfK8/zT0XESuuvPM8fKumsE5GsJD9eklFVd4uIL/vI8/zlvjNAcrLCuoLkgqo+XuybAI6W5F8Wz0hV583sJQBxxefEIAAWO7EBvOK93wMAZrbUFpjZEQCJqr4DYEdXn/2WwMzWi8jhShnK6dynqve2981mc7OqHuqmLyKvm1k86CCK8jyfJbmd5D0ARivyNwE8SvJsCOEEyfsq8vMAPiQ5nyTJ18DlTcIxEZkmOUNyxsy6ffMnASySXEyS5AgAXSUdoAS91gYR2S8r1E7xeVV90szGetlecgZU9XaSs2Z2P4C7sDJTrFjAhRmTm9kSyY9DCB+NjIycvpwMrFfVZ0TkdIemaqnqHhEJqnpGRA50ab7vRWS7mSUDZaA47T4HcFMHcQvAY2b2N8lDABBCuJnkHMndXVwuOece6HsOxHH8VpfgYmYPO+feJjnVZkZRNJmm6dMk93ZxOaWqLw5yGG3twGtEUbQtTdP3in15Wk4BQJIkLwDYiQu9scrnIADer+x/ATARx/Enxf5KALeV5BPtH865V0MI2wD8WXZA8oNBvoIx7/0TZnY9gK+ccwsAGm2h937azD4rGzjnNgH4vcTaoKqPANgC4Dvn3Pyw5gBEZGe141X17jq7TiWIcPGIrSUzu7bKCyFsrLP7D4D3flpVv1BVUdWmqp7y3j+F0j2vF5E81YF3stawSN8uEQldBsdhMxvpowzXiMhyye6YmcV1dhSRrQC+RY/rmZntS9P02bqXEZFbSM6ZWSNN0wNY3YAdiSLyBoC5Gr1l59xGAL7O4aAUAbi1D72rsiy7btjB2wCkH8XR0dGe/3AuGUBxd6ujnwGcXRMARbMs91Iys+fXIjiwUoJzJB8E8Een2CT3pmn67loBKJ8FV3vvd4QQJkmOATgO4KBz7oe1Cg4A/wKR4LBa+elgLgAAAABJRU5ErkJggg==" sizes="32x32" /> -->
+	<link rel="icon" href="/images/favicon.ico" sizes="any">
+	<link rel="icon" type="image/svg+xml" href="/images/icon.svg">
+	<link rel="apple-touch-icon" sizes="180x180" href="/images/icon-180-apple-touch.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<script src="/scripts/default.js" defer></script>
 </head>
 
 <body>
-	<h1 id="regex-cheatsheet">RegEx cheat sheet</h1>
-	<br />
-	<br />
+
+	<a id="skip-to-content" href="#content">Skip to content</a>
+
+	<header id="header" class="page-header" role="banner">
+		<div class="pageheader">
+			<div id="pageheaderlogo" class="pageheaderlogo">
+				<a href="/">
+					<img id="pageheaderimg" class="pageheaderimg" alt="nmbell logo link to homepage" src="/images/icon.svg">
+				</a>
+			</div>
+			<div class="pageheadertext">
+				<div class="pageheadertitle">
+					<h1 id="page-name" class="page-name">
+						<a href="https://docs.microsoft.com/en-us/dotnet/standard/base-types/regular-expressions">RegEx cheatsheet</a>
+					</h1>
+				</div>
+				<div class="pageheadersubtitle">
+					<h2 id="page-name-sub" class="page-name-sub"></h2>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<main id="content" class="main-content page-content" role="main">
+
 	<h2 id="single-characters">Single characters</h2>
-	<table class="darkTable">
+	<table class="regexTable">
 	<thead>
 	<tr>
 	<th>Use</th>
@@ -90,7 +82,7 @@
 	<br />
 	<br />
 	<h2 id="control-characters">Control characters</h2>
-	<table class="darkTable">
+	<table class="regexTable">
 	<thead>
 	<tr>
 	<th>Use</th>
@@ -149,7 +141,7 @@
 	<br />
 	<br />
 	<h2 id="non-ascii-codes">Non-ASCII codes</h2>
-	<table class="darkTable">
+	<table class="regexTable">
 	<thead>
 	<tr>
 	<th>Use</th>
@@ -174,7 +166,7 @@
 	<br />
 	<br />
 	<h2 id="character-classes">Character classes</h2>
-	<table class="darkTable">
+	<table class="regexTable">
 	<thead>
 	<tr>
 	<th>Use</th>
@@ -219,7 +211,7 @@
 	<br />
 	<br />
 	<h2 id="quantifiers">Quantifiers</h2>
-	<table class="darkTable">
+	<table class="regexTable">
 	<thead>
 	<tr>
 	<th>Greedy</th>
@@ -263,7 +255,7 @@
 	<br />
 	<br />
 	<h2 id="anchors">Anchors</h2>
-	<table class="darkTable">
+	<table class="regexTable">
 	<thead>
 	<tr>
 	<th>Use</th>
@@ -308,7 +300,7 @@
 	<br />
 	<br />
 	<h2 id="groups">Groups</h2>
-	<table class="darkTable">
+	<table class="regexTable">
 	<thead>
 	<tr>
 	<th>Use</th>
@@ -357,7 +349,7 @@
 	<br />
 	<br />
 	<h2 id="inline-options">Inline options</h2>
-	<table class="darkTable">
+	<table class="regexTable">
 	<thead>
 	<tr>
 	<th>Option</th>
@@ -387,7 +379,7 @@
 	</tr>
 	</tbody>
 	</table>
-	<table class="darkTable">
+	<table class="regexTable">
 	<thead>
 	<tr>
 	<th>Use</th>
@@ -408,7 +400,7 @@
 	<br />
 	<br />
 	<h2 id="backreferences">Backreferences</h2>
-	<table class="darkTable">
+	<table class="regexTable">
 	<thead>
 	<tr>
 	<th>Use</th>
@@ -429,7 +421,7 @@
 	<br />
 	<br />
 	<h2 id="alternation">Alternation</h2>
-	<table class="darkTable">
+	<table class="regexTable">
 	<thead>
 	<tr>
 	<th>Use</th>
@@ -454,7 +446,7 @@
 	<br />
 	<br />
 	<h2 id="substitution">Substitution</h2>
-	<table class="darkTable">
+	<table class="regexTable">
 	<thead>
 	<tr>
 	<th>Use</th>
@@ -499,7 +491,7 @@
 	<br />
 	<br />
 	<h2 id="comments">Comments</h2>
-	<table class="darkTable">
+	<table class="regexTable">
 	<thead>
 	<tr>
 	<th>Use</th>
@@ -522,7 +514,7 @@
 	<br />
 	<br />
 	<h2 id="supported-unicode-categories">Supported unicode categories</h2>
-	<table class="darkTable">
+	<table class="regexTable">
 	<thead>
 	<tr>
 	<th>Category</th>
@@ -686,7 +678,7 @@
 	<h2 id="regular-expression-operations">Regular expression operations</h2>
 	<p>Class: System.Text.RegularExpressions.Regex</p>
 	<p><strong>Pattern matching with Regex objects</strong></p>
-	<table class="darkTable">
+	<table class="regexTable">
 	<thead>
 	<tr>
 	<th>To initialize with</th>
@@ -711,7 +703,7 @@
 	<p><strong>Pattern matching with static methods</strong></p>
 	<p>Use an overload of a method below to supply the regular expression and the text you want to search.</p>
 	<p><strong>Finding and replacing matched patterns</strong></p>
-	<table class="darkTable">
+	<table class="regexTable">
 	<thead>
 	<tr>
 	<th>To</th>
@@ -746,7 +738,7 @@
 	</tbody>
 	</table>
 	<p><strong>Getting info about regular expression patterns</strong></p>
-	<table class="darkTable">
+	<table class="regexTable">
 	<thead>
 	<tr>
 	<th>To get</th>
@@ -784,6 +776,8 @@
 	</tr>
 	</tbody>
 	</table>
+
+	</main>
 
 </body>
 
