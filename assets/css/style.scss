@@ -4,7 +4,6 @@ z { display: none } // Ignore this
 
 
 // Colors
-$sage-blue:              #00324b;
 $sage-black:             #000000;
 $sage-grey-dark-extra:   #191919;
 $sage-grey-dark:         #323232;
@@ -13,8 +12,10 @@ $sage-grey-medium:       #646464;
 $sage-grey-medium-light: #969696;
 $sage-grey-light:        #c8c8c8;
 $sage-white:             #fafafa;
+$sage-blue:              #00324b;
 $sage-red:               #fa194b;
 $sage-orange:            #faaf19;
+$sage-yellow:            #f6fa00;
 $sage-aqua:              #4bfae1;
 
 // Breakpoints
@@ -31,11 +32,14 @@ $section-headings-color: $sage-white;
 $body-text-color:        $sage-grey-light;
 $body-link-color:        $sage-white;
 $blockquote-text-color:  $sage-grey-light;
-$header-text:    2rem;
-$subheader-text: 1.2rem;
-$large-text:     1rem;
-$medium-text:    0.9rem;
-$small-text:     0.8rem;
+
+$header-text:      2rem;
+$subheader-text:   1.2rem;
+$extra-large-text: 1.1rem; // 1.2rem; //
+$large-text:       1.0rem; // 1.1rem; //
+$medium-text:      0.9rem; // 1.0rem; //
+$small-text:       0.8rem; // 0.9rem; //
+$extra-small-text: 0.7rem; // 0.7rem; //
 
 // Code
 $code-bg-color:   $sage-black;
@@ -46,6 +50,8 @@ $border-color:       $sage-grey-dark;
 $table-border-color: $sage-grey-dark;
 $hr-border-color:    $sage-grey-dark;
 
+
+// Base theme
 @import "{{ site.theme }}";
 
 
@@ -132,14 +138,17 @@ main.home-content {
 
 	@include large {
 		padding: 5rem;
+		font-size: $large-text; //$extra-large-text;
 	}
 
 	@include medium {
 		padding: 4rem;
+		font-size: $medium-text; //$large-text;
 	}
 
 	@include small {
 		padding: 3rem;
+		font-size: $small-text; //$medium-text;
 	}
 
 	blockquote, code, pre {
@@ -281,6 +290,10 @@ a.headerlink {
 	margin-right: 1em;
 }
 
+a.headerlink span {
+	white-space: nowrap;
+}
+
 
 // Docker cheatsheet
 .outercollapsible,
@@ -409,15 +422,15 @@ li.skip, li.know, li.none {
 }
 
 li.skip {
-	color: #969696;
+	color: $sage-grey-medium-light;
 }
 
 li.know {
-	color: #c8c8c8;
+	color: $sage-grey-light;
 }
 
 li.none {
-	color: #c8c8c8;
+	color: $sage-grey-light;
 }
 
 li span.poscaret, li span.negcaret {
@@ -430,7 +443,7 @@ li span.poscaret, li span.negcaret {
 }
 
 li span.negcaret::before {
-	color: #fafafa;
+	color: $sage-white;
 	content: '\2212\00A0';
 	float: left;
 	font-weight: bold;
@@ -439,7 +452,7 @@ li span.negcaret::before {
 }
 
 li span.poscaret::before {
-	color: #fafafa;
+	color: $sage-white;
 	content: '\002B\00A0';
 	float: left;
 	font-weight: bold;
@@ -448,7 +461,7 @@ li span.poscaret::before {
 }
 
 li span.poscaret-down::before {
-	color: #fafafa;
+	color: $sage-white;
 	content: '\2212\00A0';
 	float: left;
 	font-weight: bold;
@@ -465,7 +478,97 @@ ul.nested.skm-active {
 }
 
 a.docslink {
-	color: #969696;
+	color: $sage-grey-medium-light;
+}
+
+
+// Resume
+div.pageheaderdownloadlinks {
+    position: absolute;
+    display: flex;
+	font-size: $small-text;
+    right: 0;
+    bottom: 0;
+}
+
+a.downloadlink {
+	color: $sage-grey-medium-light;
+}
+
+div[class*="resume-"] {
+	@include large  { margin-bottom: 3rem; }
+	@include medium { margin-bottom: 2rem; }
+	@include small  { margin-bottom: 1rem; }
+}
+
+div.resume-keynote {
+	color: $sage-white;
+	@include large  { margin-bottom: 5rem; }
+	@include medium { margin-bottom: 3rem; }
+	@include small  { margin-bottom: 1rem; }
+	@include large  { font-size: $extra-large-text; }
+	@include medium { font-size: $large-text;       }
+	@include small  { font-size: $medium-text;      }
+}
+
+div.resume-workexp p {
+	margin: 0;
+}
+
+div.resume-workexp p:first-child {
+	color: $sage-white;
+	@include large  { font-size: $extra-large-text; }
+	@include medium { font-size: $large-text;       }
+	@include small  { font-size: $medium-text;      }
+}
+
+hr.resume-hr {
+	height: 2px;
+	padding: 0;
+	margin-top: 0rem;
+	@include large  { margin-bottom: 3rem; }
+	@include medium { margin-bottom: 2rem; }
+	@include small  { margin-bottom: 1rem; }
+	background-color: $sage-grey-medium;
+	border: 0;
+}
+
+li.resume-normal::marker {
+	color: $body-text-color;
+}
+
+li.resume-proact::marker {
+	color: $sage-yellow;
+}
+
+span.resume-bright {
+	color: $sage-white;
+	font-weight: bold;
+}
+
+@media print {
+
+	main::after {
+		content: "www.nmbell.com";
+		display: block;
+		text-align: center;
+	}
+
+	header.page-header {
+		position: static;
+
+		a::after {
+			content: "";
+		}
+	}
+
+	div.pageheaderdownloadlinks {
+		display: none;
+	}
+
+	a::after {
+		content: " (" attr(href) ")";
+	}
 }
 
 
@@ -492,6 +595,42 @@ br {
 	margin-top: 2em;
 }
 
+.tooltip {
+	position: relative;
+	display: inline-block;
+}
+
+.tooltip .tooltiptext {
+	position: absolute;
+	visibility: hidden;
+	background-color: $sage-grey-dark-extra;
+	color: $sage-orange;
+    width: fit-content;
+	text-align: center;
+	white-space: nowrap;
+    padding: 5px 10px;
+	border-radius: 5px;
+	top: -5px;
+	left: 105%;
+	z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+	visibility: visible;
+}
+
+.tooltip .tooltiptext::after {
+	content: " ";
+	position: absolute;
+	top: 50%;
+	right: 100%;
+	margin-top: -5px;
+	border-width: 5px;
+	border-style: solid;
+	border-color: transparent $sage-grey-dark-extra transparent transparent;
+}
+
 ul {
 	list-style-type: square;
+	padding-inline-start: 1.5rem;
 }
