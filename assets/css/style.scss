@@ -511,6 +511,16 @@ div.resume-keynote {
 	@include small  { font-size: $medium-text;      }
 }
 
+div.cert-badges {
+	display: flex;
+	margin-left: 1.5rem;
+}
+
+div.cert-badges iframe {
+	display: flex;
+	margin-right: 1.5rem;
+}
+
 div.resume-workexp p {
 	margin: 0;
 }
